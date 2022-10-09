@@ -13,7 +13,7 @@ extension CustomTextStyles on TextTheme {
       );
 
   TextStyle get headingStyle => TextStyle(
-        fontFamily: 'URW DIN Arabic',
+        fontFamily: 'msuighur',
         fontSize: 16,
         color: AppColors.colordeepGrey,
       );
