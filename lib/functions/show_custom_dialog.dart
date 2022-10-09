@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../utils/size_config.dart';
+import '../core/utiles/size_config.dart';
+
 
 void showCustomDialog(
     {required BuildContext? context,

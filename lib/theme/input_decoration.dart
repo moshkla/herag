@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'app_colors.dart';
 
@@ -28,11 +27,11 @@ InputDecoration inputDecoration({
     fillColor: color ?? Get.theme.scaffoldBackgroundColor,
     labelText: label,
     hintStyle: TextStyle(
-        fontSize: fontSize, fontFamily: GoogleFonts.tajawal().fontFamily,color: Colors.black),
+        fontSize: fontSize, fontFamily: 'msuighur',color: Colors.black),
 
     labelStyle: TextStyle(
         fontSize: fontSize,
-        fontFamily: GoogleFonts.tajawal().fontFamily,
+        fontFamily: 'msuighur',
         color: AppColors.secondary,fontWeight: FontWeight.bold),
     errorStyle: const TextStyle(
       color: Colors.red,

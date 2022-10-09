@@ -1,9 +1,10 @@
 import 'package:api_request/api_request.dart';
-import 'package:majdia/core/models/account_models/terms_and_condition_model.dart';
+
+import '../../../core/base_response.dart';
 
 
 class GetTermsAndCondtionsAction
-    extends ApiRequestAction<TermsAndCondtionModel> {
+    extends ApiRequestAction<BaseResponseModel> {
   @override
   bool get authRequired => true;
 
@@ -14,6 +15,6 @@ class GetTermsAndCondtionsAction
   String get path => "terms-and-conditions";
 
   @override
-  ResponseBuilder<TermsAndCondtionModel> get responseBuilder =>
-      (json) => TermsAndCondtionModel.fromJson(json);
+  ResponseBuilder<BaseResponseModel> get responseBuilder =>
+      (json) => BaseResponseModel.fromJson(json);
 }

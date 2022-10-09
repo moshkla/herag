@@ -1,8 +1,8 @@
 import 'package:api_request/api_request.dart';
-import 'package:majdia/core/models/units_models/purchased_units_model.dart';
+import 'package:herag/core/base_response.dart';
 
 
-class GetPurchasedUnitsAction extends ApiRequestAction<PurchasedUnitsModel> {
+class GetPurchasedUnitsAction extends ApiRequestAction<BaseResponseModel> {
   @override
   bool get authRequired => true;
 
@@ -13,6 +13,6 @@ class GetPurchasedUnitsAction extends ApiRequestAction<PurchasedUnitsModel> {
   String get path => "purchased-units";
 
   @override
-  ResponseBuilder<PurchasedUnitsModel> get responseBuilder =>
-      (json) => PurchasedUnitsModel.fromJson(json);
+  ResponseBuilder<BaseResponseModel> get responseBuilder =>
+      (json) => BaseResponseModel.fromJson(json);
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:majdia/features/account/widgets/account_labels.dart';
+import '../../../core/utiles/size_config.dart';
 import '../../../theme/app_colors.dart';
-import '../../../utils/size_config.dart';
 import '../../home/blocs/home_controller.dart';
+import '../widgets/account_labels.dart';
 import '../widgets/theme_mode_widget.dart';
 import 'package:flutter_svg/svg.dart';
 

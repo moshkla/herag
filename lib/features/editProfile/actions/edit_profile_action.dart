@@ -1,5 +1,4 @@
 import 'package:api_request/api_request.dart';
-import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 import 'get_profile_action.dart';
 
@@ -33,7 +32,7 @@ class EditProfileAction extends ApiRequestAction<AuthResponse> {
   @override
   String get path => "update-profile";
 
-  final f = DateFormat('yyyy-MM-dd');
+  // final f = DateFormat('yyyy-MM-dd');
 
   @override
   Map<String, dynamic> get toMap => {
@@ -41,7 +40,7 @@ class EditProfileAction extends ApiRequestAction<AuthResponse> {
     'email': email,
     'phone': phone,
     'national_id': nationalId,
-    'date_of_birth': f.format(dateOfBirth),
+    // 'date_of_birth': f.format(dateOfBirth),
     'gender': gender,
     'city_id': cityId,
     'nationality_id': countryId,

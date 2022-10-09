@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '../utils/local_storage.utils.dart';
 import 'app_colors.dart';
 
 class Themes {
   static TabBarTheme tabBarTheme = TabBarTheme(
       labelColor: Colors.white,
       labelStyle: TextStyle(
-          fontFamily: GoogleFonts.tajawal().fontFamily,
+          fontFamily: 'assets/fonts/msuighur.ttf',
+
           color: Colors.white,
           fontWeight: FontWeight.w600,
           fontSize: 18));
@@ -31,7 +29,7 @@ class Themes {
     brightness: Brightness.dark,
     tabBarTheme: tabBarTheme,
     scaffoldBackgroundColor: AppColors.backgroundDark,
-    fontFamily: GoogleFonts.tajawal().fontFamily,
+    fontFamily: 'msuighur',
     primaryColor: AppColors.primary,
     buttonTheme: const ButtonThemeData(
       buttonColor: AppColors.secondary,
@@ -42,7 +40,7 @@ class Themes {
       backgroundColor: AppColors.primary,
       systemOverlayStyle: darkOverlay,
       titleTextStyle: TextStyle(
-          fontFamily: GoogleFonts.tajawal().fontFamily,
+          fontFamily: 'msuighur',
           color: Colors.black,
           fontSize: 16,
           fontWeight: FontWeight.w600),
@@ -68,13 +66,13 @@ class Themes {
       labelStyle: TextStyle( fontSize: 20.0),
     ),
     tabBarTheme: tabBarTheme,
-    fontFamily: GoogleFonts.tajawal().fontFamily,
+    fontFamily: 'msuighur',
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.primary,
       centerTitle: true,
       systemOverlayStyle: lightOverlay,
       titleTextStyle: TextStyle(
-          fontFamily: GoogleFonts.tajawal().fontFamily,
+          fontFamily: 'msuighur',
           color: Colors.white,
           fontSize: 16,
           fontWeight: FontWeight.w600),
@@ -84,36 +82,36 @@ class Themes {
   );
 }
 
-class ThemeService {
-  init() {
-    SystemChrome.setSystemUIOverlayStyle(
-        isDarkMode ? Themes.darkOverlay : Themes.lightOverlay);
-  }
-
-  String get locale {
-    return (LocalStorageUtils.locale);
-  }
-
-  bool get isDarkMode {
-    return (LocalStorageUtils.isDarkMode) ?? false;
-  }
-
-  ThemeMode get themeMode => isDarkMode ? ThemeMode.dark : ThemeMode.light;
-
-  void switchTheme() async {
-    bool mode = !isDarkMode;
-    await LocalStorageUtils.setIsDarkMode(mode);
-    Get.changeThemeMode(mode ? ThemeMode.dark : ThemeMode.light);
-  }
-
-  void changeLocale() async {
-    String localex = locale;
-    if (localex == "ar") {
-      localex = "en";
-    } else {
-      localex = "ar";
-    }
-    await LocalStorageUtils.setLocale(localex);
-    Get.updateLocale(Locale(localex));
-  }
-}
+// class ThemeService {
+//   init() {
+//     SystemChrome.setSystemUIOverlayStyle(
+//         isDarkMode ? Themes.darkOverlay : Themes.lightOverlay);
+//   }
+//
+//   String get locale {
+//     return (LocalStorageUtils.locale);
+//   }
+//
+//   bool get isDarkMode {
+//     return (LocalStorageUtils.isDarkMode) ?? false;
+//   }
+//
+//   ThemeMode get themeMode => isDarkMode ? ThemeMode.dark : ThemeMode.light;
+//
+//   void switchTheme() async {
+//     bool mode = !isDarkMode;
+//     await LocalStorageUtils.setIsDarkMode(mode);
+//     Get.changeThemeMode(mode ? ThemeMode.dark : ThemeMode.light);
+//   }
+//
+//   void changeLocale() async {
+//     String localex = locale;
+//     if (localex == "ar") {
+//       localex = "en";
+//     } else {
+//       localex = "ar";
+//     }
+//     await LocalStorageUtils.setLocale(localex);
+//     Get.updateLocale(Locale(localex));
+//   }
+// }

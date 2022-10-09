@@ -1,5 +1,4 @@
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:get/get.dart';
 
 import '../../../utils/notification_utils.dart';
 import '../../../utils/validator.utils.dart';

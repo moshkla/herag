@@ -45,13 +45,13 @@ class ChangePasswordWidget extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              CustomButton(
-                key: const ValueKey("confirm"),
-                title: "confirm".tr,
-                onTap: () {
-                  changePasswordFormBloc.submit();
-                },
-              )
+              // CustomButton(
+              //   key: const ValueKey("confirm"),
+              //   title: "confirm".tr,
+              //   onTap: () {
+              //     changePasswordFormBloc.submit();
+              //   },
+              // )
             ],
           ),
         ),

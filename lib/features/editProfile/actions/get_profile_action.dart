@@ -1,7 +1,6 @@
 import 'package:api_request/api_request.dart';
 
 import '../../../core/base_response.dart';
-import '../../../core/models/account_models/user_model.dart';
 
 class GetProfileAction extends ApiRequestAction<AuthResponse> {
   @override
@@ -18,10 +17,10 @@ class GetProfileAction extends ApiRequestAction<AuthResponse> {
       (json) => AuthResponse.fromJson(json);
 }
 class AuthResponse with BaseResponse{
-  UserModel? userModel;
+  // UserModel? userModel;
 
   AuthResponse.fromJson(Map<String, dynamic> json) {
     super.fromJson(json);
-    userModel = UserModel.fromJson(json);
+    // userModel = UserModel.fromJson(json);
   }
 }
