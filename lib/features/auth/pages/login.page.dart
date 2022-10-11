@@ -1,207 +1,97 @@
-// import 'package:flutter/gestures.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-// import 'package:get/get.dart';
-// import 'package:majdia/theme/text_styles.dart';
-//
-// import '../../../core/routes/routes.dart';
-// import '../../../theme/input_decoration.dart';
-// import '../../../utils/size_config.dart';
-// import '../../../widgets/app_bar.dart';
-// import '../../../widgets/custom_button.dart';
-// import '../blocs/login_form.bloc.dart';
-// import '../widgets/reset_password_widget.dart';
-//
-// class LoginPage extends StatefulWidget {
-//   const LoginPage({Key? key}) : super(key: key);
-//
-//   @override
-//   State<LoginPage> createState() => _LoginPageState();
-// }
-//
-// class _LoginPageState extends State<LoginPage> {
-//   late LoginFormBloc formBloc;
-//
-//   @override
-//   void initState() {
-//     super.initState();
-//     formBloc = LoginFormBloc();
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: SingleChildScrollView(
-//         child: Column(
-//           children: [
-//             Container(
-//               height: Si.ds! * 60,
-//               child: Stack(
-//                 children: [
-//                   PositionedDirectional(
-//                       child: Container(
-//                     decoration: BoxDecoration(
-//                       borderRadius: BorderRadius.only(
-//                           bottomLeft: Radius.circular(Si.ds!),
-//                           bottomRight:
-//                               Radius.circular(Si.ds!)),
-//                     ),
-//                     clipBehavior: Clip.antiAliasWithSaveLayer,
-//                     child: Image.asset(
-//                       'assets/images/login_bg.png',
-//                       width: Get.width,
-//                       height: Si.ds! * 35,
-//                       fit: BoxFit.cover,
-//                     ),
-//                   )),
-//                   PositionedDirectional(
-//                       child: Container(
-//                     decoration: BoxDecoration(
-//                       boxShadow: [
-//                         BoxShadow(
-//                             color: Colors.white.withOpacity(0.6),
-//                             offset: Offset(Si.ds! * 10, 0),
-//                             spreadRadius: 2,
-//                             blurRadius: 100),
-//                       ],
-//                     ),
-//                   )),
-//                   //Image.asset('assets/images/unit_bg.png',fit: BoxFit.cover,),
-//                   pageAppBar(
-//                     title: 'login',
-//                     color: Colors.black,
-//                   ),
-//                   PositionedDirectional(
-//                       top: Si.ds! * 4,
-//                       start: 0,
-//                       child: Image.asset(
-//                         'assets/images/slogo.png',
-//                         height: Si.ds! * 15,
-//                         color: Colors.black,
-//                       )),
-//                   PositionedDirectional(
-//                       top: Si.ds! * 18,
-//                       start: 20,
-//                       child: Column(
-//                         crossAxisAlignment: CrossAxisAlignment.start,
-//                         children: [
-//                           Text(
-//                             'مرحبا بك في \nمجتمع متكامل',
-//                             style: context.textTheme.titleLarge!.copyWith(
-//                               fontSize: Si.ds!*2.5,
-//                                 fontWeight: FontWeight.bold,
-//                                 color: Colors.black),
-//                           ),
-//                           VerticalSpace(value: 1),
-//                           Text(
-//                             'يرجي تسجيل الدخول',
-//                             style: context.textTheme.caption!.copyWith(
-//                                 fontWeight: FontWeight.w700,
-//                                 color: Colors.black,
-//                             fontSize: Si.ds!*1.5),
-//                           )
-//                         ],
-//                       )),
-//                   PositionedDirectional(
-//                     bottom: 0,
-//                     start: 0,
-//                     end: 0,
-//                     child: Padding(
-//                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-//                       child: Container(
-//                         width: Get.width,
-//                         decoration: BoxDecoration(
-//                           borderRadius:
-//                               BorderRadius.circular(Si.ds!),
-//                         ),
-//                         child: Card(
-//                             elevation: 1,
-//                             child: Padding(
-//                               padding: const EdgeInsets.all(12.0),
-//                               child: FormBlocListener(
-//                                 formBloc: formBloc,
-//                                 child: ListView(
-//                                   shrinkWrap: true,
-//                                   primary: false,
-//                                   key: const ValueKey("login_scroll"),
-//                                   physics: const NeverScrollableScrollPhysics(),
-//                                   padding: const EdgeInsets.symmetric(
-//                                       horizontal: 16),
-//                                   children: [
-//                                     TextFieldBlocBuilder(
-//                                       key: const Key("email"),
-//                                       textFieldBloc: formBloc.email,
-//                                       decoration: InputDecoration(
-//                                           label: Text("email".tr)),
-//                                       keyboardType: TextInputType.emailAddress,
-//                                     ),
-//                                     TextFieldBlocBuilder(
-//                                       key: const Key("password"),
-//                                       textFieldBloc: formBloc.password,
-//                                       decoration: InputDecoration(
-//                                           label: Text("password".tr)),
-//                                       suffixButton: SuffixButton.obscureText,
-//                                     ),
-//                                     Row(
-//                                       children: [
-//                                         TextButton(
-//                                           child: Text(
-//                                             "do_you_forget_password".tr,
-//                                             style: context.textTheme.titleBold,
-//                                           ),
-//                                           onPressed: () {
-//                                             Get.dialog(const Dialog(
-//                                               backgroundColor:
-//                                                   Colors.transparent,
-//                                               child: ResetPasswordWidget(),
-//                                             ));
-//                                           },
-//                                         ),
-//                                       ],
-//                                     ),
-//                                     CustomButton(
-//                                       key: const ValueKey("login"),
-//                                       title: "login".tr,
-//                                       onTap: () {
-//                                         formBloc.submit();
-//                                       },
-//                                     ),
-//                                     const SizedBox(
-//                                       height: 16,
-//                                     ),
-//                                     Center(
-//                                       key: const ValueKey("register"),
-//                                       child: Text.rich(
-//                                         TextSpan(
-//                                             text: "dont_have_acc!".tr,
-//                                             style: context.textTheme.subTitle,
-//                                             children: [
-//                                               TextSpan(
-//                                                   text: "register_now".tr,
-//                                                   style: context
-//                                                       .textTheme.subTitleBold.copyWith(color: Colors.black),
-//                                                   recognizer:
-//                                                       TapGestureRecognizer()
-//                                                         ..onTap = () {
-//                                                           Get.toNamed(
-//                                                               Routes.register);
-//                                                         })
-//                                             ]),
-//                                       ),
-//                                     ),
-//                                   ],
-//                                 ),
-//                               ),
-//                             )),
-//                       ),
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+import 'package:flutter/material.dart';
+import 'package:herag/core/constants/constants.dart';
+import 'package:herag/core/router/router.dart';
+import 'package:herag/core/utiles/size_config.dart';
+import 'package:herag/core/widgets/custom_buttons_widget.dart';
+import 'package:herag/core/widgets/custom_text_field.dart';
+import 'package:herag/features/auth/pages/register.page.dart';
+
+import '../../../layout/layout.page.dart';
+import '../../../theme/app_assets.dart';
+import '../../../theme/input_decoration.dart';
+import '../../../theme/styles.dart';
+import '../../../theme/text_styles.dart';
+
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  int? selectedIndex;
+
+  @override
+  Widget build(BuildContext context) {
+    Si().init(context);
+    return Scaffold(
+      body: Container(
+        height: Si.screenHeight,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/images/splash.png'), fit: BoxFit.cover),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.only(
+                    start: Si.ds! * 8, end: Si.ds! * 8, top: Si.ds! * 6),
+                child: Center(
+                  child: Image.asset(AppAssets.logo),
+                ),
+              ),
+              Padding(
+                padding: edgeInsetsSymmetric(h: 2, v: 5),
+                child: Container(
+                  padding: edgeInsetsSymmetric(h: 2, v: 3),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Si.ds!),
+                    color: Colors.white,
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        translateString('تسجيل الدخول', 'Login'),
+                        style: title,
+                      ),
+                      VerticalSpace(value: 2),
+                      TextFormField(
+                        style: subTitle,
+                        decoration: inputDecoration(label:translateString('البريد الالكتروني او الهاتف', 'Email or Phone') ),
+                      ),
+                      VerticalSpace(value: 2),
+                      TextFormField(
+                        style:subTitle ,
+                        decoration: inputDecoration(label:translateString('كلمة المرور', 'Password') ),
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional.topEnd,
+                        child: CustomTextButton(text: translateString('هل نسيت كلمة المرور ؟','Do you forget passsword ?'),size: Si.ds!*3, onPressed: (){
+
+                        }),
+                      ),
+                      VerticalSpace(value: 2),
+                      Padding(
+                        padding: edgeInsetsSymmetric(h:5,v: 0 ),
+                        child: CustomGeneralButton(
+                            text: translateString('تسجيل الدخول', 'Login'), onTap: () {
+                              MagicRouter.navigateAndPopAll(LayoutPage());
+                        }),
+                      ),
+                      VerticalSpace(value: 1),
+                      CustomTextButton(text: translateString('انشاء حساب جديد','Create new account'), onPressed: (){
+                        MagicRouter.navigateTo(RegisterPage());
+                      }),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

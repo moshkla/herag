@@ -8,7 +8,7 @@ import 'dependancy_injection.dart' as di;
 
 class AppBindings {
   static Future initAsyncDependebcies() async {
-    WidgetsFlutterBinding.ensureInitialized();
+   await WidgetsFlutterBinding.ensureInitialized();
     await di.init();
     await GetStorage.init();
     await EasyLocalization.ensureInitialized();

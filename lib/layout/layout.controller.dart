@@ -1,19 +1,20 @@
 // import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
 //
 // import '../features/account/pages/account_page.dart';
-// import '../features/articles/pages/articles_page.dart';
+// import '../features/favourites/pages/home.page.dart';
+// import '../features/home/pages/home.page.dart';
+// import '../features/menu/pages/menu.page.dart';
+// import '../features/notifications/pages/notification.page.dart';
 //
-// import '../features/home/pages/language.page.dart';
-//
-// class MainNavigationController extends GetxController {
+// class MainNavigationController extends st{
 //   int currentIndex = 0;
 //
 //   final List<PageData> pages = [
 //     PageData(index:0,icon: 'assets/images/home.svg', page: const HomePage(), title: "home"),
-//     PageData(index:1,icon: 'assets/images/projects.svg', page: ProjectPage(), title: "projects"),
-//     PageData(index:2,icon: 'assets/images/articles.svg', page:const ArticlesPage(), title: "blog"),
+//     PageData(index:1,icon: 'assets/images/projects.svg', page: FavouritesPage(), title: "projects"),
+//     PageData(index:2,icon: 'assets/images/articles.svg', page:const NotificationPage(), title: "blog"),
 //     PageData(index:3,icon: 'assets/images/profile.svg', page: const AccountPage(), title: "account"),
+//     PageData(index:3,icon: 'assets/images/profile.svg', page: const MenuPage(), title: "account"),
 //   ];
 //
 //   PageData get currentPage {
@@ -22,7 +23,6 @@
 //
 //   changeIndex(int index) {
 //     currentIndex = index;
-//     update();
 //   }
 // }
 //

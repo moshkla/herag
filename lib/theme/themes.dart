@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:herag/core/router/router.dart';
+import 'package:herag/theme/text_styles.dart';
+import '../core/utiles/size_config.dart';
 import 'app_colors.dart';
 
 class Themes {
@@ -22,6 +25,7 @@ class Themes {
 
   static final ThemeData dark = ThemeData(
     canvasColor: Colors.white,
+
     textTheme: const TextTheme(
         subtitle2: TextStyle(color: Colors.black),
         subtitle1: TextStyle(color: Colors.black)),
@@ -60,9 +64,12 @@ class Themes {
     buttonTheme: const ButtonThemeData(
       buttonColor: AppColors.secondary,
     ),
-    inputDecorationTheme: const InputDecorationTheme(
-      border: OutlineInputBorder(),
-      labelStyle: TextStyle(fontSize: 20.0),
+    inputDecorationTheme: InputDecorationTheme(
+      border: OutlineInputBorder(
+        // borderRadius: BorderRadius.circular(Si.ds!*1.5)
+      ),
+      labelStyle: title,
+
     ),
     tabBarTheme: tabBarTheme,
     fontFamily: 'msuighur',

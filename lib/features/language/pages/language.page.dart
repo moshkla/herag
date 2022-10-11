@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:herag/core/constants/constants.dart';
+import 'package:herag/core/router/router.dart';
 import 'package:herag/core/utiles/size_config.dart';
 import 'package:herag/core/widgets/custom_buttons_widget.dart';
+import 'package:herag/features/auth/pages/login.page.dart';
 
 import '../../../theme/app_assets.dart';
 import '../../../theme/styles.dart';
@@ -83,7 +85,9 @@ class _LanguagePageState extends State<LanguagePage> {
                     ),
                     VerticalSpace(value: 2),
                     CustomGeneralButton(
-                        text: translateString('التالي', 'Next'), onTap: () {}),
+                        text: translateString('التالي', 'Next'), onTap: () {
+                          MagicRouter.navigateAndPopAll(LoginPage());
+                    }),
                   ],
                 ),
               ),

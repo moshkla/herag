@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:herag/core/constants/colors.dart';
 import 'package:herag/core/constants/constants.dart';
 
+import '../../theme/app_colors.dart';
+import '../utiles/size_config.dart';
+
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     Key? key,
@@ -53,18 +56,18 @@ class CustomTextFormField extends StatelessWidget {
         hintText: hint,
         hintStyle: headingStyle.copyWith(color: colorLightGrey),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: kMainColor),
+          borderRadius: BorderRadius.circular(Si.ds!*1.5),
+          borderSide: BorderSide(color:AppColors.primary),
         ),
         suffixIcon: suffix != null
             ? IconButton(onPressed: suffixPressed, icon: Icon(suffix))
             : null,
-        // labelText: label,
+        labelText: label,
         filled: true,
         fillColor: Colors.transparent,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: colorLightGrey),
+          borderRadius: BorderRadius.circular(Si.ds!*1.5),
+          borderSide: BorderSide(color: AppColors.primary),
         ),
       ),
     );

@@ -1,179 +1,130 @@
-// import 'package:flutter/gestures.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-// import 'package:get/get.dart';
-// import 'package:majdia/features/auth/blocs/auth.controller.dart';
-// import 'package:majdia/theme/text_styles.dart';
-// import '../../../core/routes/routes.dart';
-// import '../../../theme/input_decoration.dart';
-// import '../../../widgets/app_bar.dart';
-// import '../../../widgets/custom_button.dart';
-// import '../blocs/register_form_bloc.dart';
-//
-// class RegisterPage extends GetView<AuthController> {
-//   RegisterPage({Key? key}) : super(key: key);
-//
-//   late RegisterFormBloc formBloc;
-//   bool saudiaSelected = false;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       // appBar: pageAppBar(title: "register".tr),
-//       body: GetBuilder<AuthController>(
-//         initState: (_) {
-//           formBloc = RegisterFormBloc();
-//         },
-//         builder: (c) {
-//           return FormBlocListener(
-//             formBloc: formBloc,
-//             child: ListView(
-//               physics: const ClampingScrollPhysics(),
-//               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-//               children: [
-//                 pageAppBar(
-//                   title: "register",
-//                   color: Colors.black,
-//                 ),
-//                 const SizedBox(
-//                   height: 12,
-//                 ),
-//                 TextFieldBlocBuilder(
-//                   cursorColor: Colors.black,
-//                   key: const ValueKey("name"),
-//                   textFieldBloc: formBloc.name,
-//                   decoration: InputDecoration(
-//                     label: Text("name".tr),
-//                   ),
-//                 ),
-//                 TextFieldBlocBuilder(
-//                   cursorColor: Colors.black,
-//                   key: const ValueKey("email"),
-//                   textFieldBloc: formBloc.email,
-//                   decoration: InputDecoration(label: Text("email".tr)),
-//                   keyboardType: TextInputType.emailAddress,
-//                 ),
-//                 TextFieldBlocBuilder(
-//                   cursorColor: Colors.black,
-//                   key: const ValueKey("phone"),
-//                   textFieldBloc: formBloc.phone,
-//                   decoration: InputDecoration(label: Text("phone".tr)),
-//                 ),
-//                 TextFieldBlocBuilder(
-//                   cursorColor: Colors.black,
-//                   key: const ValueKey("password"),
-//                   textFieldBloc: formBloc.password,
-//                   decoration: InputDecoration(label: Text("password".tr)),
-//                   suffixButton: SuffixButton.obscureText,
-//                 ),
-//                 TextFieldBlocBuilder(
-//                   cursorColor: Colors.black,
-//                   key: const ValueKey("confirm_password"),
-//                   textFieldBloc: formBloc.confirmPassword,
-//                   decoration:
-//                       InputDecoration(label: Text("confirm_password".tr)),
-//                   suffixButton: SuffixButton.obscureText,
-//                 ),
-//                 TextFieldBlocBuilder(
-//                   cursorColor: Colors.black,
-//                   key: const ValueKey("national id"),
-//                   textFieldBloc: formBloc.nationalId,
-//                   decoration: InputDecoration(
-//                     label: Text("identification_num".tr),
-//                   ),
-//                 ),
-//                 DateTimeFieldBlocBuilder(
-//                   dateTimeFieldBloc: formBloc.dateOfBirth,
-//                   format: DateFormat("yyyy-MM-dd"),
-//                   initialDate: DateTime(1970, 1, 1),
-//                   firstDate: DateTime(1900),
-//                   lastDate: DateTime.now(),
-//                   decoration: InputDecoration(
-//                     label: Text("birth_date".tr),
-//                     icon: Icon(Icons.calendar_today),
-//                   ),
-//                 ),
-//                 DropdownFieldBlocBuilder<String>(
-//                   key: const ValueKey("gender"),
-//                   selectFieldBloc: formBloc.gender,
-//                   showEmptyItem: false,
-//                   decoration: InputDecoration(
-//                     label: Text('gender'.tr),
-//                   ),
-//                   itemBuilder: (context, value) => FieldItem(
-//                     child: Text(value),
-//                   ),
-//                 ),
-//                 DropdownFieldBlocBuilder<String>(
-//                   onChanged: (value) {
-//                     if (value == 'السعودية') {
-//                       saudiaSelected = true;
-//                       controller.update();
-//                     } else {
-//                       saudiaSelected = false;
-//                       controller.update();
-//                     }
-//                   },
-//                   key: const ValueKey("country"),
-//                   selectFieldBloc: formBloc.country,
-//                   showEmptyItem: false,
-//                   decoration: InputDecoration(
-//                     label: Text('country'.tr),
-//                   ),
-//                   itemBuilder: (context, country) => FieldItem(
-//                     child: Text(country),
-//                   ),
-//                 ),
-//                 if (saudiaSelected)
-//                   DropdownFieldBlocBuilder<String>(
-//                     key: const ValueKey("city"),
-//                     showEmptyItem: false,
-//                     selectFieldBloc: formBloc.city,
-//                     decoration: InputDecoration(
-//                       label: Text('city'.tr),
-//                     ),
-//                     itemBuilder: (context, city) => FieldItem(
-//                       child: Text(city),
-//                     ),
-//                   ),
-//                 const SizedBox(
-//                   height: 16,
-//                 ),
-//                 CustomButton(
-//                   key: const ValueKey("confirm"),
-//                   title: "register".tr,
-//                   onTap: () {
-//                     formBloc.submit();
-//                   },
-//                 ),
-//                 const SizedBox(
-//                   height: 20,
-//                 ),
-//                 Center(
-//                   child: Text.rich(
-//                     TextSpan(
-//                         text: "already_have_acc!".tr,
-//                         style: context.textTheme.subTitle,
-//                         children: [
-//                           TextSpan(
-//                               text: "login".tr,
-//                               style: context.textTheme.subTitleBold
-//                                   .copyWith(color: context.theme.primaryColor),
-//                               recognizer: TapGestureRecognizer()
-//                                 ..onTap = () {
-//                                   Get.toNamed(Routes.login);
-//                                 })
-//                         ]),
-//                   ),
-//                 ),
-//                 const SizedBox(
-//                   height: 16,
-//                 ),
-//               ],
-//             ),
-//           );
-//         },
-//       ),
-//     );
-//   }
-// }
+import 'package:flutter/material.dart';
+import 'package:herag/core/constants/constants.dart';
+import 'package:herag/core/router/router.dart';
+import 'package:herag/core/utiles/size_config.dart';
+import 'package:herag/core/widgets/custom_buttons_widget.dart';
+import 'package:herag/core/widgets/custom_text_field.dart';
+import 'package:herag/features/auth/pages/login.page.dart';
+
+import '../../../layout/layout.page.dart';
+import '../../../theme/app_assets.dart';
+import '../../../theme/input_decoration.dart';
+import '../../../theme/styles.dart';
+import '../../../theme/text_styles.dart';
+
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  int? selectedIndex;
+
+  @override
+  Widget build(BuildContext context) {
+    Si().init(context);
+    return Scaffold(
+      body: Container(
+        height: Si.screenHeight,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/images/splash.png'), fit: BoxFit.cover),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsetsDirectional.only(
+                    start: Si.ds! * 8, end: Si.ds! * 8, top: Si.ds! * 6),
+                child: Center(
+                  child: Image.asset(AppAssets.logo),
+                ),
+              ),
+              Padding(
+                padding: edgeInsetsSymmetric(h: 2, v: 5),
+                child: Container(
+                  padding: edgeInsetsSymmetric(h: 2, v: 3),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(Si.ds!),
+                    color: Colors.white,
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        translateString(
+                            'انشاء حساب جديد', 'Create new account'),
+                        style: title,
+                      ),
+                      VerticalSpace(value: 2),
+                      TextFormField(
+                        style: subTitle,
+                        decoration: inputDecoration(
+                            label:
+                                translateString('البريد الالكتروني', 'Email')),
+                      ),
+                      VerticalSpace(value: 1.5),
+                      TextFormField(
+                        style: subTitle,
+                        decoration: inputDecoration(
+                            label:
+                                translateString('البريد الالكتروني', 'Email')),
+                      ),
+                      VerticalSpace(value: 1.5),
+                      TextFormField(
+                        style: subTitle,
+                        keyboardType: TextInputType.number,
+                        decoration: inputDecoration(
+                          label: translateString('الهاتف', 'Phone'),
+                        ),
+                      ),
+                      VerticalSpace(value: 1.5),
+                      TextFormField(
+                        style: subTitle,
+                        decoration: inputDecoration(
+                            label: translateString('كلمة المرور', 'Password')),
+                      ),
+                      VerticalSpace(value: 1.5),
+                      TextFormField(
+                        style: subTitle,
+                        decoration: inputDecoration(
+                            label: translateString(
+                                'تأكيد كلمة المرور ', 'Confirm password')),
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional.topEnd,
+                        child: CustomTextButton(
+                            text: translateString('هل نسيت كلمة المرور ؟',
+                                'Do you forget passsword ?'),
+                            size: Si.ds! * 3,
+                            onPressed: () {}),
+                      ),
+                      VerticalSpace(value: 2),
+                      Padding(
+                        padding: edgeInsetsSymmetric(h: 5, v: 0),
+                        child: CustomGeneralButton(
+                            text: translateString(
+                                'انشاء حساب جديد', 'Create new account'),
+                            onTap: () {
+                              MagicRouter.navigateAndPopAll(LayoutPage());
+                            }),
+                      ),
+                      VerticalSpace(value: 1),
+                      CustomTextButton(
+                          text: translateString(
+                              'لديك حساب بالفعل', 'Already have account'),
+                          onPressed: () {
+                            MagicRouter.navigateAndPopAll(LoginPage());
+                          }),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
