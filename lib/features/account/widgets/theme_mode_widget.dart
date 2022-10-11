@@ -20,7 +20,7 @@
 //     return Padding(
 //       padding: const EdgeInsets.all(8.0),
 //       child: Material(
-//         borderRadius: BorderRadius.circular(SizeConfig.defaultSize!),
+//         borderRadius: BorderRadius.circular(Si.ds!),
 //
 //         child: Column(
 //           children: [
@@ -34,14 +34,14 @@
 //                       Container(
 //                         padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
 //                         decoration: BoxDecoration(
-//                           borderRadius: BorderRadius.circular(SizeConfig.defaultSize!),
+//                           borderRadius: BorderRadius.circular(Si.ds!),
 //                           color: AppColors.third.withOpacity(0.2),
 //                         ),
 //                         child:
 //                         Image.asset(
 //                           'assets/images/moon.png',
-//                           height: SizeConfig.defaultSize! * 3,
-//                           width: SizeConfig.defaultSize! * 3,
+//                           height: Si.ds! * 3,
+//                           width: Si.ds! * 3,
 //                         ),
 //                       ),
 //                       HorizontalSpace(value: 1),

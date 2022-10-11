@@ -11,7 +11,7 @@ class CustomContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: SizeConfig.screenWidth,
+      width: Si.screenWidth,
       decoration: BoxDecoration(
         color: Colors.grey[300],
         image: const DecorationImage(

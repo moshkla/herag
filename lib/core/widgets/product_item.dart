@@ -17,20 +17,20 @@ class ProductItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                  height: SizeConfig.defaultSize! * 22,
+                  height: Si.ds! * 22,
                   child: Image.asset(
                     'assets/images/item.png',
                   )),
               const VerticalSpace(value: 1),
               Text(
                 'Title',
-                style: TextStyle(fontSize: SizeConfig.defaultSize! * 1.2),
+                style: TextStyle(fontSize: Si.ds! * 1.2),
               ),
               const VerticalSpace(value: 0.5),
               Expanded(
                   child: Text('Price SR',
                       style:
-                          TextStyle(fontSize: SizeConfig.defaultSize! * 1.2))),
+                          TextStyle(fontSize: Si.ds! * 1.2))),
             ],
           ),
         ),

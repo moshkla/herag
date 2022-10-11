@@ -54,7 +54,7 @@
 //                 child: Container(
 //                   decoration: BoxDecoration(
 //                       borderRadius: BorderRadius.circular(
-//                           SizeConfig.defaultSize!),
+//                           Si.ds!),
 //                       border:
 //                       Border.all(color:selectedArabic==true? Colors.green:Colors.black)),
 //                   child: Row(
@@ -66,7 +66,7 @@
 //                           Image.asset(
 //                             'assets/images/saudi.png',
 //                             height:
-//                             SizeConfig.defaultSize! * 7,
+//                             Si.ds! * 7,
 //                           ),
 //                           HorizontalSpace(value: 0.5),
 //                           Text(
@@ -97,7 +97,7 @@
 //                 child: Container(
 //                   decoration: BoxDecoration(
 //                       borderRadius: BorderRadius.circular(
-//                           SizeConfig.defaultSize!),
+//                           Si.ds!),
 //                       border:
 //                       Border.all(color:selectedEnglish==true? Colors.green:Colors.black)),
 //                   child: Row(
@@ -110,18 +110,18 @@
 //                           Container(
 //                               decoration: BoxDecoration(
 //                                   borderRadius: BorderRadius
-//                                       .circular(SizeConfig
-//                                       .defaultSize! *
+//                                       .circular(Si
+//                                       .ds! *
 //                                       10)),
 //                               clipBehavior:
 //                               Clip.antiAliasWithSaveLayer,
 //                               child: Image.asset(
 //                                 'assets/images/american.webp',
 //                                 height:
-//                                 SizeConfig.defaultSize! *
+//                                 Si.ds! *
 //                                     7,
 //                                 width:
-//                                 SizeConfig.defaultSize! *
+//                                 Si.ds! *
 //                                     7,
 //                               )),
 //                           HorizontalSpace(value: 0.5 + 2.6),

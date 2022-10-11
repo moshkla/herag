@@ -12,7 +12,7 @@
 //   Widget build(BuildContext context) {
 //     return Center(
 //       child: Container(
-//         height: SizeConfig.defaultSize! * 15,
+//         height: Si.ds! * 15,
 //         //  margin: const EdgeInsets.symmetric(horizontal: 20),
 //         decoration: BoxDecoration(
 //             color: Colors.white, borderRadius: BorderRadius.circular(15)),
@@ -29,7 +29,7 @@
 //                     child: Text(
 //                       "del_acc_message".tr,
 //                       style: TextStyle(
-//                           fontSize: SizeConfig.defaultSize! * 2,
+//                           fontSize: Si.ds! * 2,
 //                           fontWeight: FontWeight.bold),
 //                     ),
 //                   ),
@@ -39,8 +39,8 @@
 //                       mainAxisAlignment: MainAxisAlignment.center,
 //                       children: [
 //                         SizedBox(
-//                             height: SizeConfig.defaultSize! * 4,
-//                             width: SizeConfig.defaultSize! * 11,
+//                             height: Si.ds! * 4,
+//                             width: Si.ds! * 11,
 //                             child: CustomGeneralButton(
 //                                 color: Colors.red,
 //                                 text: "confirm".tr,
@@ -49,8 +49,8 @@
 //                                 })),
 //                         const HorizontalSpace(value: 3),
 //                         SizedBox(
-//                             height: SizeConfig.defaultSize! * 4,
-//                             width: SizeConfig.defaultSize! * 11,
+//                             height: Si.ds! * 4,
+//                             width: Si.ds! * 11,
 //                             child: CustomGeneralButton(
 //                                 color: Colors.green,
 //                                 text: 'cancel'.tr,

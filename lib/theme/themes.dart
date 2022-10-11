@@ -3,11 +3,10 @@ import 'package:flutter/services.dart';
 import 'app_colors.dart';
 
 class Themes {
-  static TabBarTheme tabBarTheme = TabBarTheme(
+  static TabBarTheme tabBarTheme = const TabBarTheme(
       labelColor: Colors.white,
       labelStyle: TextStyle(
           fontFamily: 'assets/fonts/msuighur.ttf',
-
           color: Colors.white,
           fontWeight: FontWeight.w600,
           fontSize: 18));
@@ -19,7 +18,7 @@ class Themes {
   static const lightOverlay = SystemUiOverlayStyle(
       statusBarIconBrightness: Brightness.dark,
       statusBarBrightness: Brightness.light,
-      statusBarColor: Colors.transparent);
+      statusBarColor: Colors.black);
 
   static final ThemeData dark = ThemeData(
     canvasColor: Colors.white,
@@ -61,13 +60,13 @@ class Themes {
     buttonTheme: const ButtonThemeData(
       buttonColor: AppColors.secondary,
     ),
-    inputDecorationTheme: InputDecorationTheme(
+    inputDecorationTheme: const InputDecorationTheme(
       border: OutlineInputBorder(),
-      labelStyle: TextStyle( fontSize: 20.0),
+      labelStyle: TextStyle(fontSize: 20.0),
     ),
     tabBarTheme: tabBarTheme,
     fontFamily: 'msuighur',
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.primary,
       centerTitle: true,
       systemOverlayStyle: lightOverlay,

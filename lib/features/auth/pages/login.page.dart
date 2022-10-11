@@ -35,22 +35,22 @@
 //         child: Column(
 //           children: [
 //             Container(
-//               height: SizeConfig.defaultSize! * 60,
+//               height: Si.ds! * 60,
 //               child: Stack(
 //                 children: [
 //                   PositionedDirectional(
 //                       child: Container(
 //                     decoration: BoxDecoration(
 //                       borderRadius: BorderRadius.only(
-//                           bottomLeft: Radius.circular(SizeConfig.defaultSize!),
+//                           bottomLeft: Radius.circular(Si.ds!),
 //                           bottomRight:
-//                               Radius.circular(SizeConfig.defaultSize!)),
+//                               Radius.circular(Si.ds!)),
 //                     ),
 //                     clipBehavior: Clip.antiAliasWithSaveLayer,
 //                     child: Image.asset(
 //                       'assets/images/login_bg.png',
 //                       width: Get.width,
-//                       height: SizeConfig.defaultSize! * 35,
+//                       height: Si.ds! * 35,
 //                       fit: BoxFit.cover,
 //                     ),
 //                   )),
@@ -60,7 +60,7 @@
 //                       boxShadow: [
 //                         BoxShadow(
 //                             color: Colors.white.withOpacity(0.6),
-//                             offset: Offset(SizeConfig.defaultSize! * 10, 0),
+//                             offset: Offset(Si.ds! * 10, 0),
 //                             spreadRadius: 2,
 //                             blurRadius: 100),
 //                       ],
@@ -72,15 +72,15 @@
 //                     color: Colors.black,
 //                   ),
 //                   PositionedDirectional(
-//                       top: SizeConfig.defaultSize! * 4,
+//                       top: Si.ds! * 4,
 //                       start: 0,
 //                       child: Image.asset(
 //                         'assets/images/slogo.png',
-//                         height: SizeConfig.defaultSize! * 15,
+//                         height: Si.ds! * 15,
 //                         color: Colors.black,
 //                       )),
 //                   PositionedDirectional(
-//                       top: SizeConfig.defaultSize! * 18,
+//                       top: Si.ds! * 18,
 //                       start: 20,
 //                       child: Column(
 //                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,7 +88,7 @@
 //                           Text(
 //                             'مرحبا بك في \nمجتمع متكامل',
 //                             style: context.textTheme.titleLarge!.copyWith(
-//                               fontSize: SizeConfig.defaultSize!*2.5,
+//                               fontSize: Si.ds!*2.5,
 //                                 fontWeight: FontWeight.bold,
 //                                 color: Colors.black),
 //                           ),
@@ -98,7 +98,7 @@
 //                             style: context.textTheme.caption!.copyWith(
 //                                 fontWeight: FontWeight.w700,
 //                                 color: Colors.black,
-//                             fontSize: SizeConfig.defaultSize!*1.5),
+//                             fontSize: Si.ds!*1.5),
 //                           )
 //                         ],
 //                       )),
@@ -112,7 +112,7 @@
 //                         width: Get.width,
 //                         decoration: BoxDecoration(
 //                           borderRadius:
-//                               BorderRadius.circular(SizeConfig.defaultSize!),
+//                               BorderRadius.circular(Si.ds!),
 //                         ),
 //                         child: Card(
 //                             elevation: 1,

@@ -72,11 +72,11 @@ class _NewOverLayState extends State<NewOverLay> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.transparent,
-      height: SizeConfig.screenHeight,
-      width: SizeConfig.screenWidth,
+      height: Si.screenHeight,
+      width: Si.screenWidth,
       child: Center(
         child: SpinKitPouringHourGlass(
-          size: SizeConfig.defaultSize! * 10,
+          size: Si.ds! * 10,
           color: kMainColor,
           duration: const Duration(milliseconds: 1000),
         ),
@@ -103,7 +103,7 @@ class SnackBarContent extends StatelessWidget {
       children: [
         Container(
           padding: const EdgeInsets.all(16),
-          height: SizeConfig.defaultSize! * 10,
+          height: Si.ds! * 10,
           decoration: BoxDecoration(
             color: success ? Colors.green : Colors.red,
             borderRadius: const BorderRadius.all(Radius.circular(20)),
@@ -128,7 +128,7 @@ class SnackBarContent extends StatelessWidget {
                         message,
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: SizeConfig.defaultSize! * 1.3,
+                            fontSize: Si.ds! * 1.3,
                             fontWeight: FontWeight.bold),
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
@@ -144,7 +144,7 @@ class SnackBarContent extends StatelessWidget {
           bottom: 8,
           left: 16,
           child: SizedBox(
-            height: SizeConfig.defaultSize!*20,
+            height: Si.ds!*20,
             child: ClipRRect(
               borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(20),

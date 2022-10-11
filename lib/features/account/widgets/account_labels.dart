@@ -37,9 +37,9 @@
 //                     decoration: BoxDecoration(
 //                         border: Border.all(color: AppColors.secondary),
 //                         borderRadius:
-//                             BorderRadius.circular(SizeConfig.defaultSize! * 1)),
+//                             BorderRadius.circular(Si.ds! * 1)),
 //                     clipBehavior: Clip.antiAliasWithSaveLayer,
-//                     width: SizeConfig.defaultSize! * 18,
+//                     width: Si.ds! * 18,
 //                     child: CustomGeneralButton(
 //                         text: 'login'.tr,
 //                         textColor: Colors.white,
@@ -49,10 +49,10 @@
 //                 Container(
 //                   decoration: BoxDecoration(
 //                       borderRadius:
-//                           BorderRadius.circular(SizeConfig.defaultSize!),
+//                           BorderRadius.circular(Si.ds!),
 //                       border: Border.all(color: AppColors.secondary)),
 //                   clipBehavior: Clip.antiAliasWithSaveLayer,
-//                   width: SizeConfig.defaultSize! * 18,
+//                   width: Si.ds! * 18,
 //                   child: CustomStrockButton(
 //                       text: 'register'.tr,
 //                       color: AppColors.secondary,
@@ -146,7 +146,7 @@
 //                   onTap: () {
 //                     showCustomDialog(
 //                         context: context,
-//                         height: SizeConfig.defaultSize! * 16,
+//                         height: Si.ds! * 16,
 //                         child: const dialogDeleteAccount());
 //                   },
 //                   child: ProfileCardItem(

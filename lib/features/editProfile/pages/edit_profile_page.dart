@@ -37,28 +37,28 @@
 //           children: [
 //             Container(
 //               padding: EdgeInsets.zero,
-//               height: SizeConfig.defaultSize! * 30,
+//               height: Si.ds! * 30,
 //               width: Get.width,
 //               child: Stack(
 //                 children: [
 //                   PositionedDirectional(
 //                       child: Container(
 //                     width: Get.width,
-//                     height: SizeConfig.defaultSize! * 20,
+//                     height: Si.ds! * 20,
 //                     decoration: BoxDecoration(
 //                       color: AppColors.secondary,
 //                       borderRadius: BorderRadius.only(
-//                           bottomLeft: Radius.circular(SizeConfig.defaultSize!),
+//                           bottomLeft: Radius.circular(Si.ds!),
 //                           bottomRight:
-//                               Radius.circular(SizeConfig.defaultSize!)),
+//                               Radius.circular(Si.ds!)),
 //                     ),
 //                   )),
 //                   PositionedDirectional(
 //                       end: 0,
 //                       child: Image.asset(
 //                         'assets/images/accbg.png',
-//                         width: SizeConfig.defaultSize! * 20,
-//                         height: SizeConfig.defaultSize! * 30,
+//                         width: Si.ds! * 20,
+//                         height: Si.ds! * 30,
 //                         fit: BoxFit.cover,
 //                       )),
 //                   // appBar: pageAppBar(title: "profile".tr, showOptions: true),
@@ -85,13 +85,13 @@
 //                     child: Column(
 //                       children: [
 //                         CircleAvatar(
-//                           radius:SizeConfig.defaultSize!*5.2,
+//                           radius:Si.ds!*5.2,
 //                           backgroundColor: Colors.white,
 //                           child: CircleAvatar(
 //                             backgroundColor: AppColors.secondary,
-//                             radius: SizeConfig.defaultSize!*5,
+//                             radius: Si.ds!*5,
 //                             child: SvgPicture.asset(
-//                                 'assets/images/profile-circle-bold.svg',height: SizeConfig.defaultSize!*8,color: Colors.white,),
+//                                 'assets/images/profile-circle-bold.svg',height: Si.ds!*8,color: Colors.white,),
 //                           ),
 //                         ),
 //                         VerticalSpace(value: 1),

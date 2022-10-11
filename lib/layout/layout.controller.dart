@@ -4,7 +4,7 @@
 // import '../features/account/pages/account_page.dart';
 // import '../features/articles/pages/articles_page.dart';
 //
-// import '../features/home/pages/home.page.dart';
+// import '../features/home/pages/language.page.dart';
 //
 // class MainNavigationController extends GetxController {
 //   int currentIndex = 0;

@@ -9,9 +9,9 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
+    Si().init(context);
     return Container(
-      width: SizeConfig.screenWidth,
+      width: Si.screenWidth,
       decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
@@ -20,18 +20,18 @@ class CustomAppBar extends StatelessWidget {
       child: Stack(
         children: <Widget>[
           Positioned(
-              top: SizeConfig.defaultSize! * 3.7,
+              top: Si.ds! * 3.7,
               right: 10,
               left: 10,
               child: SizedBox(
-                height: SizeConfig.defaultSize! * 7,
+                height: Si.ds! * 7,
                 child: Image.asset(
                   kLogo,
                   color: kMainColor,
                 ),
               )),
           SizedBox(
-            height: SizeConfig.defaultSize! * 11,
+            height: Si.ds! * 11,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
@@ -43,7 +43,7 @@ class CustomAppBar extends StatelessWidget {
                     icon: Icon(
                       Icons.menu,
                       color: kMainColor,
-                      size: SizeConfig.defaultSize! * 3.5,
+                      size: Si.ds! * 3.5,
                     ),
                   ),
                   const Spacer(),
@@ -52,7 +52,7 @@ class CustomAppBar extends StatelessWidget {
                     icon: Icon(
                       Icons.shopping_cart,
                       color: kMainColor,
-                      size: SizeConfig.defaultSize! * 3.5,
+                      size: Si.ds! * 3.5,
                     ),
                   ),
                   IconButton(
@@ -60,7 +60,7 @@ class CustomAppBar extends StatelessWidget {
                     icon: Icon(
                       Icons.search,
                       color: kMainColor,
-                      size: SizeConfig.defaultSize! * 3.5,
+                      size: Si.ds! * 3.5,
                     ),
                   ),
                 ],

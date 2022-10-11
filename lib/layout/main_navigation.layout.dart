@@ -10,14 +10,14 @@
 //
 //   @override
 //   Widget build(BuildContext context) {
-//     SizeConfig().init(context);
+//     Si().init(context);
 //     return GetBuilder<MainNavigationController>(builder: (_) {
 //       return Scaffold(
 //         body: controller.currentPage.page,
 //         bottomNavigationBar: ClipRRect(
 //           borderRadius: BorderRadius.only(
-//             topLeft: Radius.circular(SizeConfig.defaultSize!),
-//             topRight: Radius.circular(SizeConfig.defaultSize!),
+//             topLeft: Radius.circular(Si.ds!),
+//             topRight: Radius.circular(Si.ds!),
 //           ),
 //           child: BottomNavigationBar(
 //             elevation: 1,

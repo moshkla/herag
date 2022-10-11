@@ -19,7 +19,7 @@ void showCustomDialog(
         child: Padding(
           padding: padding ??
               EdgeInsets.symmetric(
-                  horizontal: 8.0, vertical: SizeConfig.defaultSize! * 16),
+                  horizontal: 8.0, vertical: Si.ds! * 16),
           child: Container(
             height: height,
             clipBehavior: Clip.antiAliasWithSaveLayer,

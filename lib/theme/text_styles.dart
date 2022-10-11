@@ -1,61 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
+import '../core/utiles/size_config.dart';
 import 'app_colors.dart';
-import 'themes.dart';
 
-extension CustomTextStyles on TextTheme {
-  TextStyle get titleBold => TextStyle(
-        fontSize: 18,
-        fontFamily: 'msuighur',
-        fontWeight: FontWeight.w700,
-        color:AppColors.textLight,
-      );
+TextStyle titleBold = TextStyle(
+  fontSize: Si.ds! * 5,
+  fontFamily: 'msuighur',
+  fontWeight: FontWeight.w700,
+  color: AppColors.textLight,
+);
 
-  TextStyle get headingStyle => TextStyle(
-        fontFamily: 'msuighur',
-        fontSize: 16,
-        color: AppColors.colordeepGrey,
-      );
+TextStyle title = TextStyle(
+  fontSize: Si.ds! * 5,
+  fontFamily: 'msuighur',
+  fontWeight: FontWeight.w500,
+  color: AppColors.textLight,
+);
 
-  TextStyle get themeStyleText => TextStyle(
-      fontSize: 18,
-      fontFamily: 'msuighur',
-      fontWeight: FontWeight.w700,
-      color: Colors.white);
+TextStyle subTitleBold = TextStyle(
+  fontSize: Si.ds! * 4,
+  fontFamily: 'msuighur',
+  fontWeight: FontWeight.w600,
+  color: AppColors.textLight,
+);
 
-  TextStyle get title => TextStyle(
-        fontSize: 18,
-        fontFamily: 'msuighur',
-        fontWeight: FontWeight.w500,
-        color: AppColors.textLight,
-      );
+TextStyle subTitle = TextStyle(
+  fontSize: Si.ds! * 4,
+  fontFamily: 'msuighur',
+  fontWeight: FontWeight.w500,
+  color: AppColors.textLight,
+);
 
-  TextStyle get subTitleBold => TextStyle(
-        fontSize: 16,
-        fontFamily: 'msuighur',
-        fontWeight: FontWeight.w600,
-        color:AppColors.textLight,
-      );
+TextStyle hint = TextStyle(
+  fontSize: Si.ds! * 3,
+  fontWeight: FontWeight.w500,
+  fontFamily: 'msuighur',
+  color: AppColors.textLight,
+);
 
-  TextStyle get subTitle => TextStyle(
-        fontSize: 16,
-        fontFamily: 'msuighur',
-        fontWeight: FontWeight.w500,
-        color: AppColors.textLight,
-      );
-
-  TextStyle get hint => TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        fontFamily: 'msuighur',
-        color: AppColors.textLight,
-      );
-
-  TextStyle get subHint => TextStyle(
-        fontSize: 12,
-        fontWeight: FontWeight.w400,
-        fontFamily: 'msuighur',
-        color: AppColors.textLight,
-      );
-}
+TextStyle subHint = TextStyle(
+  fontSize: Si.ds! * 3,
+  fontWeight: FontWeight.w400,
+  fontFamily: 'msuighur',
+  color: AppColors.textLight,
+);

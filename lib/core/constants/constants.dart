@@ -8,14 +8,14 @@ import '../utiles/local_storage.utils.dart';
 import '../utiles/size_config.dart';
 import 'colors.dart';
 
-const kLogo = 'asset/images/logo.png';
+const kLogo = 'asset/images/splash.png';
 const kLogo2 = 'asset/images/WhatsApp Image 2021-12-19 at 11.53.18 AM.png';
 const kBgImage = 'assets/images/splash_bg.png';
 const kHomeLayout = '/';
 
 TextStyle headingStyle = TextStyle(
   fontFamily: 'URW DIN Arabic',
-  fontSize: SizeConfig.defaultSize! * 1.8,
+  fontSize: Si.ds! * 1.8,
   color: colordeepGrey,
 );
 
@@ -38,13 +38,13 @@ appbarNoTitle() {
 //////////////////////////////////////////////////////
 
 Widget loading(context) {
-  SizeConfig().init(context);
+  Si().init(context);
   return Container(
     color: Colors.white,
     child: Center(
       child: Center(
         child: SpinKitPouringHourGlass(
-          size: SizeConfig.defaultSize! * 10,
+          size: Si.ds! * 10,
           color: kMainColor,
           duration: const Duration(milliseconds: 1000),
         ),

@@ -20,12 +20,12 @@
 //           children: [
 //             Container(
 //               padding: EdgeInsets.zero,
-//               height: SizeConfig.defaultSize! * 24,
+//               height: Si.ds! * 24,
 //               width: Get.width,
 //               decoration: BoxDecoration(
 //                 borderRadius: BorderRadius.only(
-//                     bottomLeft: Radius.circular(SizeConfig.defaultSize!),
-//                     bottomRight: Radius.circular(SizeConfig.defaultSize!)),
+//                     bottomLeft: Radius.circular(Si.ds!),
+//                     bottomRight: Radius.circular(Si.ds!)),
 //                 color: AppColors.secondary,
 //               ),
 //               child: Stack(
@@ -34,8 +34,8 @@
 //                       end: 0,
 //                       child: Image.asset(
 //                         'assets/images/accbg.png',
-//                         width: SizeConfig.defaultSize! * 20,
-//                         height: SizeConfig.defaultSize! * 30,
+//                         width: Si.ds! * 20,
+//                         height: Si.ds! * 30,
 //                         fit: BoxFit.cover,
 //                       )),
 //                   PositionedDirectional(
@@ -55,7 +55,7 @@
 //                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
 //                       children: [
 //                         Container(
-//                           height: SizeConfig.defaultSize! * 8,
+//                           height: Si.ds! * 8,
 //                           child: Row(
 //                             children: [
 //                               CircleAvatar(
@@ -115,7 +115,7 @@
 //                           onPressed: () {},
 //                           icon: new SvgPicture.asset(
 //                             'assets/images/notification.svg',
-//                             height: SizeConfig.defaultSize! * 3,
+//                             height: Si.ds! * 3,
 //                           ),
 //                           color: Colors.white,
 //                         ),

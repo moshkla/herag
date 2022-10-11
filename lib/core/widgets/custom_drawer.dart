@@ -15,7 +15,7 @@ class CustomDrawer extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.only(left: 16.0, right: 40),
           decoration: BoxDecoration(color: kMainColor),
-          width: SizeConfig.defaultSize! * 100,
+          width: Si.ds! * 100,
           child: SafeArea(
             child: SingleChildScrollView(
               child: Column(
@@ -25,7 +25,7 @@ class CustomDrawer extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: SizedBox(
-                        width: SizeConfig.defaultSize! * 20,
+                        width: Si.ds! * 20,
                         child: TextFormField(
                           showCursor: false,
                           onTap: () {},
