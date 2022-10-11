@@ -19,6 +19,7 @@ void main() async {
     getToken: () => GetIt.I<LocalStorageUtils>().token,
     enableLog: true,
   );
+
   BlocOverrides.runZoned(
     () => runApp(
       EasyLocalization(
@@ -44,7 +45,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Herag',
       theme: Themes.light,
-
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: Locale('ar', ''),
       home: const SplashPage(),
     );
   }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:herag/core/constants/constants.dart';
+import 'package:herag/theme/app_colors.dart';
+import 'package:herag/theme/text_styles.dart';
 
+import '../../theme/styles.dart';
 import '../constants/colors.dart';
 import '../helper/extentions.dart';
 import '../utiles/size_config.dart';
@@ -31,8 +34,8 @@ class CustomGeneralButton extends StatelessWidget {
       child: Container(
         height: h * 0.08,
         width: w,
-        decoration: BoxDecoration(
-            color: color ?? kMainColor, borderRadius: BorderRadius.circular(8)),
+        decoration: boxDecoration(
+            solidColor: color ?? AppColors.primary),
         child: Center(
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -41,10 +44,7 @@ class CustomGeneralButton extends StatelessWidget {
               Center(
                 child: Text(
                   text,
-                  style: TextStyle(
-                      color: textColor ?? Colors.white,
-                      fontWeight: FontWeight.w400,
-                      fontFamily: 'URW DIN Arabic'),
+                  style: titleSmall.copyWith(color: Colors.white)
                 ),
               ),
               (iconImage != null)
@@ -66,40 +66,40 @@ class CustomGeneralButton extends StatelessWidget {
   }
 }
 
-class CustomStrockButton extends StatelessWidget {
-  const CustomStrockButton(
-      {Key? key, required this.text, required this.onTap, this.color})
-      : super(key: key);
-  final String text;
-  final VoidCallback onTap;
-  final Color? color;
-
-  @override
-  Widget build(BuildContext context) {
-    double h = MediaQuery.of(context).size.height;
-    double w = MediaQuery.of(context).size.width;
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        height: h * 0.08,
-        width: w,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(
-            color: HexColor.fromHex('#8B8B8B'),
-          ),
-        ),
-        child: Center(
-          child: Text(
-            text,
-            style: const TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold),
-          ),
-        ),
-      ),
-    );
-  }
-}
+// class CustomStrockButton extends StatelessWidget {
+//   const CustomStrockButton(
+//       {Key? key, required this.text, required this.onTap, this.color})
+//       : super(key: key);
+//   final String text;
+//   final VoidCallback onTap;
+//   final Color? color;
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     double h = MediaQuery.of(context).size.height;
+//     double w = MediaQuery.of(context).size.width;
+//     return GestureDetector(
+//       onTap: onTap,
+//       child: Container(
+//         height: h * 0.08,
+//         width: w,
+//         decoration: BoxDecoration(
+//           borderRadius: BorderRadius.circular(8),
+//           border: Border.all(
+//             color: HexColor.fromHex('#8B8B8B'),
+//           ),
+//         ),
+//         child: Center(
+//           child: Text(
+//             text,
+//             style: const TextStyle(
+//                 color: Colors.black, fontWeight: FontWeight.bold),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class CustomButtonWithIcon extends StatelessWidget {
   const CustomButtonWithIcon(
