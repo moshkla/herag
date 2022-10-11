@@ -25,7 +25,6 @@ class Themes {
 
   static final ThemeData dark = ThemeData(
     canvasColor: Colors.white,
-
     textTheme: const TextTheme(
         subtitle2: TextStyle(color: Colors.black),
         subtitle1: TextStyle(color: Colors.black)),
@@ -59,7 +58,7 @@ class Themes {
         subtitle2: TextStyle(color: Colors.black),
         subtitle1: TextStyle(color: Colors.black)),
     brightness: Brightness.light,
-    scaffoldBackgroundColor: AppColors.backgroundLight,
+   // scaffoldBackgroundColor: AppColors.backgroundLight,
     primaryColor: AppColors.primary,
     buttonTheme: const ButtonThemeData(
       buttonColor: AppColors.secondary,
@@ -69,7 +68,6 @@ class Themes {
         // borderRadius: BorderRadius.circular(Si.ds!*1.5)
       ),
       labelStyle: title,
-
     ),
     tabBarTheme: tabBarTheme,
     fontFamily: 'msuighur',

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:herag/core/constants/constants.dart';
 
+import '../core/utiles/size_config.dart';
 import '../features/account/pages/account_page.dart';
 import '../features/favourites/pages/home.page.dart';
 import '../features/home/pages/home.page.dart';
@@ -49,48 +50,52 @@ class _LayoutPageState extends State<LayoutPage> {
 
       onWillPop: () async => false,
       child: Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          unselectedItemColor: Colors.black,
-          elevation: 10.0,
-          iconSize: w * 0.08,
-          selectedItemColor: Colors.white,
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-          unselectedLabelStyle: title.copyWith(
-              color: Colors.black, fontWeight: FontWeight.w400, fontSize: w * 0.03),
-          selectedLabelStyle: title.copyWith(
-              color: AppColors.primary, fontWeight: FontWeight.w400, fontSize: w * 0.03),
-          currentIndex: currentIndex,
-          onTap: (index) {
-            setState(() {
-              currentIndex = index;
-            });
-          },
-          items: [
-            BottomNavigationBarItem(
-                activeIcon: Image.asset("asset/images/homecolor.png", width: 100, height: 30,),
-                icon: Image.asset("asset/images/home.png", width: 100, height: 30,),
-                label: translateString('arabic', 'english')),
-            BottomNavigationBarItem(
-                activeIcon: Image.asset("asset/images/deps-1.png", width: 100, height: 30,),
-                icon:  Image.asset("asset/images/deps.png",  width: 100, height: 30,),
-                label: translateString('Categories', 'الأقسام')),
-            BottomNavigationBarItem(
-              activeIcon: Image.asset("asset/images/cartcolor.png", width: 100, height: 30,),
-              icon:  Image.asset("asset/images/cart.png",  width: 100, height: 30,),
+        bottomNavigationBar:ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(Si.ds!*2),
+            topRight: Radius.circular(Si.ds!*2),
+          ),
+          child: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed, // Fixed
+            backgroundColor: AppColors.primary,
+            unselectedItemColor: Colors.green,
+            elevation: 10.0,
+            iconSize: w * 0.08,
+            selectedItemColor: Colors.white,
+            showSelectedLabels: true,
+            showUnselectedLabels: false,
+            currentIndex: currentIndex,
+            onTap: (index) {
+              setState(() {
+                currentIndex = index;
+              });
+            },
+            items: [
+              BottomNavigationBarItem(
+                  activeIcon: Image.asset("assets/images/home_on.png", height: Si.ds!*3,),
+                  icon: Image.asset("assets/images/home_off.png", height: Si.ds!*3,),
+                  label: translateString('الرئيسية', 'Home')),
+              BottomNavigationBarItem(
+                  activeIcon: Image.asset("assets/images/fav_on.png", height: Si.ds!*3,),
+                  icon:  Image.asset("assets/images/fav_off.png",  height: Si.ds!*3,),
+                  label: translateString("المفضلة","Favourits")),
+              BottomNavigationBarItem(
+                activeIcon: Image.asset("assets/images/noti_on.png", height: Si.ds!*3,),
+                icon:  Image.asset("assets/images/noti_off.png",  height: Si.ds!*3,),
 
-              label: translateString("cart", "عربة التسوق"),),
+                label: translateString( "الاشعارات","Notifications"),
+              ),
 
-            BottomNavigationBarItem(
-              activeIcon: Image.asset("asset/images/heartcolor.png", width: 100, height: 30,),
-              icon:  Image.asset("asset/images/heart.png",  width: 100, height: 30,),
-              label: translateString("favourite", "المفضلة"),),
-            BottomNavigationBarItem(
-              activeIcon: Image.asset("asset/images/profilecolor.png", width: 100, height: 30,),
-              icon:  Image.asset("asset/images/profile.png",  width: 100, height: 30,),
-              label: translateString("my account", "الحساب"),),
-          ],
+              BottomNavigationBarItem(
+                activeIcon: Image.asset("assets/images/person_on.png", width: 100, height: 30,),
+                icon:  Image.asset("assets/images/person_off.png",  width: 100, height: 30,),
+                label: translateString('الحساب','Account'),),
+              BottomNavigationBarItem(
+                activeIcon: Image.asset("assets/images/menu_on.png", width: 100, height: 30,),
+                icon:  Image.asset("assets/images/menu_off.png",  width: 100, height: 30,),
+                label: translateString("القائمة", "Menu"),),
+            ],
+          ),
         ),
         body: Center(
           child:screens[currentIndex],
