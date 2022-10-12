@@ -98,7 +98,8 @@ class _RegisterPageState extends State<RegisterPage> {
                             text: translateString('هل نسيت كلمة المرور ؟',
                                 'Do you forget passsword ?'),
                             size: Si.ds! * 3,
-                            onPressed: () {}),
+                            onPressed: () {
+                            }),
                       ),
                       VerticalSpace(value: 2),
                       Padding(

@@ -5,22 +5,22 @@ import 'package:herag/core/utiles/size_config.dart';
 import 'package:herag/core/widgets/custom_buttons_widget.dart';
 import 'package:herag/core/widgets/custom_text_field.dart';
 import 'package:herag/features/auth/pages/register.page.dart';
+import 'package:herag/features/auth/pages/reset.password.page.dart';
 
 import '../../../layout/layout.page.dart';
 import '../../../theme/app_assets.dart';
 import '../../../theme/input_decoration.dart';
 import '../../../theme/styles.dart';
 import '../../../theme/text_styles.dart';
-import 'forget.password.page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class ForgetPasswordPage extends StatefulWidget {
+  const ForgetPasswordPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<ForgetPasswordPage> createState() => _ForgetPasswordPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   int? selectedIndex;
 
   @override
@@ -54,50 +54,29 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     children: [
                       Text(
-                        translateString('تسجيل الدخول', 'Login'),
+                        translateString(' نسيت كلمة المرور ؟', 'Forget password ?'),
+                        style: title,
+                      ),
+                      VerticalSpace(value: 2),
+                      Text(
+                        translateString(' أدخل رقم التيليفون الخاص بك', 'Enter your phone number'),
                         style: title,
                       ),
                       VerticalSpace(value: 2),
                       TextFormField(
                         style: subTitle,
                         decoration: inputDecoration(
-                            label: translateString(
-                                'البريد الالكتروني او الهاتف',
-                                'Email or Phone')),
-                      ),
-                      VerticalSpace(value: 2),
-                      TextFormField(
-                        style: subTitle,
-                        decoration: inputDecoration(
-                            label: translateString('كلمة المرور', 'Password')),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional.topEnd,
-                        child: CustomTextButton(
-                            text: translateString('هل نسيت كلمة المرور ؟',
-                                'Do you forget passsword ?'),
-                            size: Si.ds! * 3,
-                            onPressed: () {
-                              MagicRouter.navigateTo(ForgetPasswordPage());
-
-                            }),
+                            label: translateString('رقم التيليفون', 'phone')),
                       ),
                       VerticalSpace(value: 2),
                       Padding(
                         padding: edgeInsetsSymmetric(h: 5, v: 0),
                         child: CustomGeneralButton(
-                            text: translateString('تسجيل الدخول', 'Login'),
+                            text: translateString('ارسال', 'Send'),
                             onTap: () {
-                              MagicRouter.navigateAndPopAll(LayoutPage());
+                              MagicRouter.navigateAndPopAll(ResetPasswordPage());
                             }),
                       ),
-                      VerticalSpace(value: 1),
-                      CustomTextButton(
-                          text: translateString(
-                              'انشاء حساب جديد', 'Create new account'),
-                          onPressed: () {
-                            MagicRouter.navigateTo(RegisterPage());
-                          }),
                     ],
                   ),
                 ),

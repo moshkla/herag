@@ -1,8 +1,8 @@
 // import 'package:flutter/material.dart';
 //
 // import '../features/account/pages/account_page.dart';
-// import '../features/favourites/pages/home.page.dart';
-// import '../features/home/pages/home.page.dart';
+// import '../features/favourites/pages/ad.details.page.dart';
+// import '../features/home/pages/ad.details.page.dart';
 // import '../features/menu/pages/menu.page.dart';
 // import '../features/notifications/pages/notification.page.dart';
 //

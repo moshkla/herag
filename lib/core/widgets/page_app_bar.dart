@@ -1,73 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:herag/core/router/router.dart';
 
+import '../../theme/text_styles.dart';
 import '../utiles/size_config.dart';
 
 class pageAppBar extends StatelessWidget {
   const pageAppBar({
     Key? key,
-    required this.title,
+    required this.pageTitle,
     this.onPress,
-    this.actions, this.color,
+    this.actions,
+    this.color,
+    this.withoutBackBtn = false,
+
   }) : super(key: key);
-  final String title;
+  final String pageTitle;
   final Widget? actions;
   final Color? color;
   final VoidCallback? onPress;
-
+  final bool? withoutBackBtn;
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        height: 50,
-        width: Get.width,
-        decoration: BoxDecoration(color: Colors.transparent),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                IconButton(
-                  onPressed: onPress ??
-                          () {
-                        Get.back();
-                      },
-                  icon: Icon(
-                      Icons.arrow_back),
-                  color:color?? Colors.white,
-                ),
-                HorizontalSpace(value: 1),
-                Text(
-                  title.tr,
-                  style: context.textTheme.titleLarge!
-                      .copyWith(color:color?? Colors.white),
-                ),
-              ],
-            ),
-            actions ?? Container()
-          ],
-        ),
-      ),
-    );
+    return Container(
+        height: Si.ds! * 12,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/images/appbar.png'),
+                fit: BoxFit.cover)),
+        child: SizedBox(
+          width: Si.screenWidth,
+          child: Stack(
+            children: [
+              if(!withoutBackBtn!)
+              PositionedDirectional(
+                  start: 0,
+                  top: Si.ds! * 5.5,
+                  child: IconButton(
+                    onPressed: () {
+                      MagicRouter.pop();
+                    },
+                    icon: Icon(Icons.arrow_back_ios),
+                    color: Colors.white,
+                  )),
+              PositionedDirectional(
+                  top: Si.ds! * 5.5,
+                  start: 0,
+                  end: 0,
+                  child: Center(
+                      child: Text(
+                    pageTitle,
+                    style: title.copyWith(color: Colors.white),
+                  ))),
+            ],
+          ),
+        ));
   }
 }
-
-// Widget pageAppBar({required String title, bool showOptions = false,VoidCallback? onPress}) {
-//   return AppBar(
-//     backgroundColor: Colors.transparent,
-//
-//     title: Text(
-//       title.tr,
-//       style:  TextStyle(color: LocalStorageUtils.isDarkMode == true ? Colors.white : Colors.black,),
-//     ),
-//     centerTitle: true,
-//     leading: IconButton(
-//       onPressed:onPress?? () {
-//         Get.back();
-//       },
-//       icon: const Icon(Icons.arrow_back_ios),
-//       color: LocalStorageUtils.isDarkMode == true ? Colors.white : Colors.black,
-//     ),
-//     actions: !showOptions ? null : [const OptionsMenuWidget()],
-//   );
-// }

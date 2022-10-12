@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import '../business logic/appCubit/appcubit_cubit.dart';
 
+import '../theme/themes.dart';
 import 'utiles/local_storage.utils.dart';
 import 'utiles/notification_utils.dart';
 
@@ -12,5 +13,5 @@ Future<void> init() async {
 
   sl.registerSingleton<LocalStorageUtils>(LocalStorageUtils());
   sl.registerSingleton<NotificationUtils>(NotificationUtils());
-
+  sl.registerSingleton<ThemeService>(ThemeService());
 }

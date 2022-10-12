@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 import '../theme/app_assets.dart';
 
 customCachedNetworkImage(
-    {required String url, required context, required BoxFit fit}) {
+    {required String url, required context, required BoxFit fit,Color? color}) {
   try {
     if (url == "") {
       return Center(
         child: Image.asset(
           AppAssets.logo,
           fit: BoxFit.fitWidth,
+          color: color??null,
         ),
       );
     } else {
@@ -21,17 +22,22 @@ customCachedNetworkImage(
             ? CachedNetworkImage(
                 imageUrl: url,
                 fit: fit,
-                placeholder: (context, url) => Center(
+            color: color??null,
+            placeholder: (context, url) => Center(
                   child: Image.asset(
                         AppAssets.logo,
                         fit: fit,
-                      ),
+                    color: color??null,
+
+                  ),
                 ),
                 errorWidget: (context, url, error) {
                   return Center(
                     child: Image.asset(
                       AppAssets.logo,
                       fit: fit,
+                      color: color??null,
+
                     ),
                   );
                 })

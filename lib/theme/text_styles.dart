@@ -51,7 +51,7 @@ TextStyle hint = TextStyle(
 );
 
 TextStyle subHint = TextStyle(
-  fontSize:25,
+  fontSize:20,
   fontWeight: FontWeight.w400,
   fontFamily: 'msuighur',
   color: AppColors.primary,

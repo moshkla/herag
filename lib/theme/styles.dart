@@ -7,9 +7,10 @@ BoxDecoration boxDecoration({
   bool withBorder = false,
   Color? solidColor,
   Color? borderColor,
+  double? radius,
 }) {
   return BoxDecoration(
-    borderRadius: BorderRadius.circular(Si.ds! * 1.5),
+    borderRadius: BorderRadius.circular(radius??Si.ds! * 1.5),
     border:
         withBorder ? Border.all(color: borderColor ?? AppColors.primary) : null,
     color: solidColor,

@@ -2,6 +2,7 @@ import 'package:api_request/api_request.dart';
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:herag/core/utiles/size_config.dart';
 import 'package:herag/translations/codegen_loader.g.dart';
@@ -13,12 +14,15 @@ import 'features/auth/pages/splash.page.dart';
 import 'theme/themes.dart';
 
 void main() async {
+
   await AppBindings.initAsyncDependebcies();
+
   ApiRequestOptions.instance?.config(
     baseUrl: 'https://jadeerlaw.com/',
     tokenType: ApiRequestOptions.bearer,
     getToken: () => GetIt.I<LocalStorageUtils>().token,
     enableLog: true,
+
   );
 
   BlocOverrides.runZoned(

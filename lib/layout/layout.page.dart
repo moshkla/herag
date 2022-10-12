@@ -3,7 +3,7 @@ import 'package:herag/core/constants/constants.dart';
 
 import '../core/utiles/size_config.dart';
 import '../features/account/pages/account_page.dart';
-import '../features/favourites/pages/home.page.dart';
+import '../features/favourites/pages/favourites.page.dart';
 import '../features/home/pages/home.page.dart';
 import '../features/menu/pages/menu.page.dart';
 import '../features/notifications/pages/notification.page.dart';
@@ -27,6 +27,7 @@ class _LayoutPageState extends State<LayoutPage> {
     const AccountPage(),
     const MenuPage(),
   ];
+
   getIndex() {
     if (widget.index != null) {
       setState(() {
@@ -47,16 +48,24 @@ class _LayoutPageState extends State<LayoutPage> {
   Widget build(BuildContext context) {
     double w = MediaQuery.of(context).size.width;
     return WillPopScope(
-
       onWillPop: () async => false,
       child: Scaffold(
-        bottomNavigationBar:ClipRRect(
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: AppColors.primary,
+          onPressed: () {},
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
+        ),
+        bottomNavigationBar: ClipRRect(
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(Si.ds!*2),
-            topRight: Radius.circular(Si.ds!*2),
+            topLeft: Radius.circular(Si.ds! * 2),
+            topRight: Radius.circular(Si.ds! * 2),
           ),
           child: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed, // Fixed
+            type: BottomNavigationBarType.fixed,
+            // Fixed
             backgroundColor: AppColors.primary,
             unselectedItemColor: Colors.green,
             elevation: 10.0,
@@ -72,33 +81,67 @@ class _LayoutPageState extends State<LayoutPage> {
             },
             items: [
               BottomNavigationBarItem(
-                  activeIcon: Image.asset("assets/images/home_on.png", height: Si.ds!*3,),
-                  icon: Image.asset("assets/images/home_off.png", height: Si.ds!*3,),
+                  activeIcon: Image.asset(
+                    "assets/images/home_on.png",
+                    height: Si.ds! * 3,
+                  ),
+                  icon: Image.asset(
+                    "assets/images/home_off.png",
+                    height: Si.ds! * 3,
+                  ),
                   label: translateString('الرئيسية', 'Home')),
               BottomNavigationBarItem(
-                  activeIcon: Image.asset("assets/images/fav_on.png", height: Si.ds!*3,),
-                  icon:  Image.asset("assets/images/fav_off.png",  height: Si.ds!*3,),
-                  label: translateString("المفضلة","Favourits")),
+                  activeIcon: Image.asset(
+                    "assets/images/fav_on.png",
+                    height: Si.ds! * 3,
+                  ),
+                  icon: Image.asset(
+                    "assets/images/fav_off.png",
+                    height: Si.ds! * 3,
+                  ),
+                  label: translateString("المفضلة", "Favourits")),
               BottomNavigationBarItem(
-                activeIcon: Image.asset("assets/images/noti_on.png", height: Si.ds!*3,),
-                icon:  Image.asset("assets/images/noti_off.png",  height: Si.ds!*3,),
-
-                label: translateString( "الاشعارات","Notifications"),
+                activeIcon: Image.asset(
+                  "assets/images/noti_on.png",
+                  height: Si.ds! * 3,
+                ),
+                icon: Image.asset(
+                  "assets/images/noti_off.png",
+                  height: Si.ds! * 3,
+                ),
+                label: translateString("الاشعارات", "Notifications"),
               ),
-
               BottomNavigationBarItem(
-                activeIcon: Image.asset("assets/images/person_on.png", width: 100, height: 30,),
-                icon:  Image.asset("assets/images/person_off.png",  width: 100, height: 30,),
-                label: translateString('الحساب','Account'),),
+                activeIcon: Image.asset(
+                  "assets/images/person_on.png",
+                  width: 100,
+                  height: 30,
+                ),
+                icon: Image.asset(
+                  "assets/images/person_off.png",
+                  width: 100,
+                  height: 30,
+                ),
+                label: translateString('الحساب', 'Account'),
+              ),
               BottomNavigationBarItem(
-                activeIcon: Image.asset("assets/images/menu_on.png", width: 100, height: 30,),
-                icon:  Image.asset("assets/images/menu_off.png",  width: 100, height: 30,),
-                label: translateString("القائمة", "Menu"),),
+                activeIcon: Image.asset(
+                  "assets/images/menu_on.png",
+                  width: 100,
+                  height: 30,
+                ),
+                icon: Image.asset(
+                  "assets/images/menu_off.png",
+                  width: 100,
+                  height: 30,
+                ),
+                label: translateString("القائمة", "Menu"),
+              ),
             ],
           ),
         ),
         body: Center(
-          child:screens[currentIndex],
+          child: screens[currentIndex],
         ),
       ),
     );
