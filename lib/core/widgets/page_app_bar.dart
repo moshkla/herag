@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:herag/core/router/router.dart';
 
 import '../../theme/text_styles.dart';
@@ -24,7 +23,7 @@ class pageAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         height: Si.ds! * 12,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/appbar.png'),
                 fit: BoxFit.cover)),
@@ -40,7 +39,7 @@ class pageAppBar extends StatelessWidget {
                     onPressed: () {
                       MagicRouter.pop();
                     },
-                    icon: Icon(Icons.arrow_back_ios),
+                    icon: const Icon(Icons.arrow_back_ios),
                     color: Colors.white,
                   )),
               PositionedDirectional(

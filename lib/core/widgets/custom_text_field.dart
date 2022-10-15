@@ -57,7 +57,7 @@ class CustomTextFormField extends StatelessWidget {
         hintStyle: headingStyle.copyWith(color: colorLightGrey),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Si.ds!*1.5),
-          borderSide: BorderSide(color:AppColors.primary),
+          borderSide: const BorderSide(color:AppColors.primary),
         ),
         suffixIcon: suffix != null
             ? IconButton(onPressed: suffixPressed, icon: Icon(suffix))
@@ -67,7 +67,7 @@ class CustomTextFormField extends StatelessWidget {
         fillColor: Colors.transparent,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(Si.ds!*1.5),
-          borderSide: BorderSide(color: AppColors.primary),
+          borderSide: const BorderSide(color: AppColors.primary),
         ),
       ),
     );

@@ -5,8 +5,6 @@ import 'package:herag/theme/text_styles.dart';
 
 import '../../theme/styles.dart';
 import '../constants/colors.dart';
-import '../helper/extentions.dart';
-import '../utiles/size_config.dart';
 
 class CustomGeneralButton extends StatelessWidget {
   const CustomGeneralButton(

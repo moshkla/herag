@@ -3,7 +3,6 @@ import 'package:herag/core/constants/constants.dart';
 import 'package:herag/core/router/router.dart';
 import 'package:herag/core/utiles/size_config.dart';
 import 'package:herag/core/widgets/custom_buttons_widget.dart';
-import 'package:herag/core/widgets/custom_text_field.dart';
 import 'package:herag/features/auth/pages/register.page.dart';
 
 import '../../../layout/layout.page.dart';
@@ -57,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                         translateString('تسجيل الدخول', 'Login'),
                         style: title,
                       ),
-                      VerticalSpace(value: 2),
+                      const VerticalSpace(value: 2),
                       TextFormField(
                         style: subTitle,
                         decoration: inputDecoration(
@@ -65,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                                 'البريد الالكتروني او الهاتف',
                                 'Email or Phone')),
                       ),
-                      VerticalSpace(value: 2),
+                      const VerticalSpace(value: 2),
                       TextFormField(
                         style: subTitle,
                         decoration: inputDecoration(
@@ -78,25 +77,25 @@ class _LoginPageState extends State<LoginPage> {
                                 'Do you forget passsword ?'),
                             size: Si.ds! * 3,
                             onPressed: () {
-                              MagicRouter.navigateTo(ForgetPasswordPage());
+                              MagicRouter.navigateTo(const ForgetPasswordPage());
 
                             }),
                       ),
-                      VerticalSpace(value: 2),
+                      const VerticalSpace(value: 2),
                       Padding(
                         padding: edgeInsetsSymmetric(h: 5, v: 0),
                         child: CustomGeneralButton(
                             text: translateString('تسجيل الدخول', 'Login'),
                             onTap: () {
-                              MagicRouter.navigateAndPopAll(LayoutPage());
+                              MagicRouter.navigateAndPopAll(const LayoutPage());
                             }),
                       ),
-                      VerticalSpace(value: 1),
+                      const VerticalSpace(value: 1),
                       CustomTextButton(
                           text: translateString(
                               'انشاء حساب جديد', 'Create new account'),
                           onPressed: () {
-                            MagicRouter.navigateTo(RegisterPage());
+                            MagicRouter.navigateTo(const RegisterPage());
                           }),
                     ],
                   ),

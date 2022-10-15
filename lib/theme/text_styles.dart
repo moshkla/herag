@@ -10,47 +10,47 @@ TextStyle titleBold = TextStyle(
   color: AppColors.primary,
 );
 
-TextStyle title = TextStyle(
+TextStyle title = const TextStyle(
   fontSize: 38,
   fontFamily: 'msuighur',
   fontWeight: FontWeight.w500,
   color: Colors.black,
 );
-TextStyle titleLarge = TextStyle(
+TextStyle titleLarge = const TextStyle(
   fontSize: 45,
   fontFamily: 'msuighur',
   fontWeight: FontWeight.w500,
   color: AppColors.primary,
 );
-TextStyle titleSmall = TextStyle(
+TextStyle titleSmall = const TextStyle(
   fontSize: 30,
   fontFamily: 'msuighur',
   fontWeight: FontWeight.w500,
   color: AppColors.primary,
 );
 
-TextStyle subTitleBold = TextStyle(
+TextStyle subTitleBold = const TextStyle(
   fontSize: 30,
   fontFamily: 'msuighur',
   fontWeight: FontWeight.w600,
   color: AppColors.primary,
 );
 
-TextStyle subTitle = TextStyle(
+TextStyle subTitle = const TextStyle(
   fontSize:25,
   fontFamily: 'msuighur',
   fontWeight: FontWeight.w500,
   color: AppColors.primary,
 );
 
-TextStyle hint = TextStyle(
+TextStyle hint = const TextStyle(
   fontSize:25,
   fontWeight: FontWeight.w500,
   fontFamily: 'msuighur',
   color: AppColors.primary,
 );
 
-TextStyle subHint = TextStyle(
+TextStyle subHint = const TextStyle(
   fontSize:20,
   fontWeight: FontWeight.w400,
   fontFamily: 'msuighur',

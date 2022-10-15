@@ -18,7 +18,7 @@ class AccountPage extends StatelessWidget {
       child: Column(
 
         children: [
-          Container(
+          SizedBox(
             height: Si.ds! * 12,
             width: Si.screenWidth,
             child: Stack(
@@ -29,7 +29,7 @@ class AccountPage extends StatelessWidget {
                 ),
                 PositionedDirectional(
                   top: Si.ds! * 6,
-                  child: Container(
+                  child: SizedBox(
                     width: Si.screenWidth,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -43,7 +43,7 @@ class AccountPage extends StatelessWidget {
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.edit,
                                 color: AppColors.primary,
                               )),
@@ -56,8 +56,8 @@ class AccountPage extends StatelessWidget {
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(8),
                                   ),
-                                  child: Icon(Icons.share, color: Colors.green)),
-                              HorizontalSpace(value: 1),
+                                  child: const Icon(Icons.share, color: Colors.green)),
+                              const HorizontalSpace(value: 1),
                               Container(
                                   height: Si.ds! * 4,
                                   width: Si.ds! * 4,
@@ -65,7 +65,7 @@ class AccountPage extends StatelessWidget {
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(8),
                                   ),
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.menu_outlined,
                                     color: AppColors.primary,
                                   )),
@@ -80,7 +80,7 @@ class AccountPage extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             color: AppColors.primary.withOpacity(0.2),
             height: Si.ds! * 15,
             width: Si.screenWidth,
@@ -117,12 +117,12 @@ class AccountPage extends StatelessWidget {
                       'أنس عبدالعظيم',
                       style: title,
                     ),
-                    VerticalSpace(value: 0.5),
+                    const VerticalSpace(value: 0.5),
                     Text(
                       '@Mtwereen.com',
                       style: subTitle.copyWith(color: Colors.black),
                     ),
-                    VerticalSpace(value: 0.5),
+                    const VerticalSpace(value: 0.5),
 
                     Row(
                       children: [
@@ -130,14 +130,14 @@ class AccountPage extends StatelessWidget {
                           '30 متابع',
                           style: subHint,
                         ),
-                        HorizontalSpace(value: 2),
+                        const HorizontalSpace(value: 2),
                         Row(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.star,
                               color: Colors.amber,
                             ),
-                            HorizontalSpace(value: 0.5),
+                            const HorizontalSpace(value: 0.5),
                             Text(
                               '(4.5)',
                               style: subHint,
@@ -170,7 +170,7 @@ class AccountPage extends StatelessWidget {
                         )
                       ],
                     ),
-                    VerticalSpace(value: 1),
+                    const VerticalSpace(value: 1),
 
                     Row(
                       children: [
@@ -185,7 +185,7 @@ class AccountPage extends StatelessWidget {
                         )
                       ],
                     ),
-                    VerticalSpace(value: 1),
+                    const VerticalSpace(value: 1),
                     Row(
                       children: [
                         Icon(
@@ -210,7 +210,7 @@ class AccountPage extends StatelessWidget {
                 shrinkWrap: true,
                 primary: false,
                 itemCount: 10,
-                itemBuilder: (c, i) => HomeItem()),
+                itemBuilder: (c, i) => const HomeItem()),
           ),
         ],
       ),

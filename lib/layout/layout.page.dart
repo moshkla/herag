@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:herag/core/constants/constants.dart';
+import 'package:herag/core/router/router.dart';
 
 import '../core/utiles/size_config.dart';
 import '../features/account/pages/account_page.dart';
+import '../features/add_ads/pages/add.ads.page.dart';
 import '../features/favourites/pages/favourites.page.dart';
-import '../features/home/pages/home.page.dart';
+import '../features/home/pages/pages/home.page.dart';
 import '../features/menu/pages/menu.page.dart';
 import '../features/notifications/pages/notification.page.dart';
 import '../theme/app_colors.dart';
-import '../theme/text_styles.dart';
 
 class LayoutPage extends StatefulWidget {
   const LayoutPage({Key? key, this.index}) : super(key: key);
@@ -52,8 +53,10 @@ class _LayoutPageState extends State<LayoutPage> {
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           backgroundColor: AppColors.primary,
-          onPressed: () {},
-          child: Icon(
+          onPressed: () {
+            MagicRouter.navigateTo(const AddAdsPage());
+          },
+          child: const Icon(
             Icons.add,
             color: Colors.white,
           ),

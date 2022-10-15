@@ -11,11 +11,11 @@ class TermsAndConditions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           height: Si.screenHeight,
           child: Column(
             children: [
-              pageAppBar(
+              const pageAppBar(
                 pageTitle: 'سياسة التطبيق',
               ),
               Padding(

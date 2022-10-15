@@ -22,7 +22,7 @@ class FavouritesPage extends StatelessWidget {
                 shrinkWrap: true,
                 primary: false,
                 itemCount: 10,
-                itemBuilder: (c, i) => HomeItem()),
+                itemBuilder: (c, i) => const HomeItem()),
           ),
         ],
       ),

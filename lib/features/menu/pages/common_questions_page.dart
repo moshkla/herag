@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:herag/theme/text_styles.dart';
 
-import '../../../core/utiles/size_config.dart';
 import '../../../core/widgets/page_app_bar.dart';
 
 class CommonQuestions extends StatelessWidget {
@@ -12,22 +11,22 @@ class CommonQuestions extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          height: Si.screenHeight,
           child: Column(
             children: [
-              pageAppBar(
+              const pageAppBar(
                 pageTitle: 'سياسة التطبيق',
               ),
               Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  "يجمع المستشفى التعليمي بين مساعدة الناس والتدريس لطلاب الطب والتمريض. عادة ما تسمى المنشأة الطبية الأصغر من المستشفى بالعيادة. المستشفيات لديها مجموعة من الأقسام (مثل الجراحة، والعناية العاجلة) والوحدات المتخصصة مثل طب القلب. بعض المستشفيات لديها أقسام للمرضى غير المقيمين وبعضها يحتوي على وحدات علاجية للأمراض المزمنة. وتشمل وحدات الدعم الشائعة مثل: الصيدلية، وعلم الأمراض، والأشعة."
-                  " عادةً ما يتم تمويل المستشفيات من قبل القطاع العام، أو المؤسسات الصحية (سواء ربحية أو غير ربحية)، أو شركات التأمين الصحي، أو المؤسسات الخيرية، بما في ذلك التبرعات الخيرية المباشرة. تاريخيًا، غالبًا ما تم تأسيس المستشفيات وتمويلها بموجب أوامر دينية، أو من قبل أفراد وقادة خيريين."
-                  " عادةً ما يتم تمويل المستشفيات من قبل القطاع العام، أو المؤسسات الصحية (سواء ربحية أو غير ربحية)، أو شركات التأمين الصحي، أو المؤسسات الخيرية، بما في ذلك التبرعات الخيرية المباشرة. تاريخيًا، غالبًا ما تم تأسيس المستشفيات وتمويلها بموجب أوامر دينية، أو من قبل أفراد وقادة خيريين."
-                  " عادةً ما يتم تمويل المستشفيات من قبل القطاع العام، أو المؤسسات الصحية (سواء ربحية أو غير ربحية)، أو شركات التأمين الصحي، أو المؤسسات الخيرية، بما في ذلك التبرعات الخيرية المباشرة. تاريخيًا، غالبًا ما تم تأسيس المستشفيات وتمويلها بموجب أوامر دينية، أو من قبل أفراد وقادة خيريين.",
-                  style: subTitle.copyWith(color: Colors.black),
-                ),
-              ),
+                  padding: const EdgeInsets.all(16.0),
+                  child: ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      primary: false,
+                      itemCount: 10,
+                      itemBuilder: (c, index) => const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: ExpandedItem(),
+                          ))),
             ],
           ),
         ),
@@ -36,10 +35,10 @@ class CommonQuestions extends StatelessWidget {
   }
 }
 
-
 class ExpandedItem extends StatefulWidget {
-  ExpandedItem({Key? key,})
-      : super(key: key);
+  const ExpandedItem({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<ExpandedItem> createState() => _ExpandedItemState();
@@ -52,40 +51,43 @@ class _ExpandedItemState extends State<ExpandedItem> {
   @override
   Widget build(BuildContext context) {
     return Column(
-        children: [
-          ExpansionPanelList(
-            elevation: 0,
-
-            animationDuration: const Duration(milliseconds: 1000),
-            children: [
-              ExpansionPanel(
-                headerBuilder: (context, isExpanded) {
-                  return ListTile(
-                    title: SizedBox(
-                      height: Si.ds! * 5,
-                      child: Center(
-                        child: Stack(
-                          children: [
-                          ],
-                        ),
-                      ),
+      children: [
+        ExpansionPanelList(
+          elevation: 0,
+          animationDuration: const Duration(milliseconds: 500),
+          children: [
+            ExpansionPanel(
+              headerBuilder: (context, isExpanded) {
+                return ListTile(
+                    title: Text(
+                  'كيف أقوم بدفع عمولة الموقع؟',
+                  style: subTitle,
+                ));
+              },
+              body: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى'
+                      ' إضافة إلى زيادة عدد الحروف التى يولدها ',
+                      style:
+                          subHint.copyWith(color: Colors.black.withOpacity(0.7)),
                     ),
-                  );
-                },
-                body: Column(
-                  children: [],
-                ),
-                isExpanded: _expanded,
-                canTapOnHeader: true,
+                  ),
+                ],
               ),
-            ],
-            dividerColor: Colors.grey,
-            expansionCallback: (panelIndex, isExpanded) {
-              _expanded = !_expanded;
-              setState(() {});
-            },
-          ),
-        ],
-      );
+              isExpanded: _expanded,
+              canTapOnHeader: true,
+            ),
+          ],
+          dividerColor: Colors.grey,
+          expansionCallback: (panelIndex, isExpanded) {
+            _expanded = !_expanded;
+            setState(() {});
+          },
+        ),
+      ],
+    );
   }
 }

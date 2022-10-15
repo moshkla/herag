@@ -7,9 +7,10 @@ import '../../../core/utiles/size_config.dart';
 import '../../../core/widgets/page_app_bar.dart';
 import '../../../theme/app_colors.dart';
 
-import 'package:flutter_svg/svg.dart';
 
+import '../../auth/pages/splash.page.dart';
 import 'common_questions_page.dart';
+import 'contact_us.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({Key? key}) : super(key: key);
@@ -17,49 +18,59 @@ class MenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Container(
+      child: SizedBox(
         height: Si.screenHeight,
         child: Column(
           children: [
-            pageAppBar(pageTitle: translateString("القائمة", "Menu")),
+            pageAppBar(pageTitle: translateString("القائمة", "Menu"),withoutBackBtn: true,),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  VerticalSpace(value: 2),
-                  ProfileCardItem(
-                    icon: 'assets/images/call.png',
-                    title: 'تواصل معنا',
-                  ),
-                  VerticalSpace(value: 1.5),
+                  const VerticalSpace(value: 2),
                   InkWell(
-                    onTap: (){
-                      MagicRouter.navigateTo(CommonQuestions());
+                    onTap: () {
+                      MagicRouter.navigateTo(const ContactUs());
                     },
-                    child: ProfileCardItem(
+                    child: const ProfileCardItem(
+                      icon: 'assets/images/call.png',
+                      title: 'تواصل معنا',
+                    ),
+                  ),
+                  const VerticalSpace(value: 1.5),
+                  InkWell(
+                    onTap: () {
+                      MagicRouter.navigateTo(const CommonQuestions());
+                    },
+                    child: const ProfileCardItem(
                       icon: 'assets/images/ask.png',
                       title: 'أسألة متكررة',
                     ),
                   ),
-                  VerticalSpace(value: 1.5),
-                  ProfileCardItem(
+                  const VerticalSpace(value: 1.5),
+                  const ProfileCardItem(
                     icon: 'assets/images/settings.png',
                     title: 'الاعدادات',
                   ),
-                  VerticalSpace(value: 1.5),
+                  const VerticalSpace(value: 1.5),
                   InkWell(
-                    onTap: (){
-                      MagicRouter.navigateTo(TermsAndConditions());
+                    onTap: () {
+                      MagicRouter.navigateTo(const TermsAndConditions());
                     },
-                    child: ProfileCardItem(
+                    child: const ProfileCardItem(
                       icon: 'assets/images/!.png',
                       title: 'سياسة التطبيق',
                     ),
                   ),
-                  VerticalSpace(value: 1.5),
-                  ProfileCardItem(
-                    icon: 'assets/images/exit.png',
-                    title: 'تسجيل الخروج',
+                  const VerticalSpace(value: 1.5),
+                  InkWell(
+                    onTap: (){
+                      MagicRouter.navigateAndPopAll(SplashPage());
+                    },
+                    child: const ProfileCardItem(
+                      icon: 'assets/images/exit.png',
+                      title: 'تسجيل الخروج',
+                    ),
                   ),
                 ],
               ),
@@ -104,13 +115,13 @@ class ProfileCardItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: Image.asset(
                   icon,
                   height: Si.ds! * 3,
                 ),
               ),
-              HorizontalSpace(value: 1),
+              const HorizontalSpace(value: 1),
               Text(title, style: subTitle
                   // color != null ? Colors.white :  context.textTheme.themeStyleText.color),
                   ),

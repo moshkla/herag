@@ -11,7 +11,7 @@ customCachedNetworkImage(
         child: Image.asset(
           AppAssets.logo,
           fit: BoxFit.fitWidth,
-          color: color??null,
+          color: color,
         ),
       );
     } else {
@@ -22,12 +22,12 @@ customCachedNetworkImage(
             ? CachedNetworkImage(
                 imageUrl: url,
                 fit: fit,
-            color: color??null,
+            color: color,
             placeholder: (context, url) => Center(
                   child: Image.asset(
                         AppAssets.logo,
                         fit: fit,
-                    color: color??null,
+                    color: color,
 
                   ),
                 ),
@@ -36,7 +36,7 @@ customCachedNetworkImage(
                     child: Image.asset(
                       AppAssets.logo,
                       fit: fit,
-                      color: color??null,
+                      color: color,
 
                     ),
                   );

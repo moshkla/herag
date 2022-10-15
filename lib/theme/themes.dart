@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:herag/core/router/router.dart';
-import 'package:herag/theme/text_styles.dart';
-import '../core/utiles/size_config.dart';
 import 'app_colors.dart';
 
 class Themes {
   static TabBarTheme tabBarTheme = const TabBarTheme(
       labelColor: Colors.white,
+
       labelStyle: TextStyle(
           fontFamily: 'assets/fonts/msuighur.ttf',
           color: Colors.white,
@@ -38,9 +36,7 @@ class Themes {
       titleTextStyle: TextStyle(
         fontFamily: 'msuighur',
       ),
-    ),
-    colorScheme:
-        const ColorScheme.light().copyWith(secondary: AppColors.secondary),
+    ), colorScheme: const ColorScheme.light().copyWith(secondary: AppColors.secondary).copyWith(secondary: AppColors.primary),
   );
 }
 

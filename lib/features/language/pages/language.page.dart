@@ -51,7 +51,7 @@ class _LanguagePageState extends State<LanguagePage> {
                       translateString('اللغة', 'Language'),
                       style: title,
                     ),
-                    VerticalSpace(value: 2),
+                    const VerticalSpace(value: 2),
                     Container(
                       decoration: boxDecoration(withBorder: true),
                       child: RadioListTile(
@@ -67,7 +67,7 @@ class _LanguagePageState extends State<LanguagePage> {
                             });
                           }),
                     ),
-                    VerticalSpace(value: 1),
+                    const VerticalSpace(value: 1),
                     Container(
                       decoration: boxDecoration(withBorder: true),
                       child: RadioListTile(
@@ -83,10 +83,10 @@ class _LanguagePageState extends State<LanguagePage> {
                             });
                           }),
                     ),
-                    VerticalSpace(value: 2),
+                    const VerticalSpace(value: 2),
                     CustomGeneralButton(
                         text: translateString('التالي', 'Next'), onTap: () {
-                          MagicRouter.navigateAndPopAll(LoginPage());
+                          MagicRouter.navigateAndPopAll(const LoginPage());
                     }),
                   ],
                 ),

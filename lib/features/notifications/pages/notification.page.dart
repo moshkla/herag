@@ -30,7 +30,7 @@ class NotificationPage extends StatelessWidget {
                 itemBuilder: (c, i) => Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 16,vertical: 8),
+                        padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
                           width: Si.ds! * 10,
                           decoration: boxDecoration(
                               withBorder: false, solidColor: Colors.white),
@@ -70,7 +70,7 @@ class NotificationPage extends StatelessWidget {
                                                           context: context,
                                                           fit: BoxFit.cover),
                                                 )),
-                                      HorizontalSpace(value: 1),
+                                      const HorizontalSpace(value: 1),
                                       Text(
                                         'اسم العميل',
                                         style: titleSmall.copyWith(
@@ -84,12 +84,12 @@ class NotificationPage extends StatelessWidget {
                                     child: CircleAvatar(
                                       backgroundColor: Colors.red,
                                       radius: Si.ds! * 1,
-                                      child: Text('1'),
+                                      child: const Text('1'),
                                     ),
                                   )
                                 ],
                               ),
-                              VerticalSpace(value: 1),
+                              const VerticalSpace(value: 1),
                               Row(
                                 mainAxisAlignment:
                                 MainAxisAlignment.spaceBetween,
@@ -104,7 +104,7 @@ class NotificationPage extends StatelessWidget {
                                         Icons.watch_later_outlined,
                                         size: Si.ds! * 2,
                                       ),
-                                      HorizontalSpace(value: 1),
+                                      const HorizontalSpace(value: 1),
                                       Text(
                                         'منذ دقيقة',
                                         style: hint,

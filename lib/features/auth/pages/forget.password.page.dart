@@ -3,11 +3,8 @@ import 'package:herag/core/constants/constants.dart';
 import 'package:herag/core/router/router.dart';
 import 'package:herag/core/utiles/size_config.dart';
 import 'package:herag/core/widgets/custom_buttons_widget.dart';
-import 'package:herag/core/widgets/custom_text_field.dart';
-import 'package:herag/features/auth/pages/register.page.dart';
 import 'package:herag/features/auth/pages/reset.password.page.dart';
 
-import '../../../layout/layout.page.dart';
 import '../../../theme/app_assets.dart';
 import '../../../theme/input_decoration.dart';
 import '../../../theme/styles.dart';
@@ -57,24 +54,24 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                         translateString(' نسيت كلمة المرور ؟', 'Forget password ?'),
                         style: title,
                       ),
-                      VerticalSpace(value: 2),
+                      const VerticalSpace(value: 2),
                       Text(
                         translateString(' أدخل رقم التيليفون الخاص بك', 'Enter your phone number'),
                         style: title,
                       ),
-                      VerticalSpace(value: 2),
+                      const VerticalSpace(value: 2),
                       TextFormField(
                         style: subTitle,
                         decoration: inputDecoration(
                             label: translateString('رقم التيليفون', 'phone')),
                       ),
-                      VerticalSpace(value: 2),
+                      const VerticalSpace(value: 2),
                       Padding(
                         padding: edgeInsetsSymmetric(h: 5, v: 0),
                         child: CustomGeneralButton(
                             text: translateString('ارسال', 'Send'),
                             onTap: () {
-                              MagicRouter.navigateAndPopAll(ResetPasswordPage());
+                              MagicRouter.navigateAndPopAll(const ResetPasswordPage());
                             }),
                       ),
                     ],

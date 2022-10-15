@@ -3,7 +3,6 @@ import 'package:herag/core/constants/constants.dart';
 import 'package:herag/core/router/router.dart';
 import 'package:herag/core/utiles/size_config.dart';
 import 'package:herag/core/widgets/custom_buttons_widget.dart';
-import 'package:herag/core/widgets/custom_text_field.dart';
 import 'package:herag/features/auth/pages/login.page.dart';
 
 import '../../../layout/layout.page.dart';
@@ -11,6 +10,7 @@ import '../../../theme/app_assets.dart';
 import '../../../theme/input_decoration.dart';
 import '../../../theme/styles.dart';
 import '../../../theme/text_styles.dart';
+import 'terms_conditions.page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -21,6 +21,7 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   int? selectedIndex;
+  bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -57,21 +58,21 @@ class _RegisterPageState extends State<RegisterPage> {
                             'انشاء حساب جديد', 'Create new account'),
                         style: title,
                       ),
-                      VerticalSpace(value: 2),
+                      const VerticalSpace(value: 2),
                       TextFormField(
                         style: subTitle,
                         decoration: inputDecoration(
                             label:
                                 translateString('البريد الالكتروني', 'Email')),
                       ),
-                      VerticalSpace(value: 1.5),
+                      const VerticalSpace(value: 1.5),
                       TextFormField(
                         style: subTitle,
                         decoration: inputDecoration(
                             label:
                                 translateString('البريد الالكتروني', 'Email')),
                       ),
-                      VerticalSpace(value: 1.5),
+                      const VerticalSpace(value: 1.5),
                       TextFormField(
                         style: subTitle,
                         keyboardType: TextInputType.number,
@@ -79,44 +80,64 @@ class _RegisterPageState extends State<RegisterPage> {
                           label: translateString('الهاتف', 'Phone'),
                         ),
                       ),
-                      VerticalSpace(value: 1.5),
+                      const VerticalSpace(value: 1.5),
                       TextFormField(
                         style: subTitle,
                         decoration: inputDecoration(
                             label: translateString('كلمة المرور', 'Password')),
                       ),
-                      VerticalSpace(value: 1.5),
+                      const VerticalSpace(value: 1.5),
                       TextFormField(
                         style: subTitle,
                         decoration: inputDecoration(
                             label: translateString(
                                 'تأكيد كلمة المرور ', 'Confirm password')),
                       ),
+                      const VerticalSpace(value: 1),
                       Align(
-                        alignment: AlignmentDirectional.topEnd,
-                        child: CustomTextButton(
-                            text: translateString('هل نسيت كلمة المرور ؟',
-                                'Do you forget passsword ?'),
-                            size: Si.ds! * 3,
-                            onPressed: () {
-                            }),
+                        alignment: AlignmentDirectional.topStart,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Checkbox(
+                                  value: isChecked,
+                                  onChanged: (value) {
+                                    isChecked = value!;
+                                    setState(() {});
+                                  }),
+                              Expanded(
+                                child: InkWell(
+                                  onTap: () {
+                                    MagicRouter.navigateTo(const TermsPage());
+                                  },
+                                  child: Text(
+                                    ' بالتسجيل انت توافق علي الشروط والاحكام',
+                                    style: subTitle,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                      VerticalSpace(value: 2),
+                      const VerticalSpace(value: 2),
                       Padding(
                         padding: edgeInsetsSymmetric(h: 5, v: 0),
                         child: CustomGeneralButton(
                             text: translateString(
                                 'انشاء حساب جديد', 'Create new account'),
                             onTap: () {
-                              MagicRouter.navigateAndPopAll(LayoutPage());
+                              MagicRouter.navigateAndPopAll(const LayoutPage());
                             }),
                       ),
-                      VerticalSpace(value: 1),
+                      const VerticalSpace(value: 1),
                       CustomTextButton(
                           text: translateString(
                               'لديك حساب بالفعل', 'Already have account'),
                           onPressed: () {
-                            MagicRouter.navigateAndPopAll(LoginPage());
+                            MagicRouter.navigateAndPopAll(const LoginPage());
                           }),
                     ],
                   ),

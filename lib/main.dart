@@ -2,9 +2,7 @@ import 'package:api_request/api_request.dart';
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
-import 'package:herag/core/utiles/size_config.dart';
 import 'package:herag/translations/codegen_loader.g.dart';
 import 'core/app_binding.dart';
 import 'core/router/router.dart';
@@ -22,7 +20,6 @@ void main() async {
     tokenType: ApiRequestOptions.bearer,
     getToken: () => GetIt.I<LocalStorageUtils>().token,
     enableLog: true,
-
   );
 
   BlocOverrides.runZoned(
@@ -52,7 +49,7 @@ class MyApp extends StatelessWidget {
       theme: Themes.light,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
-      locale: Locale('ar', ''),
+      locale: const Locale('ar', ''),
       home: const SplashPage(),
     );
   }
