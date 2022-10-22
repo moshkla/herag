@@ -15,7 +15,6 @@ InputDecoration inputDecoration({
   double fontSize = 30,
 }) {
   return InputDecoration(
-
     prefixIcon: icon != null
         ? Icon(
             icon,
@@ -32,7 +31,7 @@ InputDecoration inputDecoration({
     errorStyle: const TextStyle(
       color: Colors.red,
     ),
-     contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+    contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
     border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(radius),
         borderSide: BorderSide(
@@ -58,6 +57,8 @@ InputDecoration inputDecoration({
     focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(radius),
         borderSide: BorderSide(
-            style: hasBorder ? BorderStyle.solid : BorderStyle.none, width: 1)),
+            color: Colors.red,
+            style: hasBorder ? BorderStyle.solid : BorderStyle.none,
+            width: 1)),
   );
 }

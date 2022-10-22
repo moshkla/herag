@@ -1,6 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/models/user_model.dart';
+import '../../../core/router/router.dart';
 import '../../../core/utiles/notification_utils.dart';
+import '../../../layout/layout.page.dart';
 import '../actions/login_action.dart';
 import 'auth_states.dart';
 
@@ -8,22 +11,27 @@ class AuthCubit extends Cubit<AuthStates> {
   AuthCubit() : super(AuthInitial());
 
   static AuthCubit get(context) => BlocProvider.of(context);
+  UserModel? userModel;
 
-  postLogin({required String email,required String password}){
+  postLogin({required String email, required String password}) {
+    NotificationUtils.showLoading();
     LoginAction loginAction = LoginAction(
       email: email,
       password: password,
     );
-    loginAction.onError = (e) {
+    loginAction.execute();
+    loginAction.onError = (res) {
       NotificationUtils.hideLoading();
-      print(e.message);
-      NotificationUtils.showErrorMessage('لا يوجد هذا الحساب في سجلاتنا من فضلك سجل من جديد');
+      NotificationUtils.showErrorMessage(res.errors.toString());
     };
     loginAction.onSuccess = (res) {
+      userModel = res;
       NotificationUtils.hideLoading();
+      NotificationUtils.showSuccessMessage(res!.message!);
+      MagicRouter.navigateAndPopAll(const LayoutPage());
     };
   }
-    //NotificationUtils.showLoadingDialog();
+//NotificationUtils.showLoadingDialog();
 
 }
 

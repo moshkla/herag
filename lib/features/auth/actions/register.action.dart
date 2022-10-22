@@ -1,9 +1,10 @@
 import 'package:api_request/api_request.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
+import '../../../core/models/user_model.dart';
 import 'login_action.dart';
 
-class RegisterAction extends ApiRequestAction<LoginResponse> {
+class RegisterAction extends ApiRequestAction<UserModel> {
   late String name;
   late String email;
   late String phone;
@@ -55,6 +56,6 @@ class RegisterAction extends ApiRequestAction<LoginResponse> {
       };
 
   @override
-  ResponseBuilder<LoginResponse> get responseBuilder =>
-      (json) => LoginResponse.fromJson(json);
+  ResponseBuilder<UserModel> get responseBuilder =>
+      (json) => UserModel.fromJson(json);
 }

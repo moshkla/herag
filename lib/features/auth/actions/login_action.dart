@@ -3,8 +3,9 @@
 import 'package:api_request/api_request.dart';
 
 import '../../../core/base_response.dart';
+import '../../../core/models/user_model.dart';
 
-class LoginAction extends ApiRequestAction<LoginResponse> {
+class LoginAction extends ApiRequestAction<UserModel> {
   late String? email;
   late String? password;
 
@@ -30,15 +31,6 @@ class LoginAction extends ApiRequestAction<LoginResponse> {
   };
 
   @override
-  ResponseBuilder<LoginResponse> get responseBuilder =>
-          (json) => LoginResponse.fromJson(json);
-}
-
-class LoginResponse with BaseResponse{
-  String? accessToken;
-  LoginResponse.fromJson(Map<String, dynamic> json) {
-    super.fromJson(json);
-    accessToken = json["access_token"];
-    print("access token is : ${json["access_token"]}");
-  }
+  ResponseBuilder<UserModel> get responseBuilder =>
+          (json) => UserModel.fromJson(json);
 }
