@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:herag/core/constants/constants.dart';
 import 'package:herag/core/utiles/size_config.dart';
@@ -48,8 +49,7 @@ class _TermsPageState extends State<TermsPage> {
                   child: Column(
                     children: [
                       Text(
-                        translateString(
-                            'الشروط والاحكام', 'Terms And Conditions'),
+                       'terms'.tr(),
                         style: title,
                       ),
                       const VerticalSpace(value: 2),

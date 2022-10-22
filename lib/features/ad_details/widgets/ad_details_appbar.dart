@@ -1,4 +1,5 @@
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/constants.dart';
@@ -35,7 +36,7 @@ class AdDetailsAppBar extends StatelessWidget {
                   top: Si.ds! * 5.5,
                   start: Si.ds! * 4,
                   child: Text(
-                    translateString('تفاصيل الاعلان', 'Ad Details'),
+                    "ad_details".tr(),
                     style: title.copyWith(color: Colors.white),
                   )),
               PositionedDirectional(

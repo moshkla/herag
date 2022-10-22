@@ -10,6 +10,7 @@ import 'core/utiles/bloc_observer.dart';
 import 'core/utiles/local_storage.utils.dart';
 import 'features/auth/pages/splash.page.dart';
 import 'theme/themes.dart';
+import 'package:overlay_support/overlay_support.dart';
 
 void main() async {
 
@@ -24,12 +25,20 @@ void main() async {
 
   BlocOverrides.runZoned(
     () => runApp(
-      EasyLocalization(
-        supportedLocales: const [Locale('ar', ''), Locale('en', '')],
-        path: 'assets/translations',
-        assetLoader: const CodegenLoader(),
-        child: const MyApp(),
-      ),
+        EasyLocalization(
+          supportedLocales: const [Locale('en'), Locale('ar')],
+          path: 'assets/translations',
+          fallbackLocale: const Locale('en'),
+          child: const OverlaySupport.global(
+            child: MyApp(),
+          ),
+        )
+      // EasyLocalization(
+      //   supportedLocales: const [Locale('ar', ''), Locale('en', '')],
+      //   path: 'assets/translations',
+      //   assetLoader: const CodegenLoader(),
+      //   child: const MyApp(),
+      // ),
     ),
     blocObserver: MyBlocObserver(),
   );

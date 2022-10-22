@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:herag/core/widgets/page_app_bar.dart';
 import '../../../core/constants/constants.dart';
@@ -13,7 +14,7 @@ class FavouritesPage extends StatelessWidget {
       child: Column(
         children: [
           pageAppBar(
-            pageTitle: translateString("المفضلة", "Favourits"),
+            pageTitle: 'favourits'.tr(),
             withoutBackBtn: true,
           ),
           Padding(

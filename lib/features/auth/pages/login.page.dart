@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:herag/core/constants/constants.dart';
 import 'package:herag/core/router/router.dart';
@@ -53,28 +54,25 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     children: [
                       Text(
-                        translateString('تسجيل الدخول', 'Login'),
+                        'login'.tr(),
                         style: title,
                       ),
                       const VerticalSpace(value: 2),
                       TextFormField(
                         style: subTitle,
                         decoration: inputDecoration(
-                            label: translateString(
-                                'البريد الالكتروني او الهاتف',
-                                'Email or Phone')),
+                            label:'email_or_phone'.tr()),
                       ),
                       const VerticalSpace(value: 2),
                       TextFormField(
                         style: subTitle,
                         decoration: inputDecoration(
-                            label: translateString('كلمة المرور', 'Password')),
+                            label: 'password'.tr()),
                       ),
                       Align(
                         alignment: AlignmentDirectional.topEnd,
                         child: CustomTextButton(
-                            text: translateString('هل نسيت كلمة المرور ؟',
-                                'Do you forget passsword ?'),
+                            text: 'forget_password'.tr(),
                             size: Si.ds! * 3,
                             onPressed: () {
                               MagicRouter.navigateTo(const ForgetPasswordPage());
@@ -85,15 +83,14 @@ class _LoginPageState extends State<LoginPage> {
                       Padding(
                         padding: edgeInsetsSymmetric(h: 5, v: 0),
                         child: CustomGeneralButton(
-                            text: translateString('تسجيل الدخول', 'Login'),
+                            text: 'login'.tr(),
                             onTap: () {
                               MagicRouter.navigateAndPopAll(const LayoutPage());
                             }),
                       ),
                       const VerticalSpace(value: 1),
                       CustomTextButton(
-                          text: translateString(
-                              'انشاء حساب جديد', 'Create new account'),
+                          text: 'create_new_account'.tr(),
                           onPressed: () {
                             MagicRouter.navigateTo(const RegisterPage());
                           }),

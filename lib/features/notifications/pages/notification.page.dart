@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:herag/core/widgets/page_app_bar.dart';
@@ -18,7 +19,7 @@ class NotificationPage extends StatelessWidget {
       child: Column(
         children: [
           pageAppBar(
-            pageTitle: translateString("الاشعارات", "Notifications"),
+            pageTitle: "notifications".tr(),
             withoutBackBtn: true,
           ),
           Padding(
@@ -30,7 +31,8 @@ class NotificationPage extends StatelessWidget {
                 itemBuilder: (c, i) => Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 8),
                           width: Si.ds! * 10,
                           decoration: boxDecoration(
                               withBorder: false, solidColor: Colors.white),
@@ -92,7 +94,7 @@ class NotificationPage extends StatelessWidget {
                               const VerticalSpace(value: 1),
                               Row(
                                 mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     'مرحبا عزيزى العميل',

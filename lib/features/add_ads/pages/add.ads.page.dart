@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:herag/core/router/router.dart';
 import 'package:herag/theme/text_styles.dart';
@@ -21,7 +22,7 @@ class AddAdsPage extends StatelessWidget {
             children: [
               pageAppBar(
                   pageTitle:
-                      translateString("اختر نوع الاعلان", "Select Ad type")),
+                  "select_ad_type".tr()),
               ListView.builder(
                 shrinkWrap: true,
                 primary: false,

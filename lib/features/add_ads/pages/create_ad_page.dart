@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:herag/core/constants/constants.dart';
 import 'package:herag/core/utiles/size_config.dart';
@@ -28,7 +29,7 @@ class _CreateAdPageState extends State<CreateAdPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             pageAppBar(
-                pageTitle: translateString('تفاصيل الاعلان', 'Ad details')),
+                pageTitle: 'ad_details'.tr()),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -154,7 +155,7 @@ class _CreateAdPageState extends State<CreateAdPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 50.0),
                     child: CustomGeneralButton(
-                        text: translateString('ارسال', 'Send'), onTap: () {}),
+                        text:'send'.tr(), onTap: () {}),
                   ),
                 ],
               ),

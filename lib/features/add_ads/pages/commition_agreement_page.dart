@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:herag/core/router/router.dart';
 import 'package:herag/theme/styles.dart';
@@ -28,7 +29,7 @@ class _CommissionAgreementState extends State<CommissionAgreement> {
           children: [
             pageAppBar(
                 pageTitle:
-                    translateString("اتفاقية العمولة", "Commission Agreement")),
+                "commission_agreement".tr()),
             const VerticalSpace(value: 1),
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -78,7 +79,7 @@ class _CommissionAgreementState extends State<CommissionAgreement> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 50),
               child: CustomGeneralButton(
-                  text: translateString('استمرار', 'Continue'),
+                  text: 'continue'.tr(),
                   onTap: () {
                     MagicRouter.navigateTo(const CreateAdPage());
                   }),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:herag/core/constants/constants.dart';
 import 'package:herag/core/widgets/custom_buttons_widget.dart';
@@ -19,7 +20,7 @@ class HomeDetailsPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            pageAppBar(pageTitle:translateString( 'الاعلانات', 'Ads')),
+            pageAppBar(pageTitle:'ads'.tr()),
             VerticalSpace(value: 2),
             SizedBox(
               height: Si.ds! * 10,

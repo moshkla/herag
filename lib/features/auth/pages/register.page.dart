@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:herag/core/constants/constants.dart';
 import 'package:herag/core/router/router.dart';
@@ -54,8 +55,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   child: Column(
                     children: [
                       Text(
-                        translateString(
-                            'انشاء حساب جديد', 'Create new account'),
+                        'create_new_account'.tr(),
                         style: title,
                       ),
                       const VerticalSpace(value: 2),
@@ -63,35 +63,34 @@ class _RegisterPageState extends State<RegisterPage> {
                         style: subTitle,
                         decoration: inputDecoration(
                             label:
-                                translateString('البريد الالكتروني', 'Email')),
+                            'email'.tr()),
                       ),
                       const VerticalSpace(value: 1.5),
                       TextFormField(
                         style: subTitle,
                         decoration: inputDecoration(
                             label:
-                                translateString('البريد الالكتروني', 'Email')),
+                            'email'.tr()),
                       ),
                       const VerticalSpace(value: 1.5),
                       TextFormField(
                         style: subTitle,
                         keyboardType: TextInputType.number,
                         decoration: inputDecoration(
-                          label: translateString('الهاتف', 'Phone'),
+                          label: 'phone'.tr(),
                         ),
                       ),
                       const VerticalSpace(value: 1.5),
                       TextFormField(
                         style: subTitle,
                         decoration: inputDecoration(
-                            label: translateString('كلمة المرور', 'Password')),
+                            label: 'password'.tr()),
                       ),
                       const VerticalSpace(value: 1.5),
                       TextFormField(
                         style: subTitle,
                         decoration: inputDecoration(
-                            label: translateString(
-                                'تأكيد كلمة المرور ', 'Confirm password')),
+                            label: 'confirm_password'.tr()),
                       ),
                       const VerticalSpace(value: 1),
                       Align(
@@ -126,16 +125,14 @@ class _RegisterPageState extends State<RegisterPage> {
                       Padding(
                         padding: edgeInsetsSymmetric(h: 5, v: 0),
                         child: CustomGeneralButton(
-                            text: translateString(
-                                'انشاء حساب جديد', 'Create new account'),
+                            text: 'create_new_account'.tr(),
                             onTap: () {
                               MagicRouter.navigateAndPopAll(const LayoutPage());
                             }),
                       ),
                       const VerticalSpace(value: 1),
                       CustomTextButton(
-                          text: translateString(
-                              'لديك حساب بالفعل', 'Already have account'),
+                          text:  "have_account".tr(),
                           onPressed: () {
                             MagicRouter.navigateAndPopAll(const LoginPage());
                           }),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:herag/core/router/router.dart';
 import 'package:herag/features/menu/pages/terms_and_conditions_page.dart';
@@ -22,7 +23,7 @@ class MenuPage extends StatelessWidget {
         height: Si.screenHeight,
         child: Column(
           children: [
-            pageAppBar(pageTitle: translateString("القائمة", "Menu"),withoutBackBtn: true,),
+            pageAppBar(pageTitle: 'menu'.tr(),withoutBackBtn: true,),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(

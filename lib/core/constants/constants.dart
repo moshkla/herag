@@ -53,19 +53,9 @@ Widget loading(context) {
   );
 }
 
-/////////////////////////////////////////////////
-
-late SharedPreferences prefs;
-Future startShared() async {
-  prefs = await SharedPreferences.getInstance();
-}
-
 //////////////////////////////////////////////////////////
 
-String translateString(String arabic, String english) {
-  return LocalStorageUtils.locale == 'ar' ? arabic : english;
-  // return prefs.getString("lang")=='en'?a:b;
-}
+
 
 ////////////////////////////////////////////////////////////////
 

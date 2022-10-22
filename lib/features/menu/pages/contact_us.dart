@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/constants.dart';
@@ -17,7 +18,7 @@ class ContactUs extends StatelessWidget {
           child: Column(
             children: [
               pageAppBar(
-                pageTitle: translateString('تواصل معنا', 'Contact Us'),
+                pageTitle: 'contact_us'.tr(),
               ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -42,7 +43,7 @@ class ContactUs extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 50.0),
                       child: CustomGeneralButton(
-                          text: translateString('ارسال', 'Send'), onTap: () {}),
+                          text: 'send'.tr(), onTap: () {}),
                     ),
                   ],
                 ),

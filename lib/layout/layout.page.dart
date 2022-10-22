@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:herag/core/constants/constants.dart';
 import 'package:herag/core/router/router.dart';
@@ -92,7 +93,7 @@ class _LayoutPageState extends State<LayoutPage> {
                     "assets/images/home_off.png",
                     height: Si.ds! * 3,
                   ),
-                  label: translateString('الرئيسية', 'Home')),
+                  label: 'home'.tr()),
               BottomNavigationBarItem(
                   activeIcon: Image.asset(
                     "assets/images/fav_on.png",
@@ -102,7 +103,7 @@ class _LayoutPageState extends State<LayoutPage> {
                     "assets/images/fav_off.png",
                     height: Si.ds! * 3,
                   ),
-                  label: translateString("المفضلة", "Favourits")),
+                  label: 'favourits'.tr()),
               BottomNavigationBarItem(
                 activeIcon: Image.asset(
                   "assets/images/noti_on.png",
@@ -112,7 +113,7 @@ class _LayoutPageState extends State<LayoutPage> {
                   "assets/images/noti_off.png",
                   height: Si.ds! * 3,
                 ),
-                label: translateString("الاشعارات", "Notifications"),
+                label: 'notifications'.tr(),
               ),
               BottomNavigationBarItem(
                 activeIcon: Image.asset(
@@ -125,7 +126,7 @@ class _LayoutPageState extends State<LayoutPage> {
                   width: 100,
                   height: 30,
                 ),
-                label: translateString('الحساب', 'Account'),
+                label: "account".tr(),
               ),
               BottomNavigationBarItem(
                 activeIcon: Image.asset(
@@ -138,7 +139,7 @@ class _LayoutPageState extends State<LayoutPage> {
                   width: 100,
                   height: 30,
                 ),
-                label: translateString("القائمة", "Menu"),
+                label:  "menu".tr(),
               ),
             ],
           ),

@@ -1,4 +1,5 @@
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -58,7 +59,7 @@ class HomeAppBar extends StatelessWidget {
                         )),
                     const HorizontalSpace(value: 1),
                     Text(
-                      translateString('اهلا أنس', 'Hello Anas'),
+                      'hi'.tr(),
                       style: title.copyWith(color: Colors.white),
                     ),
                     const HorizontalSpace(value: 1),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:herag/core/widgets/page_app_bar.dart';
@@ -24,7 +25,7 @@ class AccountPage extends StatelessWidget {
             child: Stack(
               children: [
                 pageAppBar(
-                  pageTitle: translateString('حسابي', 'My Account'),
+                  pageTitle: 'my_account'.tr(),
                   withoutBackBtn: true,
                 ),
                 PositionedDirectional(

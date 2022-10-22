@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:herag/core/constants/constants.dart';
 import 'package:herag/core/router/router.dart';
@@ -51,38 +52,38 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                   child: Column(
                     children: [
                       Text(
-                        translateString('إعادة تعيين كلمة السر', 'Reset password'),
+                        'reset_password'.tr(),
                         style: title,
                       ),
                       const VerticalSpace(value: 2),
                       Text(
-                        translateString(' أنشئ كلمة مرور جديده', 'Create new password'),
+                        'create_new_password'.tr(),
                         style: title,
                       ),
                       const VerticalSpace(value: 2),
                       TextFormField(
                         style: subTitle,
                         decoration: inputDecoration(
-                            label: translateString('كود التحقق', 'Code')),
+                            label: 'code'.tr()),
                       ),
                       const VerticalSpace(value: 2),
                       TextFormField(
                         style: subTitle,
                         decoration: inputDecoration(
-                            label: translateString('كلمة المرور الجديدة', 'New password')),
+                            label: 'new_password'.tr()),
                       ),
                       const VerticalSpace(value: 2),
                       TextFormField(
                         style: subTitle,
                         decoration: inputDecoration(
-                            label: translateString('تأكيد كلمة المرور', 'Confirm Password')),
+                            label: 'confirm_password'.tr()),
                       ),
 
                       const VerticalSpace(value: 2),
                       Padding(
                         padding: edgeInsetsSymmetric(h: 5, v: 0),
                         child: CustomGeneralButton(
-                            text: translateString('ارسال', 'Send'),
+                            text: 'send'.tr(),
                             onTap: () {
                               MagicRouter.navigateAndPopAll(const LayoutPage());
                             }),

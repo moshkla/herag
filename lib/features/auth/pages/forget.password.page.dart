@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:herag/core/constants/constants.dart';
 import 'package:herag/core/router/router.dart';
@@ -51,25 +52,25 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                   child: Column(
                     children: [
                       Text(
-                        translateString(' نسيت كلمة المرور ؟', 'Forget password ?'),
+                        'forget_password'.tr(),
                         style: title,
                       ),
                       const VerticalSpace(value: 2),
                       Text(
-                        translateString(' أدخل رقم التيليفون الخاص بك', 'Enter your phone number'),
+                        "enter_phone".tr(),
                         style: title,
                       ),
                       const VerticalSpace(value: 2),
                       TextFormField(
                         style: subTitle,
                         decoration: inputDecoration(
-                            label: translateString('رقم التيليفون', 'phone')),
+                            label: 'phone'.tr()),
                       ),
                       const VerticalSpace(value: 2),
                       Padding(
                         padding: edgeInsetsSymmetric(h: 5, v: 0),
                         child: CustomGeneralButton(
-                            text: translateString('ارسال', 'Send'),
+                            text: 'send'.tr(),
                             onTap: () {
                               MagicRouter.navigateAndPopAll(const ResetPasswordPage());
                             }),

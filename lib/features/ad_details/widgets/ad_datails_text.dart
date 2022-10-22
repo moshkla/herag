@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:herag/core/constants/constants.dart';
 import 'package:herag/core/widgets/custom_buttons_widget.dart';
@@ -127,7 +128,7 @@ class AdDetailsText extends StatelessWidget {
                     ),
                     const HorizontalSpace(value: 2),
                     Text(
-                      translateString('مراسلة المعلن', 'Send Advertiser'),
+                        'send_advertiser'.tr(),
                       style: title.copyWith(color: Colors.white),
                     ),
                   ],
@@ -143,8 +144,7 @@ class AdDetailsText extends StatelessWidget {
               children: [
                 TextFormField(
                   decoration: inputDecoration(
-                      hint: translateString('اكتب سؤالك للمعلن هنا . . .',
-                          'Enter your question to Advertizer here . . . ')),
+                      hint: 'send_advertiser_question'.tr()),
                   maxLines: 4,
                 ),
                 const VerticalSpace(value: 2),
@@ -154,14 +154,12 @@ class AdDetailsText extends StatelessWidget {
                     Row(children: [
                       const Icon(Icons.ac_unit),
                       const HorizontalSpace(value: 0.5),
-                      Text(translateString('متابعة الردور',
-                          'Follow Replies'),style: subTitle,)
+                      Text('follow_replies'.tr())
                     ],),
 
                     SizedBox(
                       width: Si.ds!*15,
-                      child: CustomGeneralButton(text: translateString('ارسال',
-                          'Send'), onTap: (){}),
+                      child: CustomGeneralButton(text: 'send'.tr(), onTap: (){}),
                     )
                   ],
                 )
