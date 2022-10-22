@@ -115,7 +115,6 @@ class _LoginPageState extends State<LoginPage> {
                             CustomTextButton(
                                 text: 'create_new_account'.tr(),
                                 onPressed: () {
-
                                   MagicRouter.navigateTo(const RegisterPage());
                                 }),
                           ],

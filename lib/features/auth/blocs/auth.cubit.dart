@@ -1,10 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:herag/core/utiles/local_storage.utils.dart';
 
 import '../../../core/models/user_model.dart';
 import '../../../core/router/router.dart';
 import '../../../core/utiles/notification_utils.dart';
 import '../../../layout/layout.page.dart';
 import '../actions/login_action.dart';
+import '../actions/register.action.dart';
 import 'auth_states.dart';
 
 class AuthCubit extends Cubit<AuthStates> {
@@ -25,14 +27,45 @@ class AuthCubit extends Cubit<AuthStates> {
       NotificationUtils.showErrorMessage(res.errors.toString());
     };
     loginAction.onSuccess = (res) {
-      userModel = res;
-      NotificationUtils.hideLoading();
-      NotificationUtils.showSuccessMessage(res!.message!);
-      MagicRouter.navigateAndPopAll(const LayoutPage());
+      if (res!.status == true) {
+        userModel = res;
+        LocalStorageUtils.setToken(userModel!.body!.accessToken);
+        NotificationUtils.hideLoading();
+        NotificationUtils.showSuccessMessage(res.message!);
+        MagicRouter.navigateAndPopAll(const LayoutPage());
+      } else {
+        NotificationUtils.hideLoading();
+        NotificationUtils.showErrorMessage(res.message!);
+      }
     };
   }
-//NotificationUtils.showLoadingDialog();
 
+  postRegister(
+      {required name, required email, required phone, required password}) {
+    NotificationUtils.showLoading();
+    RegisterAction registerAction = RegisterAction(
+      name: name,
+      email: email,
+      phone: phone,
+      password: password,
+    );
+    registerAction.execute();
+    registerAction.onError = (e) {
+      NotificationUtils.hideLoading();
+      NotificationUtils.showErrorMessage(e.message ?? e.errors.toString());
+    };
+    registerAction.onSuccess = (res) {
+      NotificationUtils.hideLoading();
+      if (res?.status == true) {
+        userModel = res;
+        LocalStorageUtils.setToken(userModel!.body!.accessToken);
+        MagicRouter.navigateAndPopAll(const LayoutPage());
+        NotificationUtils.showSuccessMessage(res!.message!);
+      } else {
+        NotificationUtils.showErrorMessage(res?.message ?? "");
+      }
+    };
+  }
 }
 
 // import 'package:firebase_messaging/firebase_messaging.dart';

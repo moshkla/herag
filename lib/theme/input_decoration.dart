@@ -53,7 +53,9 @@ InputDecoration inputDecoration({
     errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(radius),
         borderSide: BorderSide(
-            style: hasBorder ? BorderStyle.solid : BorderStyle.none, width: 1)),
+            color: Colors.red,
+            style: hasBorder ? BorderStyle.solid : BorderStyle.none,
+            width: 1)),
     focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(radius),
         borderSide: BorderSide(
