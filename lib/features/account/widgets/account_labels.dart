@@ -9,7 +9,7 @@
 // import '../../../utils/size_config.dart';
 // import '../../../widgets/custom_buttons_widget.dart';
 // import '../../../widgets/profile_item.dart';
-// import '../../auth/blocs/auth.controller.dart';
+// import '../../auth/blocs/auth.cubit.dart';
 // import '../blocs/account.controller.dart';
 // import 'delete_account_dialog.dart';
 // import 'lang_widget.dart';

@@ -8,7 +8,7 @@
 // import '../../../utils/validator.utils.dart';
 // import '../../auth/actions/get_register_data.action.dart';
 // import '../actions/get_profile_action.dart';
-// import '../../auth/blocs/auth.controller.dart';
+// import '../../auth/blocs/auth.cubit.dart';
 // import '../actions/edit_profile_action.dart';
 //
 // class EditFormBloc extends FormBloc<AuthResponse, String> {

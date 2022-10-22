@@ -6,7 +6,7 @@
 // import '../../../utils/validator.utils.dart';
 // import '../actions/login_action.dart';
 // import '../actions/register.action.dart';
-// import 'auth.controller.dart';
+// import 'auth.cubit.dart';
 //
 // class RegisterFormBloc extends FormBloc<LoginResponse, String> {
 //   TextFieldBloc name =
