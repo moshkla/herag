@@ -10,7 +10,7 @@ class LogOutAction extends ApiRequestAction<BaseResponseModel> {
   bool get authRequired => true;
 
   @override
-  RequestMethod get method => RequestMethod.POST;
+  RequestMethod get method => RequestMethod.GET;
 
   @override
   String get path => "logout";

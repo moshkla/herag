@@ -1,6 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:herag/core/router/router.dart';
+import 'package:herag/features/auth/blocs/auth.cubit.dart';
 import 'package:herag/features/menu/pages/terms_and_conditions_page.dart';
 import 'package:herag/theme/text_styles.dart';
 import '../../../core/constants/constants.dart';
@@ -64,14 +67,21 @@ class MenuPage extends StatelessWidget {
                     ),
                   ),
                   const VerticalSpace(value: 1.5),
-                  InkWell(
-                    onTap: (){
-                      MagicRouter.navigateAndPopAll(SplashPage());
-                    },
-                    child: const ProfileCardItem(
-                      icon: 'assets/images/exit.png',
-                      title: 'تسجيل الخروج',
-                    ),
+                  BlocBuilder(
+                    bloc: GetIt.I<AuthCubit>(),
+                  builder: (c,s){
+                    return InkWell(
+                      onTap: (){
+                        GetIt.I<AuthCubit>().logOut();
+                      //  MagicRouter.navigateAndPopAll(SplashPage());
+
+                      },
+                      child: const ProfileCardItem(
+                        icon: 'assets/images/exit.png',
+                        title: 'تسجيل الخروج',
+                      ),
+                    );
+                  },
                   ),
                 ],
               ),

@@ -5,8 +5,10 @@ import '../../../core/models/user_model.dart';
 import '../../../core/router/router.dart';
 import '../../../core/utiles/notification_utils.dart';
 import '../../../layout/layout.page.dart';
+import '../../account/actions/logout_action.dart';
 import '../actions/login_action.dart';
 import '../actions/register.action.dart';
+import '../pages/splash.page.dart';
 import 'auth_states.dart';
 
 class AuthCubit extends Cubit<AuthStates> {
@@ -24,7 +26,7 @@ class AuthCubit extends Cubit<AuthStates> {
     loginAction.execute();
     loginAction.onError = (res) {
       NotificationUtils.hideLoading();
-      NotificationUtils.showErrorMessage(res.errors.toString());
+      NotificationUtils.showErrorMessage(res.message!);
     };
     loginAction.onSuccess = (res) {
       if (res!.status == true) {
@@ -66,8 +68,32 @@ class AuthCubit extends Cubit<AuthStates> {
       }
     };
   }
+
+  logOut() async {
+    NotificationUtils.showLoading();
+    LogOutAction action = LogOutAction();
+    action.execute();
+    action.onSuccess = (res) {
+      NotificationUtils.hideLoading();
+      LocalStorageUtils.setToken(null);
+      MagicRouter.navigateAndPopAll(SplashPage());
+      NotificationUtils.showSuccessMessage(res!.message!);
+    };
+    action.onError = (res) {
+      NotificationUtils.hideLoading();
+      NotificationUtils.showErrorMessage(res!.message!);
+    };
+  }
 }
 
+// deleteAccount() async {
+//   NotificationUtils.showLoading();
+//   await DeleteAccountAction().execute().then((value) {
+//     NotificationUtils.hideLoading();
+//     Get.offAllNamed(Routes.main);
+//     LocalStorageUtils.setToken(null);
+//   });
+// }
 // import 'package:firebase_messaging/firebase_messaging.dart';
 // import 'package:get/get.dart';
 // import 'package:majdia/features/auth/actions/update_fcm_token_action.dart';
