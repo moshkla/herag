@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:herag/core/utiles/local_storage.utils.dart';
+import 'package:herag/features/auth/actions/delete_account_action.dart';
 
 import '../../../core/models/user_model.dart';
 import '../../../core/router/router.dart';
@@ -72,6 +73,21 @@ class AuthCubit extends Cubit<AuthStates> {
   logOut() async {
     NotificationUtils.showLoading();
     LogOutAction action = LogOutAction();
+    action.execute();
+    action.onSuccess = (res) {
+      NotificationUtils.hideLoading();
+      LocalStorageUtils.setToken(null);
+      MagicRouter.navigateAndPopAll(SplashPage());
+      NotificationUtils.showSuccessMessage(res!.message!);
+    };
+    action.onError = (res) {
+      NotificationUtils.hideLoading();
+      NotificationUtils.showErrorMessage(res!.message!);
+    };
+  }
+  deleteAccount() async {
+    NotificationUtils.showLoading();
+    DeleteAccountAction action = DeleteAccountAction();
     action.execute();
     action.onSuccess = (res) {
       NotificationUtils.hideLoading();

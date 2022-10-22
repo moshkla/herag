@@ -70,16 +70,28 @@ class MenuPage extends StatelessWidget {
                   BlocBuilder(
                     bloc: GetIt.I<AuthCubit>(),
                   builder: (c,s){
-                    return InkWell(
-                      onTap: (){
-                        GetIt.I<AuthCubit>().logOut();
-                      //  MagicRouter.navigateAndPopAll(SplashPage());
-
-                      },
-                      child: const ProfileCardItem(
-                        icon: 'assets/images/exit.png',
-                        title: 'تسجيل الخروج',
-                      ),
+                    return Column(
+                      children: [
+                        InkWell(
+                          onTap: (){
+                            GetIt.I<AuthCubit>().logOut();
+                          },
+                          child: const ProfileCardItem(
+                            icon: 'assets/images/exit.png',
+                            title: 'تسجيل الخروج',
+                          ),
+                        ),
+                        const VerticalSpace(value: 1.5),
+                        InkWell(
+                          onTap: (){
+                            GetIt.I<AuthCubit>().logOut();
+                          },
+                          child: const ProfileCardItem(
+                            icon: 'assets/images/exit.png',
+                            title: 'تسجيل الخروج',
+                          ),
+                        ),
+                      ],
                     );
                   },
                   ),

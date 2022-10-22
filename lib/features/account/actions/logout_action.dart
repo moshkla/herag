@@ -1,11 +1,8 @@
-
-
 import 'package:api_request/api_request.dart';
 
 import '../../../core/base_response.dart';
 
 class LogOutAction extends ApiRequestAction<BaseResponseModel> {
-
   @override
   bool get authRequired => true;
 
@@ -15,8 +12,7 @@ class LogOutAction extends ApiRequestAction<BaseResponseModel> {
   @override
   String get path => "logout";
 
-
   @override
   ResponseBuilder<BaseResponseModel> get responseBuilder =>
-          (json) => BaseResponseModel.fromJson(json);
+      (json) => BaseResponseModel.fromJson(json);
 }

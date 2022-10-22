@@ -13,7 +13,7 @@ class DeleteAccountAction extends ApiRequestAction<BaseResponseModel> {
   RequestMethod get method => RequestMethod.POST;
 
   @override
-  String get path => "delete-account";
+  String get path => "delete_acc";
 
 
   @override
