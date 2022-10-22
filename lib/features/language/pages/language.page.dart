@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:herag/core/constants/constants.dart';
 import 'package:herag/core/router/router.dart';
@@ -5,6 +6,7 @@ import 'package:herag/core/utiles/size_config.dart';
 import 'package:herag/core/widgets/custom_buttons_widget.dart';
 import 'package:herag/features/auth/pages/login.page.dart';
 
+import '../../../core/utiles/local_storage.utils.dart';
 import '../../../theme/app_assets.dart';
 import '../../../theme/styles.dart';
 import '../../../theme/text_styles.dart';
@@ -64,6 +66,8 @@ class _LanguagePageState extends State<LanguagePage> {
                           onChanged: (int? value) {
                             setState(() {
                               selectedIndex = value;
+                              context.setLocale(const Locale("ar"));
+
                             });
                           }),
                     ),
@@ -80,6 +84,7 @@ class _LanguagePageState extends State<LanguagePage> {
                           onChanged: (int? value) {
                             setState(() {
                               selectedIndex = value;
+                              context.setLocale(const Locale("en"));
                             });
                           }),
                     ),

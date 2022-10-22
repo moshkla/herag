@@ -12,7 +12,6 @@ class AppBindings {
     await di.init();
     await GetStorage.init();
     await EasyLocalization.ensureInitialized();
-    await startShared();
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     //   statusBarColor: Colors.white,

@@ -5,13 +5,13 @@ import '../theme/themes.dart';
 import 'utiles/local_storage.utils.dart';
 import 'utiles/notification_utils.dart';
 
-final sl = GetIt.instance;
+final getIt = GetIt.instance;
 
 Future<void> init() async {
   //Bloc
-  GetIt.instance.registerLazySingleton<AppCubit>(() => AppCubit());
+  getIt.registerLazySingleton<AppCubit>(() => AppCubit());
 
-  sl.registerSingleton<LocalStorageUtils>(LocalStorageUtils());
-  sl.registerSingleton<NotificationUtils>(NotificationUtils());
-  sl.registerSingleton<ThemeService>(ThemeService());
+  getIt.registerSingleton<LocalStorageUtils>(LocalStorageUtils());
+  getIt.registerSingleton<NotificationUtils>(NotificationUtils());
+  getIt.registerSingleton<ThemeService>(ThemeService());
 }

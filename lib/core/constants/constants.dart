@@ -63,7 +63,7 @@ Future startShared() async {
 //////////////////////////////////////////////////////////
 
 String translateString(String arabic, String english) {
-  return GetIt.I<LocalStorageUtils>().locale == 'ar' ? arabic : english;
+  return LocalStorageUtils.locale == 'ar' ? arabic : english;
   // return prefs.getString("lang")=='en'?a:b;
 }
 

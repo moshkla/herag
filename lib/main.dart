@@ -16,9 +16,9 @@ void main() async {
   await AppBindings.initAsyncDependebcies();
 
   ApiRequestOptions.instance?.config(
-    baseUrl: 'https://jadeerlaw.com/',
+    baseUrl: 'https://kamen.kamen-haraj.com/api/',
     tokenType: ApiRequestOptions.bearer,
-    getToken: () => GetIt.I<LocalStorageUtils>().token,
+    getToken: () => LocalStorageUtils.token,
     enableLog: true,
   );
 
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
       theme: Themes.light,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
-      locale: const Locale('ar', ''),
+      locale: context.locale,
       home: const SplashPage(),
     );
   }
