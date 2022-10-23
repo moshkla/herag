@@ -1,9 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:herag/core/constants/constants.dart';
+import 'package:get_it/get_it.dart';
 import 'package:herag/core/router/router.dart';
 import 'package:herag/core/utiles/size_config.dart';
 import 'package:herag/core/widgets/custom_buttons_widget.dart';
+import 'package:herag/features/auth/blocs/auth.cubit.dart';
 
 import '../../../layout/layout.page.dart';
 import '../../../theme/app_assets.dart';
@@ -20,6 +21,9 @@ class ResetPasswordPage extends StatefulWidget {
 
 class _ResetPasswordPageState extends State<ResetPasswordPage> {
   int? selectedIndex;
+  var code = TextEditingController();
+  var password = TextEditingController();
+  var confirmPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -63,32 +67,33 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                       const VerticalSpace(value: 2),
                       TextFormField(
                         style: subTitle,
-                        decoration: inputDecoration(
-                            label: 'code'.tr()),
+                        controller: code,
+                        decoration: inputDecoration(label: 'code'.tr()),
                       ),
                       const VerticalSpace(value: 2),
                       TextFormField(
                         style: subTitle,
-                        decoration: inputDecoration(
-                            label: 'new_password'.tr()),
+                        controller: password,
+                        decoration: inputDecoration(label: 'new_password'.tr()),
                       ),
                       const VerticalSpace(value: 2),
                       TextFormField(
                         style: subTitle,
-                        decoration: inputDecoration(
-                            label: 'confirm_password'.tr()),
+                        controller: confirmPassword,
+                        decoration:
+                            inputDecoration(label: 'confirm_password'.tr()),
                       ),
-
                       const VerticalSpace(value: 2),
                       Padding(
                         padding: edgeInsetsSymmetric(h: 5, v: 0),
                         child: CustomGeneralButton(
                             text: 'send'.tr(),
                             onTap: () {
+                              GetIt.I<AuthCubit>().updatePassword(code.text,
+                                  password.text, confirmPassword.text);
                               MagicRouter.navigateAndPopAll(const LayoutPage());
                             }),
                       ),
-
                     ],
                   ),
                 ),

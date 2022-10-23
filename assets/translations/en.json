@@ -28,5 +28,6 @@
     "enter_phone": "Enter your phone number",
     "continue": "Forget password ?",
     "commission_agreement":"Commission Agreement",
-    "send_advertiser_question":"Enter your question to Advertizer here . . . "
+    "send_advertiser_question":"Enter your question to Advertizer here . . . ",
+    "del_acc_message": "Are you sure you want to delete your account?"
 }

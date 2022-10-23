@@ -1,14 +1,18 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:herag/core/utiles/local_storage.utils.dart';
 import 'package:herag/features/auth/actions/delete_account_action.dart';
+import 'package:herag/features/auth/pages/login.page.dart';
 
 import '../../../core/models/user_model.dart';
 import '../../../core/router/router.dart';
 import '../../../core/utiles/notification_utils.dart';
 import '../../../layout/layout.page.dart';
 import '../../account/actions/logout_action.dart';
+import '../actions/forget_password.action.dart';
 import '../actions/login_action.dart';
 import '../actions/register.action.dart';
+import '../actions/update_password.action.dart';
+import '../pages/reset.password.page.dart';
 import '../pages/splash.page.dart';
 import 'auth_states.dart';
 
@@ -85,6 +89,7 @@ class AuthCubit extends Cubit<AuthStates> {
       NotificationUtils.showErrorMessage(res!.message!);
     };
   }
+
   deleteAccount() async {
     NotificationUtils.showLoading();
     DeleteAccountAction action = DeleteAccountAction();
@@ -100,8 +105,47 @@ class AuthCubit extends Cubit<AuthStates> {
       NotificationUtils.showErrorMessage(res!.message!);
     };
   }
-}
 
+  resetPassword(String email) async {
+    NotificationUtils.showLoading();
+    ForgetPasswordAction action = ForgetPasswordAction(phone: email);
+    action.onError = (e) {
+      NotificationUtils.hideLoading();
+      NotificationUtils.showErrorMessage(
+          e.errors?.toString() ?? e.message ?? "");
+    };
+
+    action.onSuccess = (res) {
+      NotificationUtils.hideLoading();
+      MagicRouter.navigateAndPopAll(const ResetPasswordPage());
+      NotificationUtils.showSuccessMessage(res!.message!);
+    };
+
+    action.onQueue();
+  }
+
+  updatePassword(String phone, String password, String confirmPassword) async {
+    NotificationUtils.showLoading();
+    UpdatePasswordAction action = UpdatePasswordAction(
+      phone: phone,
+      newPassword: password,
+      newPasswordConfirmation: confirmPassword,
+    );
+    action.onError = (e) {
+      NotificationUtils.hideLoading();
+      NotificationUtils.showErrorMessage(
+          e.errors?.toString() ?? e.message ?? "");
+    };
+
+    action.onSuccess = (res) {
+      NotificationUtils.hideLoading();
+      MagicRouter.navigateAndPopAll(const LoginPage());
+      NotificationUtils.showSuccessMessage(res!.message!);
+    };
+
+    action.onQueue();
+  }
+}
 // deleteAccount() async {
 //   NotificationUtils.showLoading();
 //   await DeleteAccountAction().execute().then((value) {

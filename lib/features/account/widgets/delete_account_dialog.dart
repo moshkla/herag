@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
-
 import '../../../core/router/router.dart';
 import '../../../core/utiles/size_config.dart';
 import '../../../core/widgets/custom_buttons_widget.dart';
 import '../../auth/blocs/auth.cubit.dart';
-import '../blocs/account.controller.dart';
 
 class DialogDeleteAccount extends StatelessWidget {
   const DialogDeleteAccount({Key? key}) : super(key: key);
@@ -32,8 +30,7 @@ class DialogDeleteAccount extends StatelessWidget {
                     child: Text(
                       "del_acc_message".tr,
                       style: TextStyle(
-                          fontSize: Si.ds! * 2,
-                          fontWeight: FontWeight.bold),
+                          fontSize: Si.ds! * 2, fontWeight: FontWeight.bold),
                     ),
                   ),
                   Padding(
@@ -49,7 +46,6 @@ class DialogDeleteAccount extends StatelessWidget {
                                 text: "confirm".tr,
                                 onTap: () {
                                   GetIt.I<AuthCubit>().deleteAccount();
-
                                 })),
                         const HorizontalSpace(value: 3),
                         SizedBox(

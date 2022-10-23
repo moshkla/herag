@@ -34,5 +34,6 @@
   "phone": "رقم الهاتف",
   "email_or_phone": "البريد الالكتروني او الهاتف",
   "enter_phone": " أدخل رقم التيليفون الخاص بك",
-  "send_advertiser_question": "اكتب سؤالك للمعلن هنا . . ."
+  "send_advertiser_question": "اكتب سؤالك للمعلن هنا . . .",
+  "del_acc_message": "هل انت متأكد من رغبتك في حذف حسابك ؟"
 }

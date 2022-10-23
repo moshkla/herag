@@ -1,9 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:herag/core/constants/constants.dart';
 import 'package:herag/core/router/router.dart';
 import 'package:herag/core/utiles/size_config.dart';
 import 'package:herag/core/widgets/custom_buttons_widget.dart';
+import 'package:herag/features/auth/blocs/auth.cubit.dart';
 import 'package:herag/features/auth/pages/reset.password.page.dart';
 
 import '../../../theme/app_assets.dart';
@@ -20,6 +22,7 @@ class ForgetPasswordPage extends StatefulWidget {
 
 class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   int? selectedIndex;
+  var phone=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -63,8 +66,8 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                       const VerticalSpace(value: 2),
                       TextFormField(
                         style: subTitle,
-                        decoration: inputDecoration(
-                            label: 'phone'.tr()),
+                        controller: phone,
+                        decoration: inputDecoration(label: 'phone'.tr()),
                       ),
                       const VerticalSpace(value: 2),
                       Padding(
@@ -72,7 +75,8 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                         child: CustomGeneralButton(
                             text: 'send'.tr(),
                             onTap: () {
-                              MagicRouter.navigateAndPopAll(const ResetPasswordPage());
+                              GetIt.I<AuthCubit>().resetPassword(phone.text);
+
                             }),
                       ),
                     ],
