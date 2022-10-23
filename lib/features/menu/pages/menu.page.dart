@@ -5,14 +5,12 @@ import 'package:get_it/get_it.dart';
 import 'package:herag/core/router/router.dart';
 import 'package:herag/features/auth/blocs/auth.cubit.dart';
 import 'package:herag/features/menu/pages/terms_and_conditions_page.dart';
+import 'package:herag/functions/show_custom_dialog.dart';
 import 'package:herag/theme/text_styles.dart';
-import '../../../core/constants/constants.dart';
 import '../../../core/utiles/size_config.dart';
 import '../../../core/widgets/page_app_bar.dart';
 import '../../../theme/app_colors.dart';
-
-
-import '../../auth/pages/splash.page.dart';
+import '../../account/widgets/delete_account_dialog.dart';
 import 'common_questions_page.dart';
 import 'contact_us.dart';
 
@@ -84,11 +82,11 @@ class MenuPage extends StatelessWidget {
                         const VerticalSpace(value: 1.5),
                         InkWell(
                           onTap: (){
-                            GetIt.I<AuthCubit>().logOut();
+                            showCustomDialog(context: context, child: DialogDeleteAccount(),);
                           },
                           child: const ProfileCardItem(
                             icon: 'assets/images/exit.png',
-                            title: 'تسجيل الخروج',
+                            title: 'حذف الحساب',
                           ),
                         ),
                       ],
