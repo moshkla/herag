@@ -23,7 +23,7 @@ class LayoutPage extends StatefulWidget {
 class _LayoutPageState extends State<LayoutPage> {
   int currentIndex = 0;
   List<Widget> screens = [
-    const HomePage(),
+    HomePage(),
     const FavouritesPage(),
     const NotificationPage(),
     const AccountPage(),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:herag/core/router/router.dart';
 import 'package:herag/core/utiles/size_config.dart';
 
+import '../../../business logic/appCubit/appcubit_cubit.dart';
 import '../../../theme/app_assets.dart';
 import '../../language/pages/language.page.dart';
 
@@ -16,6 +18,8 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
+    GetIt.I<AppCubit>().getHome();
+
     Future.delayed(const Duration(seconds: 2), () {
       MagicRouter.navigateAndPopAll(const LanguagePage());
     });

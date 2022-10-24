@@ -1,7 +1,9 @@
 import 'package:api_request/api_request.dart';
 import 'package:herag/core/base_response.dart';
 
-class HomeAction extends ApiRequestAction<BaseResponseModel> {
+import '../../../core/models/home_model.dart';
+
+class HomeAction extends ApiRequestAction<HomeModel> {
   @override
   bool get authRequired => false;
 
@@ -12,6 +14,6 @@ class HomeAction extends ApiRequestAction<BaseResponseModel> {
   String get path => 'home';
 
   @override
-  ResponseBuilder<BaseResponseModel> get responseBuilder =>
-      (json) => BaseResponseModel.fromJson(json);
+  ResponseBuilder<HomeModel> get responseBuilder =>
+      (json) => HomeModel.fromJson(json);
 }
