@@ -1,13 +1,28 @@
 import 'package:flutter/material.dart';
 
 import '../../features/ad_details/pages/ad.details.page.dart';
+import '../../functions/cashed_network_image.dart';
 import '../../theme/styles.dart';
 import '../../theme/text_styles.dart';
 import '../router/router.dart';
 import '../utiles/size_config.dart';
 
 class HomeItem extends StatelessWidget {
-  const HomeItem({Key? key}) : super(key: key);
+  const HomeItem(
+      {Key? key,
+      required this.image,
+      required this.time,
+      required this.title,
+      required this.area,
+      required this.user,
+      required this.price})
+      : super(key: key);
+  final String image;
+  final String title;
+  final String area;
+  final String time;
+  final String user;
+  final String price;
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +42,8 @@ class HomeItem extends StatelessWidget {
                 Container(
                     padding: const EdgeInsets.all(8),
                     width: Si.ds! * 15,
-                    child: Image.asset(
-                      'assets/images/ites.png',
-                      fit: BoxFit.cover,
-                      height: 150,
-                    )
+                    child: customCachedNetworkImage(
+                        url: image, fit: BoxFit.cover, context: context)
 
                     // customCachedNetworkImage(
                     //     url: '',
@@ -43,16 +55,17 @@ class HomeItem extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'إستراحة وشاليهات ليالي القمر بالحمراء',
+                          title,
                           style: subTitle.copyWith(color: Colors.black),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              '2,000 sar',
+                              '$price sar',
                               style: subTitleBold,
                             ),
                             Row(
@@ -63,7 +76,7 @@ class HomeItem extends StatelessWidget {
                                 ),
                                 const HorizontalSpace(value: 1),
                                 Text(
-                                  'منذ دقيقة',
+                                  time,
                                   style: hint,
                                 ),
                               ],
@@ -77,14 +90,14 @@ class HomeItem extends StatelessWidget {
                               color: Colors.deepOrange,
                               size: Si.ds! * 2,
                             ),
-                            Text('جدة',
+                            Text(area,
                                 style: hint.copyWith(
                                   color: Colors.deepOrange,
                                 )),
                           ],
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Wrap(
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
                               children: [
@@ -94,7 +107,7 @@ class HomeItem extends StatelessWidget {
                                   size: Si.ds! * 2,
                                 ),
                                 Text(
-                                  'أبو عدنان',
+                                  user,
                                   style: hint.copyWith(color: Colors.green),
                                 ),
                               ],

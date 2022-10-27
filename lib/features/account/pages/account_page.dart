@@ -205,14 +205,14 @@ class AccountPage extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: ListView.builder(
-                shrinkWrap: true,
-                primary: false,
-                itemCount: 10,
-                itemBuilder: (c, i) => const HomeItem()),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          //   child: ListView.builder(
+          //       shrinkWrap: true,
+          //       primary: false,
+          //       itemCount: 10,
+          //       itemBuilder: (c, i) => const HomeItem()),
+          // ),
         ],
       ),
     );

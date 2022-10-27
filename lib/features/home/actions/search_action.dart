@@ -2,10 +2,10 @@ import 'package:api_request/api_request.dart';
 import 'package:herag/core/base_response.dart';
 import 'package:herag/core/models/posts_model.dart';
 
-class GetPostsAction extends ApiRequestAction<PostsModel> {
-  final int categoryId;
+class SearchAction extends ApiRequestAction<PostsModel> {
+  final String title;
 
-  GetPostsAction(this.categoryId);
+  SearchAction(this.title);
 
   @override
   bool get authRequired => false;
@@ -15,10 +15,10 @@ class GetPostsAction extends ApiRequestAction<PostsModel> {
 
 
   @override
-  String get path => 'home/filter';
+  String get path => 'home/search';
 
   @override
-  Map<String, dynamic> get toMap => {'category_id': categoryId};
+  Map<String, dynamic> get toMap => {'title': title};
 
   @override
   ResponseBuilder<PostsModel> get responseBuilder =>

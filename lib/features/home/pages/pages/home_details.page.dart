@@ -101,14 +101,14 @@ class HomeDetailsPage extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListView.builder(
-                  shrinkWrap: true,
-                  primary: false,
-                  itemCount: 10,
-                  itemBuilder: (c, i) => HomeItem()),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: ListView.builder(
+            //       shrinkWrap: true,
+            //       primary: false,
+            //       itemCount: 10,
+            //       itemBuilder: (c, i) => HomeItem()),
+            // ),
           ],
         ),
       ),

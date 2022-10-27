@@ -32,11 +32,14 @@ class AppCubit extends Cubit<AppStates> {
     emit(state.copyWith(children: state.categories![catId].children));
   }
 
+  List<Posts>? posts;
   getPosts({required int? categoryId}) {
+    emit(state.copyWith(loading: true));
     GetPostsAction action = GetPostsAction(categoryId!);
     action.execute();
     action.onSuccess = (res) {
-      emit(state.copyWith(posts: res?.body?.posts));
+      posts =res?.body?.posts;
+      emit(state.copyWith(posts: res?.body?.posts, loading: false));
     };
     action.onError = (res) {
       NotificationUtils.showErrorMessage(res.message!);

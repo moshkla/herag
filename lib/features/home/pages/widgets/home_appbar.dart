@@ -1,7 +1,8 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_it/get_it.dart';
+import 'package:herag/business%20logic/appCubit/appcubit_cubit.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/utiles/size_config.dart';
@@ -9,9 +10,12 @@ import '../../../../functions/cashed_network_image.dart';
 import '../../../../theme/app_colors.dart';
 import '../../../../theme/styles.dart';
 import '../../../../theme/text_styles.dart';
+import '../../actions/search_action.dart';
+import 'filter.dart';
 
 class HomeAppBar extends StatelessWidget {
-  const HomeAppBar({Key? key}) : super(key: key);
+  HomeAppBar({Key? key}) : super(key: key);
+  var bloc = GetIt.I<AppCubit>();
 
   @override
   Widget build(BuildContext context) {
@@ -38,25 +42,25 @@ class HomeAppBar extends StatelessWidget {
                         backgroundColor: Colors.white,
                         child: true
                             ? CircleAvatar(
-                          backgroundColor: AppColors.secondary,
-                          radius: Si.ds! * 2.8,
-                          child: SvgPicture.asset(
-                            'assets/images/profile-circle-bold.svg',
-                            height: Si.ds! * 8,
-                            color: Colors.white,
-                          ),
-                        )
+                                backgroundColor: AppColors.secondary,
+                                radius: Si.ds! * 2.8,
+                                child: SvgPicture.asset(
+                                  'assets/images/profile-circle-bold.svg',
+                                  height: Si.ds! * 8,
+                                  color: Colors.white,
+                                ),
+                              )
                             : Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                Si.ds! * 5.2,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                  Si.ds! * 5.2,
+                                )),
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                child: customCachedNetworkImage(
+                                    url: '',
+                                    context: context,
+                                    fit: BoxFit.cover),
                               )),
-                          clipBehavior: Clip.antiAliasWithSaveLayer,
-                          child: customCachedNetworkImage(
-                              url: '',
-                              context: context,
-                              fit: BoxFit.cover),
-                        )),
                     const HorizontalSpace(value: 1),
                     Text(
                       'hi'.tr(),
@@ -91,8 +95,7 @@ class HomeAppBar extends StatelessWidget {
                           ),
                           Text(
                             'جدة',
-                            style:
-                            title.copyWith(color: AppColors.primary),
+                            style: title.copyWith(color: AppColors.primary),
                           ),
                         ],
                       ),
@@ -109,18 +112,40 @@ class HomeAppBar extends StatelessWidget {
             child: SizedBox(
               height: 60,
               child: TextFormField(
+                onChanged: (v) async {
+                  if (v.isNotEmpty) {
+                    bloc.state.copyWith(
+                        posts: await SearchAction(v)
+                            .execute()
+                            .then((value) {return value?.body?.posts;}
+
+                        ));
+                    print(bloc.state.posts?[0].price);
+                  } else {
+                    bloc.state.copyWith(posts: bloc.posts);
+                  }
+                },
                 decoration: InputDecoration(
                   hintText: 'ابحث',
                   hintStyle: subTitle,
                   contentPadding: edgeInsetsSymmetric(v: 1, h: 2),
                   suffixIcon: SizedBox(
-                    height: Si.ds! * 10,
+                    height: Si.ds!,
                     width: Si.ds! * 10,
                     child: Row(
                       children: [
-                        Image.asset(
-                          'assets/images/filter.png',
-                          height: 30,
+                        InkWell(
+                          onTap: () {
+                            showBottomSheet(
+                                context: context,
+                                builder: (context) {
+                                  return FilterDialogScreen();
+                                });
+                          },
+                          child: Image.asset(
+                            'assets/images/filter.png',
+                            height: 30,
+                          ),
                         ),
                         const HorizontalSpace(value: 1),
                         Image.asset(

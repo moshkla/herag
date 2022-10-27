@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:herag/business%20logic/appCubit/appcubit_cubit.dart';
+import 'package:herag/core/constants/constants.dart';
 import 'package:herag/core/widgets/custom_buttons_widget.dart';
 import 'package:herag/core/widgets/home.item.dart';
 import '../../../../core/router/router.dart';
@@ -26,6 +27,7 @@ class HomePage extends StatelessWidget {
         builder: (c, s) {
           return SingleChildScrollView(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 HomeAppBar(),
                 VerticalSpace(value: 1),
@@ -80,21 +82,23 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 VerticalSpace(value: 1),
-                if(bloc.state.children!=null)
-                SizedBox(
-                  height: Si.ds! * 5,
-                  width: Si.screenWidth,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    primary: false,
-                    itemCount: bloc.state.children!.length,
-                    itemBuilder: (c, i) => Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: SubCatItem(index: i,),
+                if (bloc.state.children != null)
+                  SizedBox(
+                    height: Si.ds! * 5,
+                    width: Si.screenWidth,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      primary: false,
+                      itemCount: bloc.state.children!.length,
+                      itemBuilder: (c, i) => Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: SubCatItem(
+                          index: i,
+                        ),
+                      ),
                     ),
                   ),
-                ),
                 VerticalSpace(value: 1),
                 Container(
                   height: Si.ds! * 20,
@@ -143,16 +147,29 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      primary: false,
-                      itemCount: 10,
-                      itemBuilder: (c, i) =>
-                          InkWell(onTap: () {
-
-                          }, child: HomeItem())),
+                BlocBuilder(
+                  bloc: bloc,
+                  builder: (c, s) {
+                    return bloc.state.loading==true
+                        ? Center(child: CircularProgressIndicator())
+                        : Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: ListView.builder(
+                                shrinkWrap: true,
+                                primary: false,
+                                itemCount: bloc.state.posts?.length ?? 0,
+                                itemBuilder: (c, i) => HomeItem(
+                                      image:
+                                          bloc.state.posts?[i].image?.first ??
+                                              '',
+                                      time: bloc.state.posts?[i].time ?? '',
+                                      title: bloc.state.posts?[i].title ?? '',
+                                      area: bloc.state.posts?[i].area ?? '',
+                                      user: bloc.state.posts?[i].user ?? '',
+                                      price: bloc.state.posts?[i].price ?? '',
+                                    )),
+                          );
+                  },
                 ),
               ],
             ),

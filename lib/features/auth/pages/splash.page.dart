@@ -19,7 +19,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    GetIt.I<AppCubit>().getPosts(categoryId: null);
+    GetIt.I<AppCubit>().getPosts(categoryId: 0);
     GetIt.I<AppCubit>().getHome();
 
     Future.delayed(const Duration(seconds: 2), () {

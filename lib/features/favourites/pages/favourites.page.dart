@@ -4,7 +4,6 @@ import 'package:herag/core/widgets/page_app_bar.dart';
 import '../../../core/constants/constants.dart';
 import '../../../core/widgets/home.item.dart';
 
-
 class FavouritesPage extends StatelessWidget {
   const FavouritesPage({Key? key}) : super(key: key);
 
@@ -17,14 +16,14 @@ class FavouritesPage extends StatelessWidget {
             pageTitle: 'favourits'.tr(),
             withoutBackBtn: true,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: ListView.builder(
-                shrinkWrap: true,
-                primary: false,
-                itemCount: 10,
-                itemBuilder: (c, i) => const HomeItem()),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          //   child: ListView.builder(
+          //       shrinkWrap: true,
+          //       primary: false,
+          //       itemCount: 10,
+          //       itemBuilder: (c, i) => const HomeItem()),
+          // ),
         ],
       ),
     );
