@@ -113,17 +113,7 @@ class HomeAppBar extends StatelessWidget {
               height: 60,
               child: TextFormField(
                 onChanged: (v) async {
-                  if (v.isNotEmpty) {
-                    bloc.state.copyWith(
-                        posts: await SearchAction(v)
-                            .execute()
-                            .then((value) {return value?.body?.posts;}
-
-                        ));
-                    print(bloc.state.posts?[0].price);
-                  } else {
-                    bloc.state.copyWith(posts: bloc.posts);
-                  }
+                  bloc.serachPosts(v);
                 },
                 decoration: InputDecoration(
                   hintText: 'ابحث',
