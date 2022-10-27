@@ -21,6 +21,7 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     GetIt.I<AppCubit>().getPosts(categoryId: 0);
     GetIt.I<AppCubit>().getHome();
+    GetIt.I<AppCubit>().getConstants();
 
     Future.delayed(const Duration(seconds: 2), () {
       MagicRouter.navigateAndPopAll(const LayoutPage()

@@ -16,7 +16,7 @@
 // import '../actions/delete_account_action.dart';
 // import '../actions/get_purchased-units.dart';
 // import '../actions/get_purchased_details.dart';
-// import '../actions/logout_action.dart';
+// import '../actions/get_constants_action.dart';
 //
 // class AccountController extends GetxController {
 //   TermsAndCondtionModel? termsAndCondtionModel;

@@ -2,7 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:herag/core/models/posts_model.dart';
 import 'package:herag/core/utiles/notification_utils.dart';
+import '../../core/models/constants_model.dart';
 import '../../core/models/home_model.dart';
+import '../../features/account/actions/get_constants_action.dart';
 import '../../features/favourites/actions/get_favourites_action.dart';
 import '../../features/favourites/actions/toggel_favourite_action.dart';
 import '../../features/home/actions/get_home_action.dart';
@@ -65,25 +67,40 @@ class AppCubit extends Cubit<AppStates> {
   }
 
   toggelFavourites(int postId) {
-    ToggelFavouriteAction action=ToggelFavouriteAction(postId:postId);
+    ToggelFavouriteAction action = ToggelFavouriteAction(postId: postId);
     action.execute();
-    action.onSuccess=(res){
-      NotificationUtils.showSuccessMessage(res?.message??'');
+    action.onSuccess = (res) {
+      NotificationUtils.showSuccessMessage(res?.message ?? '');
     };
-    action.onError=(res){
-      NotificationUtils.showErrorMessage(res.message??'');
+    action.onError = (res) {
+      NotificationUtils.showErrorMessage(res.message ?? '');
     };
   }
 
-getFavourites(){
+  getFavourites() {
     emit(state.copyWith(loading: true));
-  GetFavouritesAction action= GetFavouritesAction();
-  action.execute();
-  action.onSuccess=(res){
-    emit(state.copyWith(favourites: res?.body?.posts));
-  };
-  action.onError=(res){
-    NotificationUtils.showErrorMessage(res.message??'');
-  };
-}
+    GetFavouritesAction action = GetFavouritesAction();
+    action.execute();
+    action.onSuccess = (res) {
+      emit(state.copyWith(favourites: res?.body?.posts, loading: false));
+    };
+    action.onError = (res) {
+      NotificationUtils.showErrorMessage(res.message ?? '');
+    };
+  }
+
+  ConstantsModel? constantsModel;
+
+  getConstants() {
+    emit(state.copyWith(loading: true));
+    GetConstantsAction action = GetConstantsAction();
+    action.execute();
+    action.onSuccess = (res) {
+      constantsModel = res;
+      emit(state.copyWith(loading: false));
+    };
+    action.onError = (res) {
+      NotificationUtils.showErrorMessage(res.message ?? '');
+    };
+  }
 }
