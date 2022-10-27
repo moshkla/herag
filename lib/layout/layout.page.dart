@@ -24,7 +24,7 @@ class _LayoutPageState extends State<LayoutPage> {
   int currentIndex = 0;
   List<Widget> screens = [
     HomePage(),
-    const FavouritesPage(),
+    FavouritesPage(),
     const NotificationPage(),
     const AccountPage(),
     const MenuPage(),

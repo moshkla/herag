@@ -150,7 +150,7 @@ class HomePage extends StatelessWidget {
                 BlocBuilder(
                   bloc: bloc,
                   builder: (c, s) {
-                    return bloc.state.loading==true
+                    return bloc.state.loading == true
                         ? Center(child: CircularProgressIndicator())
                         : Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -159,6 +159,8 @@ class HomePage extends StatelessWidget {
                                 primary: false,
                                 itemCount: bloc.state.posts?.length ?? 0,
                                 itemBuilder: (c, i) => HomeItem(
+
+                                      id: bloc.state.posts?[i].id ?? 0,
                                       image:
                                           bloc.state.posts?[i].image?.first ??
                                               '',
@@ -166,7 +168,7 @@ class HomePage extends StatelessWidget {
                                       title: bloc.state.posts?[i].title ?? '',
                                       area: bloc.state.posts?[i].area ?? '',
                                       user: bloc.state.posts?[i].user ?? '',
-                                      price: bloc.state.posts?[i].price ?? '',
+                                      price: bloc.state.posts?[i].price ?? '', inFav:bloc.state.posts?[i].inFavourites??false ,
                                     )),
                           );
                   },

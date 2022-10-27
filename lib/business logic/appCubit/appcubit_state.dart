@@ -14,6 +14,7 @@ class AppStates {
   List<Categories>? categories;
   List<Children>? children;
   List<Posts>? posts;
+  List<Posts>? favourites;
 
   AppStates({
     this.loading,
@@ -21,6 +22,7 @@ class AppStates {
     this.categories,
     this.children,
     this.posts,
+    this.favourites,
   });
 
   AppStates copyWith({
@@ -29,6 +31,7 @@ class AppStates {
     List<Categories>? categories,
     List<Children>? children,
     List<Posts>? posts,
+    List<Posts>? favourites,
 
   }) {
     return AppStates(
@@ -37,6 +40,7 @@ class AppStates {
       categories: categories ?? this.categories,
       children: children ?? this.children,
       posts: posts ?? this.posts,
+      favourites: favourites ?? this.favourites,
     );
   }
 
@@ -48,6 +52,7 @@ class AppStates {
         listEquals(other.sliders, sliders) &&
         listEquals(other.categories, categories)&&
         listEquals(other.posts, posts)&&
+        listEquals(other.favourites, favourites)&&
         listEquals(other.children, children);
   }
 
@@ -57,6 +62,7 @@ class AppStates {
     sliders.hashCode ^
     categories.hashCode ^
     posts.hashCode ^
+    favourites.hashCode ^
     children.hashCode ;
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:herag/core/models/posts_model.dart';
 import 'package:herag/core/utiles/notification_utils.dart';
 import '../../core/models/home_model.dart';
+import '../../features/favourites/actions/get_favourites_action.dart';
 import '../../features/favourites/actions/toggel_favourite_action.dart';
 import '../../features/home/actions/get_home_action.dart';
 import '../../features/home/actions/get_posts_action.dart';
@@ -63,7 +64,7 @@ class AppCubit extends Cubit<AppStates> {
     }
   }
 
-  toggelFavourrites(int postId) {
+  toggelFavourites(int postId) {
     ToggelFavouriteAction action=ToggelFavouriteAction(postId:postId);
     action.execute();
     action.onSuccess=(res){
@@ -74,6 +75,15 @@ class AppCubit extends Cubit<AppStates> {
     };
   }
 
-
-  search() {}
+getFavourites(){
+    emit(state.copyWith(loading: true));
+  GetFavouritesAction action= GetFavouritesAction();
+  action.execute();
+  action.onSuccess=(res){
+    emit(state.copyWith(favourites: res?.body?.posts));
+  };
+  action.onError=(res){
+    NotificationUtils.showErrorMessage(res.message??'');
+  };
+}
 }
