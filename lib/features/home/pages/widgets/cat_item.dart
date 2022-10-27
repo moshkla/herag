@@ -16,36 +16,29 @@ class CatItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        // if (index == 0) {
-        //   MagicRouter.navigateTo(HomeDetailsPage());
-        // }
-      },
-      child: Container(
-        height: Si.ds! * 5,
-        width: Si.ds! * 10,
-        decoration: boxDecoration(
-            withBorder: false, solidColor: AppColors.primary.withOpacity(0.1)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: Si.ds! * 5,
-              child: Image.network(
-                  bloc.homeModel!.body!.categories![index].image!,
-                  fit: BoxFit.cover),
+    return Container(
+      height: Si.ds! * 5,
+      width: Si.ds! * 10,
+      decoration: boxDecoration(
+          withBorder: false, solidColor: AppColors.primary.withOpacity(0.1)),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: Si.ds! * 5,
+            child: Image.network(
+                bloc.state.categories![index].image!,
+                fit: BoxFit.cover),
 
-              // customCachedNetworkImage(
-              //     url: '', context: context, fit: BoxFit.cover),
-            ),
-            Center(
-              child: Text(bloc.homeModel!.body!.categories![index].title!,
-                  style: subTitle.copyWith(color: AppColors.primary)),
-            ),
-          ],
-        ),
+            // customCachedNetworkImage(
+            //     url: '', context: context, fit: BoxFit.cover),
+          ),
+          Center(
+            child: Text(bloc.state.categories![index].title!,
+                style: subTitle.copyWith(color: AppColors.primary)),
+          ),
+        ],
       ),
     );
   }

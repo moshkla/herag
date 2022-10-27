@@ -38,6 +38,7 @@ class HomeDetailsPage extends StatelessWidget {
                       )),
             ),
             VerticalSpace(value: 1),
+
             SizedBox(
               height: Si.ds! * 5,
               width: Si.screenWidth,
@@ -48,7 +49,7 @@ class HomeDetailsPage extends StatelessWidget {
                 itemCount: 10,
                 itemBuilder: (c, i) => Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: SubCatItem(),
+                  child: SubCatItem(index: i,),
                 ),
               ),
             ),

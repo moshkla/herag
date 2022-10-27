@@ -1,37 +1,51 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:herag/features/ad_details/actions/get_home_action.dart';
-
+import 'package:herag/core/models/posts_model.dart';
+import 'package:herag/core/utiles/notification_utils.dart';
 import '../../core/models/home_model.dart';
+import '../../features/home/actions/get_home_action.dart';
+import '../../features/home/actions/get_posts_action.dart';
 
 part 'appcubit_state.dart';
 
 class AppCubit extends Cubit<AppStates> {
-  AppCubit() : super(AppInitial());
-
-  static AppCubit get(context) => BlocProvider.of(context);
+  AppCubit() : super(AppStates());
   HomeModel? homeModel;
-  getHome(){
-    HomeAction action= HomeAction();
+
+  getHome() {
+    emit(state.copyWith(loading: true));
+    HomeAction action = HomeAction();
     action.execute();
-    action.onSuccess=(res){
+    action.onSuccess = (res) {
       homeModel = res;
-      emit(GetHomeSuccessState());
+      emit(state.copyWith(
+        categories: res?.body?.categories ?? [],
+        sliders: res?.body?.sliders ?? [],
+      ));
     };
-    action.onError=(res){
-      emit(GetHomeErrorState());
+    action.onError = (res) {
+      NotificationUtils.showErrorMessage(res.message!);
     };
   }
-  getPosts(){
-    HomeAction action= HomeAction();
-    action.onSuccess=(res){};
-    action.onError=(res){};
-  }
-  getFavourites(){
 
+  getSubCategory(int catId) {
+    emit(state.copyWith(children: state.categories![catId].children));
   }
-  contactUs(){
 
+  getPosts({required int? categoryId}) {
+    GetPostsAction action = GetPostsAction(categoryId!);
+    action.execute();
+    action.onSuccess = (res) {
+      emit(state.copyWith(posts: res?.body?.posts));
+    };
+    action.onError = (res) {
+      NotificationUtils.showErrorMessage(res.message!);
+    };
   }
-  search(){}
 
+  getFavourites() {}
+
+  contactUs() {}
+
+  search() {}
 }

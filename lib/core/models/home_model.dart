@@ -3,28 +3,35 @@ class HomeModel {
   bool? status;
   String? message;
   Body? body;
+  String? info;
 
-  HomeModel({this.code, this.status, this.message, this.body});
+  HomeModel(
+      {this.code,
+      this.status,
+      this.message,
+      this.body,
+      this.info});
 
   HomeModel.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     status = json['status'];
     message = json['message'];
     body = json['body'] != null ? new Body.fromJson(json['body']) : null;
+    info = json['info'];
   }
 }
 
 class Body {
-  List<String>? sliders;
+  List<Sliders>? sliders;
   List<Categories>? categories;
 
   Body({this.sliders, this.categories});
 
   Body.fromJson(Map<String, dynamic> json) {
     if (json['sliders'] != null) {
-      sliders = <String>[];
+      sliders = <Sliders>[];
       json['sliders'].forEach((v) {
-        sliders!.add(v);
+        sliders!.add(new Sliders.fromJson(v));
       });
     }
     if (json['categories'] != null) {
@@ -34,6 +41,23 @@ class Body {
       });
     }
   }
+}
+
+class Sliders {
+  int? id;
+  String? title;
+  String? description;
+  String? image;
+
+  Sliders({this.id, this.title, this.description, this.image});
+
+  Sliders.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    title = json['title'];
+    description = json['description'];
+    image = json['image'];
+  }
+
 }
 
 class Categories {

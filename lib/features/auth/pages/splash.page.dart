@@ -4,6 +4,7 @@ import 'package:herag/core/router/router.dart';
 import 'package:herag/core/utiles/size_config.dart';
 
 import '../../../business logic/appCubit/appcubit_cubit.dart';
+import '../../../layout/layout.page.dart';
 import '../../../theme/app_assets.dart';
 import '../../language/pages/language.page.dart';
 
@@ -18,12 +19,19 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
+    GetIt.I<AppCubit>().getPosts(categoryId: null);
     GetIt.I<AppCubit>().getHome();
 
     Future.delayed(const Duration(seconds: 2), () {
-      MagicRouter.navigateAndPopAll(const LanguagePage());
+      MagicRouter.navigateAndPopAll(const LayoutPage()
+
+          //LanguagePage()
+
+          );
     });
-  }  @override
+  }
+
+  @override
   Widget build(BuildContext context) {
     Si().init(context);
     return Container(

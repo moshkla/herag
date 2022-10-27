@@ -29,44 +29,58 @@ class HomePage extends StatelessWidget {
               children: [
                 HomeAppBar(),
                 VerticalSpace(value: 1),
-                SizedBox(
-                  height: Si.ds! * 10,
-                  width: Si.screenWidth,
-                  child: Row(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          MagicRouter.navigateTo(HomeDetailsPage());
-                        },
-                        child: Container(
-                          // height: Si.ds! * 5,
-                          width: Si.ds! * 10,
-                          decoration: boxDecoration(
-                              withBorder: false,
-                              solidColor: AppColors.primary.withOpacity(0.1)),
-                          child: Center(
-                            child: Text('الكل',
-                                style: subTitle.copyWith(
-                                    color: AppColors.primary)),
+                SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: SizedBox(
+                    height: Si.ds! * 10,
+                    width: Si.screenWidth,
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              MagicRouter.navigateTo(HomeDetailsPage());
+                            },
+                            child: Container(
+                              // height: Si.ds! * 5,
+                              width: Si.ds! * 10,
+                              decoration: boxDecoration(
+                                  withBorder: false,
+                                  solidColor:
+                                      AppColors.primary.withOpacity(0.1)),
+                              child: Center(
+                                child: Text('الكل',
+                                    style: subTitle.copyWith(
+                                        color: AppColors.primary)),
+                              ),
+                            ),
                           ),
-                        ),
+                          ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              primary: false,
+                              itemCount: bloc.state.categories?.length ?? 0,
+                              itemBuilder: (c, i) => Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8.0),
+                                    child: InkWell(
+                                      onTap: () {
+                                        bloc.getSubCategory(i);
+                                      },
+                                      child: CatItem(
+                                        index: i,
+                                      ),
+                                    ),
+                                  )),
+                        ],
                       ),
-                      ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          shrinkWrap: true,
-                          primary: false,
-                          itemCount: bloc.homeModel!.body!.categories!.length,
-                          itemBuilder: (c, i) => Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: CatItem(
-                                  index: i,
-                                ),
-                              )),
-                    ],
+                    ),
                   ),
                 ),
                 VerticalSpace(value: 1),
+                if(bloc.state.children!=null)
                 SizedBox(
                   height: Si.ds! * 5,
                   width: Si.screenWidth,
@@ -74,10 +88,10 @@ class HomePage extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     shrinkWrap: true,
                     primary: false,
-                    itemCount: 10,
+                    itemCount: bloc.state.children!.length,
                     itemBuilder: (c, i) => Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: SubCatItem(),
+                      child: SubCatItem(index: i,),
                     ),
                   ),
                 ),
@@ -135,7 +149,10 @@ class HomePage extends StatelessWidget {
                       shrinkWrap: true,
                       primary: false,
                       itemCount: 10,
-                      itemBuilder: (c, i) => HomeItem()),
+                      itemBuilder: (c, i) =>
+                          InkWell(onTap: () {
+
+                          }, child: HomeItem())),
                 ),
               ],
             ),
