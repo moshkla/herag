@@ -28,12 +28,8 @@ class AdDetailsPage extends StatelessWidget {
                     Container(
                         height: Si.ds! * 22,
                         decoration: boxDecoration(),
-                        child: const buildSlider(
-                          images: [
-                            'assets/images/ites.png',
-                            'assets/images/ites.png',
-                            'assets/images/ites.png'
-                          ],
+                        child:  buildSlider(sliders: [],
+
                         )),
                     PositionedDirectional(
                       end: 10,

@@ -107,12 +107,8 @@ class HomePage extends StatelessWidget {
                     children: [
                       Container(
                         height: Si.ds! * 20,
-                        child: buildSlider(
-                          images: [
-                            'assets/images/hall.png',
-                            'assets/images/hall.png',
-                            'assets/images/hall.png'
-                          ],
+                        child: buildSlider(sliders: bloc.state.sliders??[],
+
                         ),
                       ),
                       PositionedDirectional(
