@@ -17,7 +17,7 @@ class CommonQuestions extends StatelessWidget {
           child: Column(
             children: [
               const pageAppBar(
-                pageTitle: 'سياسة التطبيق',
+                pageTitle: 'أسألة متكررة',
               ),
               Padding(
                   padding: const EdgeInsets.all(16.0),

@@ -55,7 +55,7 @@ class _LayoutPageState extends State<LayoutPage> {
         floatingActionButton: FloatingActionButton(
           backgroundColor: AppColors.primary,
           onPressed: () {
-            MagicRouter.navigateTo(const AddAdsPage());
+           MagicRouter.navigateTo( AddAdsPage());
           },
           child: const Icon(
             Icons.add,

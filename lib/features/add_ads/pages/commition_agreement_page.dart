@@ -1,17 +1,22 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:herag/business%20logic/appCubit/appcubit_cubit.dart';
 import 'package:herag/core/router/router.dart';
+import 'package:herag/core/utiles/notification_utils.dart';
 import 'package:herag/theme/styles.dart';
 
 import '../../../core/constants/constants.dart';
 import '../../../core/utiles/size_config.dart';
 import '../../../core/widgets/custom_buttons_widget.dart';
 import '../../../core/widgets/page_app_bar.dart';
+import '../../../theme/app_colors.dart';
 import '../../../theme/text_styles.dart';
 import 'create_ad_page.dart';
 
 class CommissionAgreement extends StatefulWidget {
-  const CommissionAgreement({Key? key}) : super(key: key);
+  const CommissionAgreement({Key? key, required this.catId}) : super(key: key);
+  final int catId;
 
   @override
   State<CommissionAgreement> createState() => _CommissionAgreementState();
@@ -27,9 +32,7 @@ class _CommissionAgreementState extends State<CommissionAgreement> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            pageAppBar(
-                pageTitle:
-                "commission_agreement".tr()),
+            pageAppBar(pageTitle: "commission_agreement".tr()),
             const VerticalSpace(value: 1),
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -37,7 +40,9 @@ class _CommissionAgreementState extends State<CommissionAgreement> {
                 child: Text(
                   'بسم الله الرحمن الرحيم\n'
                   ' قال الله تعالى:" وَأَوْفُواْ بِعَهْدِ اللهِ إِذَا عَاهَدتُّمْ وَلاَ تَنقُضُواْ الأَيْمَانَ بَعْدَ تَوْكِيدِهَا وَقَدْ جَعَلْتُمُ اللهَ عَلَيْكُمْ كَفِيلاً \n"صدق الله العظيم',
-                  style: title.copyWith(color: Colors.black..withOpacity(0.7)),
+                  style: title.copyWith(
+                      color: Colors.black..withOpacity(0.7),
+                      fontSize: Si.ds! * 3),
                 ),
               ),
             ),
@@ -56,8 +61,21 @@ class _CommissionAgreementState extends State<CommissionAgreement> {
                       }),
                   Expanded(
                     child: Text(
-                      '* اتعهد واقسم بالله أنا المعلن أن أدفع عمولة الموقع وهي 1% من قيمة البيع سواء تم البيع عن طريق الموقع أو بسببه.',
-                      style: title,
+                      context.locale == 'ar'
+                          ? GetIt.I<AppCubit>()
+                                  .constantsModel
+                                  ?.body
+                                  ?.qasam
+                                  ?.ar ??
+                              ''
+                          : GetIt.I<AppCubit>()
+                                  .constantsModel
+                                  ?.body
+                                  ?.qasam
+                                  ?.en ??
+                              '',
+                      style: title.copyWith(
+                          color: AppColors.primary, fontSize: Si.ds! * 3),
                     ),
                   ),
                 ],
@@ -81,7 +99,14 @@ class _CommissionAgreementState extends State<CommissionAgreement> {
               child: CustomGeneralButton(
                   text: 'continue'.tr(),
                   onTap: () {
-                    MagicRouter.navigateTo(const CreateAdPage());
+                    if (isChecked == true) {
+                      MagicRouter.navigateTo(CreateAdPage(
+                        catId: widget.catId,
+                      ));
+                    } else {
+                      NotificationUtils.showErrorMessage(
+                          'يجيب عليك تحديد القسم');
+                    }
                   }),
             ),
           ],

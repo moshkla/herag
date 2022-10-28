@@ -1,105 +1,111 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:herag/business%20logic/appCubit/appcubit_cubit.dart';
+import 'package:herag/core/models/home_model.dart';
 import 'package:herag/core/router/router.dart';
+import 'package:herag/features/add_ads/pages/create_ad_page.dart';
+import 'package:herag/functions/cashed_network_image.dart';
 import 'package:herag/theme/text_styles.dart';
 import '../../../core/constants/constants.dart';
 import '../../../core/utiles/size_config.dart';
 import '../../../core/widgets/page_app_bar.dart';
 import '../../../theme/app_colors.dart';
 
-
 import 'commition_agreement_page.dart';
 
-class AddAdsPage extends StatelessWidget {
+class AddAdsPage extends StatefulWidget {
   const AddAdsPage({Key? key}) : super(key: key);
+
+  @override
+  State<AddAdsPage> createState() => _AddAdsPageState();
+}
+
+class _AddAdsPageState extends State<AddAdsPage> {
+  var bloc = GetIt.I<AppCubit>();
+  bool _expanded = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: [
-              pageAppBar(
-                  pageTitle:
-                  "select_ad_type".tr()),
-              ListView.builder(
+        child: Column(
+          children: [
+            pageAppBar(pageTitle: "select_ad_type".tr()),
+
+            ListView.builder(
                 shrinkWrap: true,
                 primary: false,
-                itemCount: 10,
-                itemBuilder: (c, index) => InkWell(
-                  onTap: () {
-                    MagicRouter.navigateTo(const CommissionAgreement());
-                  },
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 8),
-                    child: ProfileCardItem(
-                      icon: 'assets/images/call.png',
-                      title: 'اعلان',
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+                itemCount: 2,
+                itemBuilder: (c, i) => ExpandedItem(
+                      categories: bloc.state.categories?[i],
+                    )),
+          ],
         ),
       ),
     );
   }
 }
 
-class ProfileCardItem extends StatelessWidget {
-  final String title;
-  final Color? color;
-  final String icon;
+class ExpandedItem extends StatefulWidget {
+  const ExpandedItem({
+    Key? key,
+    required this.categories,
+  }) : super(key: key);
+  final Categories? categories;
 
-  const ProfileCardItem(
-      {Key? key, required this.title, this.color, required this.icon})
-      : super(key: key);
+  @override
+  State<ExpandedItem> createState() => _ExpandedItemState();
+}
+
+class _ExpandedItemState extends State<ExpandedItem> {
+  bool _expanded = false;
 
   @override
   Widget build(BuildContext context) {
-    double h = MediaQuery.of(context).size.height;
-    double w = MediaQuery.of(context).size.width;
-
-    return Container(
-      width: double.infinity,
-      height: h * 0.07,
-      padding: EdgeInsets.only(left: w * 0.02, right: w * 0.02),
-      decoration: BoxDecoration(
-        color: Colors.grey.shade200,
-        // color ?? context.textTheme.title.color,
-        borderRadius: BorderRadius.circular(w * 0.02),
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                child: Image.asset(
-                  icon,
-                  height: Si.ds! * 3,
-                ),
+    return Column(
+      children: [
+        ExpansionPanelList(
+          elevation: 0,
+          animationDuration: const Duration(milliseconds: 500),
+          children: [
+            ExpansionPanel(
+              headerBuilder: (context, isExpanded) {
+                return ListTile(
+                    leading: Container(
+                      width: Si.ds!*5,
+                      child: customCachedNetworkImage(
+                          url: widget.categories?.image ?? '',
+                          context: context,
+                          fit: BoxFit.cover),
+                    ),
+                    title: Text(
+                      widget.categories?.title ?? '',
+                      style: title,
+                    ));
+              },
+              body: Column(
+                children: List.generate(
+                    widget.categories?.children?.length ?? 0,
+                    (index) => ListTile(
+                      onTap: (){
+                        MagicRouter.navigateTo(CommissionAgreement(catId: widget.categories?.children?[index].id??0,));
+                      },
+                          title: Text(
+                              widget.categories?.children?[index].title ?? '',style: subTitle,),
+                        )),
               ),
-              const HorizontalSpace(value: 1),
-              Text(title, style: subTitle
-                  // color != null ? Colors.white :  context.textTheme.themeStyleText.color),
-                  ),
-            ],
-          ),
-          Icon(Icons.arrow_forward_ios,
-              size: Si.ds! * 2, color: AppColors.primary
-              //color != null ? Colors.white :  context.textTheme.themeStyleText.color,
-              ),
-        ],
-      ),
+              isExpanded: _expanded,
+              canTapOnHeader: true,
+            ),
+          ],
+          dividerColor: Colors.grey,
+          expansionCallback: (panelIndex, isExpanded) {
+            _expanded = !_expanded;
+            setState(() {});
+          },
+        ),
+      ],
     );
   }
 }

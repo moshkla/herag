@@ -11,8 +11,8 @@ import '../../../theme/input_decoration.dart';
 import '../../../theme/text_styles.dart';
 
 class CreateAdPage extends StatefulWidget {
-  const CreateAdPage({Key? key}) : super(key: key);
-
+  const CreateAdPage({Key? key, required this.catId}) : super(key: key);
+  final int catId;
   @override
   State<CreateAdPage> createState() => _CreateAdPageState();
 }
