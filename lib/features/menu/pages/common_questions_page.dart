@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:herag/business%20logic/appCubit/appcubit_cubit.dart';
 import 'package:herag/theme/text_styles.dart';
 
 import '../../../core/widgets/page_app_bar.dart';
 
 class CommonQuestions extends StatelessWidget {
-  const CommonQuestions({Key? key}) : super(key: key);
+  CommonQuestions({Key? key}) : super(key: key);
+  var bloc = GetIt.I<AppCubit>();
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +25,16 @@ class CommonQuestions extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       primary: false,
-                      itemCount: 10,
-                      itemBuilder: (c, index) => const Padding(
+                      itemCount: bloc.faqsModel?.body?.questions?.length,
+                      itemBuilder: (c, index) => Padding(
                             padding: EdgeInsets.all(8.0),
-                            child: ExpandedItem(),
+                            child: ExpandedItem(
+                              question: bloc.faqsModel?.body?.questions?[index]
+                                      .question ??
+                                  '',
+                              answer: bloc.faqsModel?.body?.questions?[index]
+                                  .answer??'',
+                            ),
                           ))),
             ],
           ),
@@ -38,7 +47,11 @@ class CommonQuestions extends StatelessWidget {
 class ExpandedItem extends StatefulWidget {
   const ExpandedItem({
     Key? key,
+    required this.question,
+    required this.answer,
   }) : super(key: key);
+  final String? question;
+  final String? answer;
 
   @override
   State<ExpandedItem> createState() => _ExpandedItemState();
@@ -60,7 +73,7 @@ class _ExpandedItemState extends State<ExpandedItem> {
               headerBuilder: (context, isExpanded) {
                 return ListTile(
                     title: Text(
-                  'كيف أقوم بدفع عمولة الموقع؟',
+                  widget.question!,
                   style: subTitle,
                 ));
               },
@@ -69,10 +82,9 @@ class _ExpandedItemState extends State<ExpandedItem> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى'
-                      ' إضافة إلى زيادة عدد الحروف التى يولدها ',
-                      style:
-                          subHint.copyWith(color: Colors.black.withOpacity(0.7)),
+                      widget.answer!,
+                      style: subHint.copyWith(
+                          color: Colors.black.withOpacity(0.7)),
                     ),
                   ),
                 ],

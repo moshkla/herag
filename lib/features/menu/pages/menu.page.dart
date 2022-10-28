@@ -42,7 +42,7 @@ class MenuPage extends StatelessWidget {
                   const VerticalSpace(value: 1.5),
                   InkWell(
                     onTap: () {
-                      MagicRouter.navigateTo(const CommonQuestions());
+                      MagicRouter.navigateTo(CommonQuestions());
                     },
                     child: const ProfileCardItem(
                       icon: 'assets/images/ask.png',

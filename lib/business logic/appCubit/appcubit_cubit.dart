@@ -1,10 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:herag/core/models/faqsModel.dart';
 import 'package:herag/core/models/posts_model.dart';
 import 'package:herag/core/utiles/notification_utils.dart';
 import '../../core/models/constants_model.dart';
 import '../../core/models/home_model.dart';
 import '../../features/account/actions/get_constants_action.dart';
+import '../../features/account/actions/get_faqs_action.dart';
 import '../../features/favourites/actions/get_favourites_action.dart';
 import '../../features/favourites/actions/toggel_favourite_action.dart';
 import '../../features/home/actions/get_home_action.dart';
@@ -92,15 +94,27 @@ class AppCubit extends Cubit<AppStates> {
   ConstantsModel? constantsModel;
 
   getConstants() {
-    emit(state.copyWith(loading: true));
     GetConstantsAction action = GetConstantsAction();
     action.execute();
     action.onSuccess = (res) {
       constantsModel = res;
-      emit(state.copyWith(loading: false));
     };
     action.onError = (res) {
       NotificationUtils.showErrorMessage(res.message ?? '');
     };
   }
+
+  FaqsModel? faqsModel;
+
+  getFaqs() {
+    GetFaqsAction action = GetFaqsAction();
+    action.execute();
+    action.onSuccess = (res) {
+      faqsModel = res;
+    };
+    action.onError = (res) {
+      NotificationUtils.showErrorMessage(res.message ?? '');
+    };
+  }
+
 }
