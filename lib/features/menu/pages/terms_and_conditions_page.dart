@@ -1,8 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:herag/business%20logic/appCubit/appcubit_cubit.dart';
 import 'package:herag/theme/text_styles.dart';
 
 import '../../../core/utiles/size_config.dart';
 import '../../../core/widgets/page_app_bar.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class TermsAndConditions extends StatelessWidget {
   const TermsAndConditions({Key? key}) : super(key: key);
@@ -20,12 +24,12 @@ class TermsAndConditions extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  "يجمع المستشفى التعليمي بين مساعدة الناس والتدريس لطلاب الطب والتمريض. عادة ما تسمى المنشأة الطبية الأصغر من المستشفى بالعيادة. المستشفيات لديها مجموعة من الأقسام (مثل الجراحة، والعناية العاجلة) والوحدات المتخصصة مثل طب القلب. بعض المستشفيات لديها أقسام للمرضى غير المقيمين وبعضها يحتوي على وحدات علاجية للأمراض المزمنة. وتشمل وحدات الدعم الشائعة مثل: الصيدلية، وعلم الأمراض، والأشعة."
-                  " عادةً ما يتم تمويل المستشفيات من قبل القطاع العام، أو المؤسسات الصحية (سواء ربحية أو غير ربحية)، أو شركات التأمين الصحي، أو المؤسسات الخيرية، بما في ذلك التبرعات الخيرية المباشرة. تاريخيًا، غالبًا ما تم تأسيس المستشفيات وتمويلها بموجب أوامر دينية، أو من قبل أفراد وقادة خيريين."
-                  " عادةً ما يتم تمويل المستشفيات من قبل القطاع العام، أو المؤسسات الصحية (سواء ربحية أو غير ربحية)، أو شركات التأمين الصحي، أو المؤسسات الخيرية، بما في ذلك التبرعات الخيرية المباشرة. تاريخيًا، غالبًا ما تم تأسيس المستشفيات وتمويلها بموجب أوامر دينية، أو من قبل أفراد وقادة خيريين."
-                  " عادةً ما يتم تمويل المستشفيات من قبل القطاع العام، أو المؤسسات الصحية (سواء ربحية أو غير ربحية)، أو شركات التأمين الصحي، أو المؤسسات الخيرية، بما في ذلك التبرعات الخيرية المباشرة. تاريخيًا، غالبًا ما تم تأسيس المستشفيات وتمويلها بموجب أوامر دينية، أو من قبل أفراد وقادة خيريين.",
-                  style: subTitle.copyWith(color: Colors.black),
+                child: Html(
+                 data: context.locale == 'ar' ?
+               GetIt.I<AppCubit>().constantsModel
+                  ?.body?.terms?.ar??'':
+                  GetIt.I<AppCubit>().constantsModel
+                      ?.body?.terms?.en??'',
                 ),
               ),
             ],
