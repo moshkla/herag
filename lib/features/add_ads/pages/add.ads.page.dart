@@ -32,7 +32,6 @@ class _AddAdsPageState extends State<AddAdsPage> {
         child: Column(
           children: [
             pageAppBar(pageTitle: "select_ad_type".tr()),
-
             ListView.builder(
                 shrinkWrap: true,
                 primary: false,
@@ -73,7 +72,7 @@ class _ExpandedItemState extends State<ExpandedItem> {
               headerBuilder: (context, isExpanded) {
                 return ListTile(
                     leading: Container(
-                      width: Si.ds!*5,
+                      width: Si.ds! * 5,
                       child: customCachedNetworkImage(
                           url: widget.categories?.image ?? '',
                           context: context,
@@ -88,11 +87,16 @@ class _ExpandedItemState extends State<ExpandedItem> {
                 children: List.generate(
                     widget.categories?.children?.length ?? 0,
                     (index) => ListTile(
-                      onTap: (){
-                        MagicRouter.navigateTo(CommissionAgreement(catId: widget.categories?.children?[index].id??0,));
-                      },
+                          onTap: () {
+                            MagicRouter.navigateTo(CommissionAgreement(
+                              catId:
+                                  widget.categories?.children?[index].id ?? 0,
+                            ));
+                          },
                           title: Text(
-                              widget.categories?.children?[index].title ?? '',style: subTitle,),
+                            widget.categories?.children?[index].title ?? '',
+                            style: subTitle,
+                          ),
                         )),
               ),
               isExpanded: _expanded,

@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:herag/core/constants/constants.dart';
 import 'package:herag/core/router/router.dart';
+import 'package:herag/features/auth/blocs/auth.cubit.dart';
 
 import '../core/utiles/size_config.dart';
 import '../features/account/pages/account_page.dart';
@@ -26,7 +28,7 @@ class _LayoutPageState extends State<LayoutPage> {
     HomePage(),
     FavouritesPage(),
     const NotificationPage(),
-    const AccountPage(),
+    AccountPage(),
     const MenuPage(),
   ];
 
@@ -43,6 +45,7 @@ class _LayoutPageState extends State<LayoutPage> {
   @override
   void initState() {
     getIndex();
+    GetIt.I<AuthCubit>().getProfile();
     super.initState();
   }
 
@@ -55,7 +58,7 @@ class _LayoutPageState extends State<LayoutPage> {
         floatingActionButton: FloatingActionButton(
           backgroundColor: AppColors.primary,
           onPressed: () {
-           MagicRouter.navigateTo( AddAdsPage());
+            MagicRouter.navigateTo(AddAdsPage());
           },
           child: const Icon(
             Icons.add,
@@ -139,7 +142,7 @@ class _LayoutPageState extends State<LayoutPage> {
                   width: 100,
                   height: 30,
                 ),
-                label:  "menu".tr(),
+                label: "menu".tr(),
               ),
             ],
           ),

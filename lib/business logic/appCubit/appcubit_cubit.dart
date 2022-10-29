@@ -51,6 +51,8 @@ class AppCubit extends Cubit<AppStates> {
     };
     action.onError = (res) {
       NotificationUtils.showErrorMessage(res.message!);
+      emit(state.copyWith( loading: false));
+
     };
   }
 
@@ -116,6 +118,4 @@ class AppCubit extends Cubit<AppStates> {
       NotificationUtils.showErrorMessage(res.message ?? '');
     };
   }
-
-
 }

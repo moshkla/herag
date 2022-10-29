@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:herag/theme/app_colors.dart';
 
 import '../../theme/text_styles.dart';
 
@@ -14,9 +14,9 @@ class EmptyData extends StatelessWidget {
         Icon(
           Icons.warning_amber,
           size: 172,
-          color: Colors.grey.shade200,
+          color: AppColors.primary.withOpacity(0.3),
         ),
-        Text(text?.tr ?? "no data", style: subTitle)
+        Text(text ?? "no data", style: subTitle)
       ],
     );
   }

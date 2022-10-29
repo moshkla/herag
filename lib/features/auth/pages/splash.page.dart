@@ -4,6 +4,7 @@ import 'package:herag/core/router/router.dart';
 import 'package:herag/core/utiles/size_config.dart';
 
 import '../../../business logic/appCubit/appcubit_cubit.dart';
+import '../../../core/utiles/local_storage.utils.dart';
 import '../../../layout/layout.page.dart';
 import '../../../theme/app_assets.dart';
 import '../../language/pages/language.page.dart';
@@ -27,10 +28,7 @@ class _SplashPageState extends State<SplashPage> {
     Future.delayed(const Duration(seconds: 2), () {
       MagicRouter.navigateAndPopAll(
           //const LayoutPage()
-
-          LanguagePage()
-
-          );
+          LocalStorageUtils.token == null ? LanguagePage() : LayoutPage());
     });
   }
 

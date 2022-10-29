@@ -10,6 +10,7 @@ import '../../../../functions/cashed_network_image.dart';
 import '../../../../theme/app_colors.dart';
 import '../../../../theme/styles.dart';
 import '../../../../theme/text_styles.dart';
+import '../../../auth/blocs/auth.cubit.dart';
 import '../../actions/search_action.dart';
 import 'filter.dart';
 
@@ -40,7 +41,13 @@ class HomeAppBar extends StatelessWidget {
                     CircleAvatar(
                         radius: Si.ds! * 3,
                         backgroundColor: Colors.white,
-                        child: true
+                        child: GetIt.I<AuthCubit>()
+                                    .state
+                                    .profileModel
+                                    ?.body
+                                    ?.user
+                                    ?.image ==
+                                ''
                             ? CircleAvatar(
                                 backgroundColor: AppColors.secondary,
                                 radius: Si.ds! * 2.8,
@@ -57,7 +64,13 @@ class HomeAppBar extends StatelessWidget {
                                 )),
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
                                 child: customCachedNetworkImage(
-                                    url: '',
+                                    url: GetIt.I<AuthCubit>()
+                                            .state
+                                            .profileModel
+                                            ?.body
+                                            ?.user
+                                            ?.image ??
+                                        '',
                                     context: context,
                                     fit: BoxFit.cover),
                               )),
@@ -65,6 +78,17 @@ class HomeAppBar extends StatelessWidget {
                     Text(
                       'hi'.tr(),
                       style: title.copyWith(color: Colors.white),
+                    ),
+                    const HorizontalSpace(value: 1),
+                    Text(
+                      GetIt.I<AuthCubit>()
+                              .state
+                              .profileModel
+                              ?.body
+                              ?.user
+                              ?.name ??
+                          '',
+                      style: subHint.copyWith(color: Colors.white),
                     ),
                     const HorizontalSpace(value: 1),
                     Image.asset(
@@ -93,10 +117,24 @@ class HomeAppBar extends StatelessWidget {
                             Icons.location_on_outlined,
                             color: AppColors.primary,
                           ),
-                          Text(
-                            'جدة',
-                            style: title.copyWith(color: AppColors.primary),
-                          ),
+                          if (GetIt.I<AuthCubit>()
+                                  .state
+                                  .profileModel
+                                  ?.body
+                                  ?.userPosts
+                                  ?.isNotEmpty ==
+                              true)
+                            Text(
+                              GetIt.I<AuthCubit>()
+                                      .state
+                                      .profileModel
+                                      ?.body
+                                      ?.userPosts?[0]
+                                      .area ??
+                                  '',
+                              style:
+                                  subTitle.copyWith(color: AppColors.primary),
+                            ),
                         ],
                       ),
                     ),

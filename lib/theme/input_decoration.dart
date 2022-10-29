@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:herag/theme/text_styles.dart';
 import 'app_colors.dart';
 
@@ -18,7 +17,7 @@ InputDecoration inputDecoration({
     prefixIcon: icon != null
         ? Icon(
             icon,
-            color: Get.theme.iconTheme.color,
+            color: Colors.black,
           )
         : null,
     suffix: suffix,

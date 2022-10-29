@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import '../../../core/router/router.dart';
 import '../../../core/utiles/size_config.dart';
@@ -28,7 +28,7 @@ class DialogDeleteAccount extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      "del_acc_message".tr,
+                      "del_acc_message".tr(),
                       style: TextStyle(
                           fontSize: Si.ds! * 2, fontWeight: FontWeight.bold),
                     ),
@@ -43,7 +43,7 @@ class DialogDeleteAccount extends StatelessWidget {
                             width: Si.ds! * 11,
                             child: CustomGeneralButton(
                                 color: Colors.red,
-                                text: "confirm".tr,
+                                text: "confirm".tr(),
                                 onTap: () {
                                   GetIt.I<AuthCubit>().deleteAccount();
                                 })),
@@ -53,7 +53,7 @@ class DialogDeleteAccount extends StatelessWidget {
                             width: Si.ds! * 11,
                             child: CustomGeneralButton(
                                 color: Colors.green,
-                                text: 'cancel'.tr,
+                                text: 'cancel'.tr(),
                                 onTap: () {
                                   MagicRouter.pop();
                                 })),

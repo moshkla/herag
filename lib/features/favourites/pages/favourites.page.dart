@@ -30,40 +30,38 @@ class _FavouritesPageState extends State<FavouritesPage> {
     return BlocBuilder(
       bloc: bloc,
       builder: (c, s) {
-        return SingleChildScrollView(
-          child: Column(
-            children: [
-              pageAppBar(
-                pageTitle: 'favourits'.tr(),
-                withoutBackBtn: true,
-              ),
-              bloc.state.favourites == []
-                  ? EmptyData()
-                  : Container(
-                      height: Si.screenHeight,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: ListView.builder(
-                            shrinkWrap: true,
-                            primary: false,
-                            itemCount: bloc.state.favourites?.length??0,
-                            itemBuilder: (c, i) {
-                              var singleItem = bloc.state.favourites?[i];
-                              return HomeItem(
-                                id: singleItem?.id ?? 0,
-                                image: singleItem?.image?.first ?? '',
-                                time: singleItem?.time ?? '',
-                                title: singleItem?.title ?? '',
-                                area: singleItem?.area ?? '',
-                                user: singleItem?.user ?? '',
-                                price: singleItem?.price ?? '',
-                                inFav: singleItem?.inFavourites ?? true,
-                              );
-                            }),
-                      ),
+        return Column(
+          children: [
+            pageAppBar(
+              pageTitle: 'favourits'.tr(),
+              withoutBackBtn: true,
+            ),
+            bloc.state.favourites?.isEmpty == true
+                ?  Expanded(child: EmptyData(text: 'المفضلة فارغة',))
+                : Container(
+                    height: Si.screenHeight,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          primary: false,
+                          itemCount: bloc.state.favourites?.length,
+                          itemBuilder: (c, i) {
+                            var singleItem = bloc.state.favourites?[i];
+                            return HomeItem(
+                              id: singleItem?.id ?? 0,
+                              image: singleItem?.image?.first ?? '',
+                              time: singleItem?.time ?? '',
+                              title: singleItem?.title ?? '',
+                              area: singleItem?.area ?? '',
+                              user: singleItem?.user ?? '',
+                              price: singleItem?.price ?? '',
+                              inFav: singleItem?.inFavourites ?? true,
+                            );
+                          }),
                     ),
-            ],
-          ),
+                  ),
+          ],
         );
       },
     );

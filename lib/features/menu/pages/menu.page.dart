@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:herag/core/router/router.dart';
 import 'package:herag/features/auth/blocs/auth.cubit.dart';
+import 'package:herag/features/menu/pages/settings.page.dart';
 import 'package:herag/features/menu/pages/terms_and_conditions_page.dart';
 import 'package:herag/functions/show_custom_dialog.dart';
 import 'package:herag/theme/text_styles.dart';
@@ -24,7 +25,10 @@ class MenuPage extends StatelessWidget {
         height: Si.screenHeight,
         child: Column(
           children: [
-            pageAppBar(pageTitle: 'menu'.tr(),withoutBackBtn: true,),
+            pageAppBar(
+              pageTitle: 'menu'.tr(),
+              withoutBackBtn: true,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -50,9 +54,14 @@ class MenuPage extends StatelessWidget {
                     ),
                   ),
                   const VerticalSpace(value: 1.5),
-                  const ProfileCardItem(
-                    icon: 'assets/images/settings.png',
-                    title: 'الاعدادات',
+                  InkWell(
+                    onTap: () {
+                      MagicRouter.navigateTo(SettingsPage());
+                    },
+                    child: const ProfileCardItem(
+                      icon: 'assets/images/settings.png',
+                      title: 'الاعدادات',
+                    ),
                   ),
                   const VerticalSpace(value: 1.5),
                   InkWell(
@@ -67,31 +76,34 @@ class MenuPage extends StatelessWidget {
                   const VerticalSpace(value: 1.5),
                   BlocBuilder(
                     bloc: GetIt.I<AuthCubit>(),
-                  builder: (c,s){
-                    return Column(
-                      children: [
-                        InkWell(
-                          onTap: (){
-                            GetIt.I<AuthCubit>().logOut();
-                          },
-                          child: const ProfileCardItem(
-                            icon: 'assets/images/exit.png',
-                            title: 'تسجيل الخروج',
+                    builder: (c, s) {
+                      return Column(
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              GetIt.I<AuthCubit>().logOut();
+                            },
+                            child: const ProfileCardItem(
+                              icon: 'assets/images/exit.png',
+                              title: 'تسجيل الخروج',
+                            ),
                           ),
-                        ),
-                        const VerticalSpace(value: 1.5),
-                        InkWell(
-                          onTap: (){
-                            showCustomDialog(context: context, child: DialogDeleteAccount(),);
-                          },
-                          child: const ProfileCardItem(
-                            icon: 'assets/images/exit.png',
-                            title: 'حذف الحساب',
+                          const VerticalSpace(value: 1.5),
+                          InkWell(
+                            onTap: () {
+                              showCustomDialog(
+                                context: context,
+                                child: DialogDeleteAccount(),
+                              );
+                            },
+                            child: const ProfileCardItem(
+                              icon: 'assets/images/exit.png',
+                              title: 'حذف الحساب',
+                            ),
                           ),
-                        ),
-                      ],
-                    );
-                  },
+                        ],
+                      );
+                    },
                   ),
                 ],
               ),
@@ -136,7 +148,8 @@ class ProfileCardItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: Image.asset(
                   icon,
                   height: Si.ds! * 3,
