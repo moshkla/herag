@@ -101,9 +101,7 @@ class HomePage extends StatelessWidget {
                   ),
                 VerticalSpace(value: 1),
                 Container(
-                  height: Si.ds! * 20,
-                  color: Colors.green,
-                  child: Stack(
+                  height: Si.ds! * 20, child: Stack(
                     children: [
                       Container(
                         height: Si.ds! * 20,
@@ -155,7 +153,6 @@ class HomePage extends StatelessWidget {
                                 primary: false,
                                 itemCount: bloc.state.posts?.length ?? 0,
                                 itemBuilder: (c, i) => HomeItem(
-
                                       id: bloc.state.posts?[i].id ?? 0,
                                       image:
                                           bloc.state.posts?[i].image?.first ??

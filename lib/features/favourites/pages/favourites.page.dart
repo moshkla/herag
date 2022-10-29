@@ -37,7 +37,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
                 pageTitle: 'favourits'.tr(),
                 withoutBackBtn: true,
               ),
-              bloc.state.favourites?.isEmpty == true
+              bloc.state.favourites == []
                   ? EmptyData()
                   : Container(
                       height: Si.screenHeight,
@@ -46,7 +46,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
                         child: ListView.builder(
                             shrinkWrap: true,
                             primary: false,
-                            itemCount: bloc.state.favourites?.length,
+                            itemCount: bloc.state.favourites?.length??0,
                             itemBuilder: (c, i) {
                               var singleItem = bloc.state.favourites?[i];
                               return HomeItem(

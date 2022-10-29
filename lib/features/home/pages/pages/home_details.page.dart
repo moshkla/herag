@@ -56,7 +56,6 @@ class HomeDetailsPage extends StatelessWidget {
             VerticalSpace(value: 1),
             Container(
               height: Si.ds! * 20,
-              color: Colors.green,
               child: Stack(
                 children: [
                   Container(

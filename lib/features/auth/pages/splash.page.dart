@@ -25,9 +25,10 @@ class _SplashPageState extends State<SplashPage> {
     GetIt.I<AppCubit>().getFaqs();
 
     Future.delayed(const Duration(seconds: 2), () {
-      MagicRouter.navigateAndPopAll(const LayoutPage()
+      MagicRouter.navigateAndPopAll(
+          //const LayoutPage()
 
-          //LanguagePage()
+          LanguagePage()
 
           );
     });
