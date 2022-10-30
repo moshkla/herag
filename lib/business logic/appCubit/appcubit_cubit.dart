@@ -4,6 +4,7 @@ import 'package:herag/core/models/faqsModel.dart';
 import 'package:herag/core/models/posts_model.dart';
 import 'package:herag/core/utiles/notification_utils.dart';
 import 'package:herag/features/ad_details/actions/get_ad_details_action.dart';
+import 'package:herag/features/menu/actions/contact_us_action.dart';
 import '../../core/models/ad_details_model.dart';
 import '../../core/models/constants_model.dart';
 import '../../core/models/home_model.dart';
@@ -128,10 +129,21 @@ class AppCubit extends Cubit<AppStates> {
     action.execute();
     action.onSuccess = (res) {
       emit(state.copyWith(adDetailsModel: res, loading: false));
-      MagicRouter.navigateTo( AdDetailsPage());
+      MagicRouter.navigateTo(AdDetailsPage());
     };
     action.onError = (res) {
       emit(state.copyWith(loading: false));
+      NotificationUtils.showErrorMessage(res.message ?? '');
+    };
+  }
+
+  contactUs({required name, required email, required phone, required message}) {
+    ContactUsAction action = ContactUsAction(name, email, phone, message);
+    action.execute();
+    action.onSuccess = (res) {
+      NotificationUtils.showSuccessMessage(res?.message ?? '');
+    };
+    action.onError = (res) {
       NotificationUtils.showErrorMessage(res.message ?? '');
     };
   }

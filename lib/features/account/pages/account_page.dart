@@ -133,28 +133,28 @@ class AccountPage extends StatelessWidget {
                     style: subTitle.copyWith(color: Colors.black),
                   ),
                   const VerticalSpace(value: 0.5),
-                  Row(
-                    children: [
-                      Text(
-                        '30 متابع',
-                        style: subHint,
-                      ),
-                      const HorizontalSpace(value: 2),
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.star,
-                            color: Colors.amber,
-                          ),
-                          const HorizontalSpace(value: 0.5),
-                          Text(
-                            '(4.5)',
-                            style: subHint,
-                          ),
-                        ],
-                      )
-                    ],
-                  )
+                  // Row(
+                  //   children: [
+                  //     Text(
+                  //       '30 متابع',
+                  //       style: subHint,
+                  //     ),
+                  //     const HorizontalSpace(value: 2),
+                  //     Row(
+                  //       children: [
+                  //         const Icon(
+                  //           Icons.star,
+                  //           color: Colors.amber,
+                  //         ),
+                  //         const HorizontalSpace(value: 0.5),
+                  //         Text(
+                  //           '(4.5)',
+                  //           style: subHint,
+                  //         ),
+                  //       ],
+                  //     )
+                  //   ],
+                  // )
                 ],
               ),
               Container(
@@ -219,39 +219,29 @@ class AccountPage extends StatelessWidget {
                 child: EmptyData(
                 text: 'لم تقم باضافة اعلان بعد',
               ))
-            : Container(
-                height: Si.screenHeight,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      primary: false,
-                      itemCount:
-                          authBloc.state.profileModel?.body?.userPosts?.length,
-                      itemBuilder: (c, i) {
-                        var singleItem =
-                            authBloc.state.profileModel?.body?.userPosts?[i];
-                        return HomeItem(
-                          id: singleItem?.id ?? 0,
-                          image: singleItem?.image?.first ?? '',
-                          time: singleItem?.time ?? '',
-                          title: singleItem?.title ?? '',
-                          area: singleItem?.area ?? '',
-                          user: singleItem?.user ?? '',
-                          price: singleItem?.price ?? '',
-                          inFav: singleItem?.inFavourites ?? true,
-                        );
-                      }),
-                ),
+            : Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: ListView.builder(
+                    shrinkWrap: true,
+                    primary: false,
+                    itemCount:
+                        authBloc.state.profileModel?.body?.userPosts?.length,
+                    itemBuilder: (c, i) {
+                      var singleItem =
+                          authBloc.state.profileModel?.body?.userPosts?[i];
+                      return HomeItem(
+                        id: singleItem?.id ?? 0,
+                        image: singleItem?.image?.first ?? '',
+                        time: singleItem?.time ?? '',
+                        title: singleItem?.title ?? '',
+                        area: singleItem?.area ?? '',
+                        user: singleItem?.user ?? '',
+                        price: singleItem?.price ?? '',
+                        inFav: singleItem?.inFavourites ?? true,
+                      );
+                    }),
               ),
-        // Padding(
-        //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        //   child: ListView.builder(
-        //       shrinkWrap: true,
-        //       primary: false,
-        //       itemCount: 10,
-        //       itemBuilder: (c, i) => const HomeItem()),
-        // ),
+
       ],
     );
   }

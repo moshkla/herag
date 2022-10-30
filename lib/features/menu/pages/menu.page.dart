@@ -36,7 +36,7 @@ class MenuPage extends StatelessWidget {
                   const VerticalSpace(value: 2),
                   InkWell(
                     onTap: () {
-                      MagicRouter.navigateTo(const ContactUs());
+                      MagicRouter.navigateTo( ContactUs());
                     },
                     child: const ProfileCardItem(
                       icon: 'assets/images/call.png',
