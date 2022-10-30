@@ -27,6 +27,8 @@ class CustomDrawer extends StatelessWidget {
                     child: SizedBox(
                         width: Si.ds! * 20,
                         child: TextFormField(
+                          style: TextStyle(fontSize: Si.ds! * 2.5),
+
                           showCursor: false,
                           onTap: () {},
                           decoration: InputDecoration(

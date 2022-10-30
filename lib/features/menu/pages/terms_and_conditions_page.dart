@@ -25,11 +25,11 @@ class TermsAndConditions extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Html(
-                 data: context.locale == 'ar' ?
-               GetIt.I<AppCubit>().constantsModel
-                  ?.body?.terms?.ar??'':
-                  GetIt.I<AppCubit>().constantsModel
-                      ?.body?.terms?.en??'',
+                  data: context.locale == 'ar'
+                      ? GetIt.I<AppCubit>().constantsModel?.body?.terms?.ar ??
+                          ''
+                      : GetIt.I<AppCubit>().constantsModel?.body?.terms?.en ??
+                          '',
                 ),
               ),
             ],

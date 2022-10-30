@@ -65,6 +65,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                       ),
                       const VerticalSpace(value: 2),
                       TextFormField(
+
                         style: subTitle,
                         controller: phone,
                         decoration: inputDecoration(label: 'phone'.tr()),

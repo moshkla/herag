@@ -2,8 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
+import 'package:herag/core/router/router.dart';
 import 'package:herag/core/widgets/page_app_bar.dart';
 import 'package:herag/features/auth/blocs/auth.cubit.dart';
+import 'package:herag/features/editProfile/pages/edit_profile_page.dart';
 import 'package:herag/theme/app_colors.dart';
 import 'package:herag/theme/text_styles.dart';
 
@@ -41,17 +43,22 @@ class AccountPage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                            height: Si.ds! * 4,
-                            width: Si.ds! * 4,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: const Icon(
-                              Icons.edit,
-                              color: AppColors.primary,
-                            )),
+                        InkWell(
+                          onTap: () {
+                            MagicRouter.navigateTo(EditProfilePage());
+                          },
+                          child: Container(
+                              height: Si.ds! * 4,
+                              width: Si.ds! * 4,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: const Icon(
+                                Icons.edit,
+                                color: AppColors.primary,
+                              )),
+                        ),
                         Row(
                           children: [
                             Container(
@@ -241,7 +248,6 @@ class AccountPage extends StatelessWidget {
                       );
                     }),
               ),
-
       ],
     );
   }

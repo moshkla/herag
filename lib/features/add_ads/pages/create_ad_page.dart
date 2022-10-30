@@ -87,6 +87,8 @@ class _CreateAdPageState extends State<CreateAdPage> {
                   ),
                   const VerticalSpace(value: 1),
                   TextFormField(
+                    style: TextStyle(fontSize: Si.ds! * 2.5),
+
                     decoration:
                         inputDecoration(hint: 'رقم الجوال او وسيلة التواصل'),
                   ),
@@ -144,10 +146,14 @@ class _CreateAdPageState extends State<CreateAdPage> {
                   ),
                   if (groubValue == 0)
                     TextFormField(
+                      style: TextStyle(fontSize: Si.ds! * 2.5),
+
                       decoration: inputDecoration(hint: 'ادخل السعر'),
                     ),
                   const VerticalSpace(value: 2),
                   TextFormField(
+                    style: TextStyle(fontSize: Si.ds! * 2.5),
+
                     decoration: inputDecoration(hint: 'نص الاعلان'),
                     maxLines: 4,
                   ),

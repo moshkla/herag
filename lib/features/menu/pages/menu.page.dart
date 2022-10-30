@@ -12,6 +12,7 @@ import '../../../core/utiles/size_config.dart';
 import '../../../core/widgets/page_app_bar.dart';
 import '../../../theme/app_colors.dart';
 import '../../account/widgets/delete_account_dialog.dart';
+import '../../payment/pages/payment_page.dart';
 import 'common_questions_page.dart';
 import 'contact_us.dart';
 
@@ -36,7 +37,18 @@ class MenuPage extends StatelessWidget {
                   const VerticalSpace(value: 2),
                   InkWell(
                     onTap: () {
-                      MagicRouter.navigateTo( ContactUs());
+                      MagicRouter.navigateTo(PaymentPage());
+                    },
+                    child: const ProfileCardItem(
+                      icon: 'assets/images/online-payment.png',
+                      color: AppColors.primary,
+                      title: 'دفع العمولة',
+                    ),
+                  ),
+                  const VerticalSpace(value: 1.5),
+                  InkWell(
+                    onTap: () {
+                      MagicRouter.navigateTo(ContactUs());
                     },
                     child: const ProfileCardItem(
                       icon: 'assets/images/call.png',
@@ -151,6 +163,7 @@ class ProfileCardItem extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: Image.asset(
+                  color: color,
                   icon,
                   height: Si.ds! * 3,
                 ),

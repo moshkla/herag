@@ -142,6 +142,8 @@ class AdDetailsText extends StatelessWidget {
             child: Column(
               children: [
                 TextFormField(
+                  style: TextStyle(fontSize: Si.ds! * 2.5),
+
                   decoration: inputDecoration(
                       hint: 'send_advertiser_question'.tr()),
                   maxLines: 4,
