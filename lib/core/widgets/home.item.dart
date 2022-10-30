@@ -22,14 +22,14 @@ class HomeItem extends StatelessWidget {
     required this.price,
     required this.inFav,
   }) : super(key: key);
-  final int id;
-  final String image;
-  final String title;
-  final String area;
-  final String time;
-  final String user;
-  final String price;
-  final bool inFav;
+  final int? id;
+  final String? image;
+  final String? title;
+  final String? area;
+  final String? time;
+  final String? user;
+  final String? price;
+  final bool? inFav;
 
   var bloc = GetIt.I<AppCubit>();
 
@@ -40,7 +40,7 @@ class HomeItem extends StatelessWidget {
         builder: (c, s) {
           return InkWell(
             onTap: () {
-              MagicRouter.navigateTo(const AdDetailsPage());
+              bloc.getAdDetails(adId: id);
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -55,7 +55,7 @@ class HomeItem extends StatelessWidget {
                           padding: const EdgeInsets.all(8),
                           width: Si.ds! * 15,
                           child: customCachedNetworkImage(
-                              url: image, fit: BoxFit.cover, context: context)
+                              url: image??'', fit: BoxFit.cover, context: context)
 
                           // customCachedNetworkImage(
                           //     url: '',
@@ -70,7 +70,7 @@ class HomeItem extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                title,
+                                title??'',
                                 style: subTitle.copyWith(color: Colors.black),
                               ),
                               Row(
@@ -89,7 +89,7 @@ class HomeItem extends StatelessWidget {
                                       ),
                                       const HorizontalSpace(value: 1),
                                       Text(
-                                        time,
+                                        time??'',
                                         style: hint,
                                       ),
                                     ],
@@ -103,7 +103,7 @@ class HomeItem extends StatelessWidget {
                                     color: Colors.deepOrange,
                                     size: Si.ds! * 2,
                                   ),
-                                  Text(area,
+                                  Text(area??'',
                                       style: hint.copyWith(
                                         color: Colors.deepOrange,
                                       )),
@@ -120,7 +120,7 @@ class HomeItem extends StatelessWidget {
                                         size: Si.ds! * 2,
                                       ),
                                       Text(
-                                        user,
+                                        user??'',
                                         style:
                                             hint.copyWith(color: Colors.green),
                                       ),
@@ -130,7 +130,7 @@ class HomeItem extends StatelessWidget {
                                     children: [
                                       IconButton(
                                         onPressed: () {
-                                          bloc.toggelFavourites(id);
+                                          bloc.toggelFavourites(id??0);
                                         },
                                         icon: Icon(
                                           inFav == true

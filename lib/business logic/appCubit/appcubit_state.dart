@@ -14,6 +14,7 @@ class AppStates {
   List<Categories>? categories;
   List<Children>? children;
   List<Posts>? posts;
+  AdDetailsModel? adDetailsModel;
   List<Posts>? favourites;
 
   AppStates({
@@ -22,6 +23,7 @@ class AppStates {
     this.categories,
     this.children,
     this.posts,
+    this.adDetailsModel,
     this.favourites,
   });
 
@@ -31,8 +33,8 @@ class AppStates {
     List<Categories>? categories,
     List<Children>? children,
     List<Posts>? posts,
+    AdDetailsModel? adDetailsModel,
     List<Posts>? favourites,
-
   }) {
     return AppStates(
       loading: loading ?? this.loading,
@@ -40,6 +42,7 @@ class AppStates {
       categories: categories ?? this.categories,
       children: children ?? this.children,
       posts: posts ?? this.posts,
+      adDetailsModel: adDetailsModel ?? this.adDetailsModel,
       favourites: favourites ?? this.favourites,
     );
   }
@@ -49,20 +52,22 @@ class AppStates {
     if (identical(this, other)) return true;
 
     return other.loading == loading &&
+     other.adDetailsModel == adDetailsModel &&
         listEquals(other.sliders, sliders) &&
-        listEquals(other.categories, categories)&&
-        listEquals(other.posts, posts)&&
-        listEquals(other.favourites, favourites)&&
+        listEquals(other.categories, categories) &&
+        listEquals(other.posts, posts) &&
+        listEquals(other.favourites, favourites) &&
         listEquals(other.children, children);
   }
 
   @override
   int get hashCode {
     return loading.hashCode ^
-    sliders.hashCode ^
-    categories.hashCode ^
-    posts.hashCode ^
-    favourites.hashCode ^
-    children.hashCode ;
+        sliders.hashCode ^
+        categories.hashCode ^
+        posts.hashCode ^
+    adDetailsModel.hashCode ^
+        favourites.hashCode ^
+        children.hashCode;
   }
 }

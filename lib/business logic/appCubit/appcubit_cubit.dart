@@ -3,10 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:herag/core/models/faqsModel.dart';
 import 'package:herag/core/models/posts_model.dart';
 import 'package:herag/core/utiles/notification_utils.dart';
+import 'package:herag/features/ad_details/actions/get_ad_details_action.dart';
+import '../../core/models/ad_details_model.dart';
 import '../../core/models/constants_model.dart';
 import '../../core/models/home_model.dart';
+import '../../core/router/router.dart';
 import '../../features/account/actions/get_constants_action.dart';
 import '../../features/account/actions/get_faqs_action.dart';
+import '../../features/ad_details/pages/ad.details.page.dart';
 import '../../features/favourites/actions/get_favourites_action.dart';
 import '../../features/favourites/actions/toggel_favourite_action.dart';
 import '../../features/home/actions/get_home_action.dart';
@@ -51,8 +55,7 @@ class AppCubit extends Cubit<AppStates> {
     };
     action.onError = (res) {
       NotificationUtils.showErrorMessage(res.message!);
-      emit(state.copyWith( loading: false));
-
+      emit(state.copyWith(loading: false));
     };
   }
 
@@ -115,6 +118,20 @@ class AppCubit extends Cubit<AppStates> {
       faqsModel = res;
     };
     action.onError = (res) {
+      NotificationUtils.showErrorMessage(res.message ?? '');
+    };
+  }
+
+  getAdDetails({required adId}) {
+    emit(state.copyWith(loading: true));
+    GetAdDetailsAction action = GetAdDetailsAction(adId);
+    action.execute();
+    action.onSuccess = (res) {
+      emit(state.copyWith(adDetailsModel: res, loading: false));
+      MagicRouter.navigateTo( AdDetailsPage());
+    };
+    action.onError = (res) {
+      emit(state.copyWith(loading: false));
       NotificationUtils.showErrorMessage(res.message ?? '');
     };
   }

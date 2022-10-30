@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "601497833797",
+    "project_id": "heraj-550e4",
+    "storage_bucket": "heraj-550e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:601497833797:android:ea02f5a61fec4f27f2ae2c",
+        "android_client_info": {
+          "package_name": "com.mtwereen.herag"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "601497833797-01h5qrlagaccvfqrugqtg6c537ruqhuo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mtwereen.herag",
+            "certificate_hash": "0a57b391b04eefaa6cfda4c81443c8f471b4eb56"
+          }
+        },
+        {
+          "client_id": "601497833797-g4i0rb4qf0tknglt9p03eh7rotlbqto4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXvyRmTnEjR4uxonIHTJ0r4YOG_WaM25s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "601497833797-g4i0rb4qf0tknglt9p03eh7rotlbqto4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
