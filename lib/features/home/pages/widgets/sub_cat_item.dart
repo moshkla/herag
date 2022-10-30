@@ -9,9 +9,10 @@ import '../../../../theme/styles.dart';
 import '../../../../theme/text_styles.dart';
 
 class SubCatItem extends StatelessWidget {
-  SubCatItem({Key? key, required this.index}) : super(key: key);
+  SubCatItem({Key? key, required this.index, this.clicked}) : super(key: key);
 
   final int index;
+  final int? clicked;
   final bloc = GetIt.I<AppCubit>();
 
   @override
@@ -23,7 +24,7 @@ class SubCatItem extends StatelessWidget {
           width: Si.ds! * 10,
           decoration: boxDecoration(
               withBorder: false,
-              solidColor: AppColors.primary.withOpacity(0.1)),
+              solidColor:index==clicked?AppColors.primary: AppColors.primary.withOpacity(0.1)),
           child: Center(
             child: Text(bloc.state.children![index].title!,
                 style: subTitle.copyWith(color: Colors.black)),

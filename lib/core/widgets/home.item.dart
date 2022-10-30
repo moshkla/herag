@@ -131,6 +131,7 @@ class HomeItem extends StatelessWidget {
                                       IconButton(
                                         onPressed: () {
                                           bloc.toggelFavourites(id??0);
+                                          bloc.getFavourites();
                                         },
                                         icon: Icon(
                                           inFav == true

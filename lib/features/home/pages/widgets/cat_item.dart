@@ -10,17 +10,17 @@ import '../../../../theme/text_styles.dart';
 import '../pages/home_details.page.dart';
 
 class CatItem extends StatelessWidget {
-  CatItem({Key? key, required this.index}) : super(key: key);
+  CatItem({Key? key, required this.index,  this.clicked}) : super(key: key);
   final int index;
   var bloc = GetIt.I<AppCubit>();
-
+ int? clicked;
   @override
   Widget build(BuildContext context) {
     return Container(
       height: Si.ds! * 5,
       width: Si.ds! * 10,
       decoration: boxDecoration(
-          withBorder: false, solidColor: AppColors.primary.withOpacity(0.1)),
+          withBorder: false, solidColor:index==clicked?AppColors.primary: AppColors.primary.withOpacity(0.1)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -36,7 +36,7 @@ class CatItem extends StatelessWidget {
           ),
           Center(
             child: Text(bloc.state.categories![index].title!,
-                style: subTitle.copyWith(color: AppColors.primary)),
+                style: subTitle.copyWith(color:index==clicked?Colors.black: AppColors.primary)),
           ),
         ],
       ),
