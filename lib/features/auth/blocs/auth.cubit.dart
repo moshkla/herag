@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:herag/core/utiles/local_storage.utils.dart';
 import 'package:herag/features/auth/actions/delete_account_action.dart';
 import 'package:herag/features/auth/pages/login.page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/models/user_model.dart';
 import '../../../core/router/router.dart';
@@ -78,17 +79,18 @@ class AuthCubit extends Cubit<AuthStates> {
 
   getProfile() {
     emit(state.copyWith(loading: true));
-      ShowProfileAction action = ShowProfileAction();
-      action.execute();
+    ShowProfileAction action = ShowProfileAction();
+    action.execute();
 
-      action.onSuccess = (res) {
-        emit(state.copyWith(profileModel: res, loading: false));
-      };
-      action.onError = (res) {
-        NotificationUtils.showErrorMessage(res.message ?? '');
-      };
-
+    action.onSuccess = (res) {
+      emit(state.copyWith(profileModel: res, loading: false));
+    };
+    action.onError = (res) {
+      NotificationUtils.showErrorMessage(res.message ?? '');
+    };
   }
+
+  SharedPreferences? prefs;
 
   logOut() async {
     NotificationUtils.showLoading();
@@ -96,7 +98,6 @@ class AuthCubit extends Cubit<AuthStates> {
     action.execute();
     action.onSuccess = (res) {
       NotificationUtils.hideLoading();
-      LocalStorageUtils.setToken(null);
       MagicRouter.navigateAndPopAll(SplashPage());
       NotificationUtils.showSuccessMessage(res!.message!);
     };

@@ -147,4 +147,5 @@ class AppCubit extends Cubit<AppStates> {
       NotificationUtils.showErrorMessage(res.message ?? '');
     };
   }
+
 }
