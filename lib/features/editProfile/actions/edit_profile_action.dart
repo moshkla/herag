@@ -1,26 +1,24 @@
-import 'package:api_request/api_request.dart';
+import 'dart:math';
 
+import 'package:api_request/api_request.dart';
+import 'package:get_it/get_it.dart';
+
+import '../../../business logic/appCubit/appcubit_cubit.dart';
+import '../../../core/utiles/local_storage.utils.dart';
 import 'get_profile_action.dart';
+import 'package:dio/dio.dart';
 
 class EditProfileAction extends ApiRequestAction<AuthResponse> {
   late String name;
   late String email;
   late String phone;
-  late String nationalId;
-  late DateTime dateOfBirth;
-  late String gender;
-  late String cityId;
-  late String countryId;
+  late String image;
 
   EditProfileAction({
     required this.name,
     required this.email,
     required this.phone,
-    required this.nationalId,
-    required this.dateOfBirth,
-    required this.gender,
-    required this.cityId,
-    required this.countryId,
+    required this.image,
   });
 
   @override
@@ -30,23 +28,22 @@ class EditProfileAction extends ApiRequestAction<AuthResponse> {
   RequestMethod get method => RequestMethod.POST;
 
   @override
-  String get path => "update-profile";
-
-  // final f = DateFormat('yyyy-MM-dd');
+  String get path => "edit/profile";
 
   @override
-  Map<String, dynamic> get toMap => {
-    'name': name,
-    'email': email,
-    'phone': phone,
-    'national_id': nationalId,
-    // 'date_of_birth': f.format(dateOfBirth),
-    'gender': gender,
-    'city_id': cityId,
-    'nationality_id': countryId,
+  ContentDataType get contentDataType => ContentDataType.formData;
+  // Map<String, dynamic>? pickedImage = {
+  //   'image':MultipartFile.fromFile( GetIt.I<AppCubit>().pickedImage?.path ?? '')
+  // };
+  @override
+  Map<String, dynamic> get toMap =>
+      {'name': name, 'email': email, 'phone': phone,
+       // 'image[]': pickedImage
       };
 
   @override
   ResponseBuilder<AuthResponse> get responseBuilder =>
       (json) => AuthResponse.fromJson(json);
 }
+
+

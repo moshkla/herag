@@ -1,14 +1,17 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:herag/core/models/faqsModel.dart';
 import 'package:herag/core/models/posts_model.dart';
 import 'package:herag/core/utiles/notification_utils.dart';
 import 'package:herag/features/ad_details/actions/get_ad_details_action.dart';
+import 'package:herag/features/editProfile/actions/edit_profile_action.dart';
 import 'package:herag/features/menu/actions/contact_us_action.dart';
 import '../../core/models/ad_details_model.dart';
 import '../../core/models/constants_model.dart';
 import '../../core/models/home_model.dart';
 import '../../core/router/router.dart';
+import '../../core/utiles/local_storage.utils.dart';
 import '../../features/account/actions/get_constants_action.dart';
 import '../../features/account/actions/get_faqs_action.dart';
 import '../../features/ad_details/pages/ad.details.page.dart';
@@ -17,6 +20,8 @@ import '../../features/favourites/actions/toggel_favourite_action.dart';
 import '../../features/home/actions/get_home_action.dart';
 import '../../features/home/actions/get_posts_action.dart';
 import '../../features/home/actions/search_action.dart';
+import 'package:dio/dio.dart';
+import 'package:http/http.dart' as http;
 
 part 'appcubit_state.dart';
 
@@ -148,4 +153,41 @@ class AppCubit extends Cubit<AppStates> {
     };
   }
 
+  PlatformFile? pickedImage;
+
+  editProfile({required name, required email, required phone}) async {
+    // var headers = {
+    //   'Accept': 'application/json',
+    //   'Authorization': 'Bearer ${LocalStorageUtils.token}'
+    // };
+    // var request = http.MultipartRequest('POST', Uri.parse('https://kamen.kamen-haraj.com/api/edit/profile'));
+    // request.fields.addAll({
+    //   'email': email,
+    //   'name': name,
+    //   'phone': phone
+    // });
+    // request.files.add(await http.MultipartFile.fromPath('image', pickedImage?.path??''));
+    // request.headers.addAll(headers);
+    //
+    // http.StreamedResponse response = await request.send();
+    //
+    // if (response.statusCode == 200) {
+    //   print(await response.stream.bytesToString());
+    // }
+    // else {
+    //   print(response.reasonPhrase);
+    // }
+    EditProfileAction action = EditProfileAction(
+        name: name,
+        email: email,
+        phone: phone,
+        image: pickedImage?.path ?? '');
+    action.execute();
+    action.onSuccess = (res) {
+      NotificationUtils.showSuccessMessage(res?.message ?? '');
+    };
+    action.onError = (res) {
+      NotificationUtils.showErrorMessage(res.message ?? '');
+    };
+  }
 }

@@ -8,6 +8,7 @@ import '../../../core/utiles/size_config.dart';
 import '../../../core/widgets/custom_buttons_widget.dart';
 import '../../../core/widgets/page_app_bar.dart';
 import '../../../theme/input_decoration.dart';
+import '../../../theme/text_styles.dart';
 import '../actions/contact_us_action.dart';
 
 class ContactUs extends StatelessWidget {
@@ -34,22 +35,26 @@ class ContactUs extends StatelessWidget {
                     const VerticalSpace(value: 2),
                     TextFormField(
                       controller: name,
+                      style: subTitle,
                       decoration: inputDecoration(hint: 'الاسم'),
                     ),
                     const VerticalSpace(value: 2),
                     TextFormField(
+                      style: subTitle,
                       controller: email,
                       decoration: inputDecoration(hint: 'البريد الالكتروني'),
                     ),
                     const VerticalSpace(value: 2),
                     TextFormField(
                       controller: phone,
+                      style: subTitle,
                       decoration:
                           inputDecoration(hint: 'رقم الجوال او وسيلة التواصل'),
                     ),
                     const VerticalSpace(value: 2),
                     TextFormField(
                       controller: message,
+                      style: subTitle,
                       decoration: inputDecoration(hint: 'رسالتك'),
                       maxLines: 4,
                     ),

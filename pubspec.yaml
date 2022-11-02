@@ -49,6 +49,9 @@ dependencies:
   overlay_support: ^2.0.1
   carousel_slider: ^4.1.1
   shared_preferences: ^2.0.15
+  file_picker: ^4.5.1
+  open_file: ^3.2.1
+  http: ^0.13.5
 
 #firebase
   firebase_core: ^2.1.1
