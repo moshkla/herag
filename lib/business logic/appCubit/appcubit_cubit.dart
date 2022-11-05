@@ -16,6 +16,7 @@ import '../../core/utiles/local_storage.utils.dart';
 import '../../features/account/actions/get_constants_action.dart';
 import '../../features/account/actions/get_faqs_action.dart';
 import '../../features/ad_details/pages/ad.details.page.dart';
+import '../../features/add_ads/actions/add_new_post_action.dart';
 import '../../features/favourites/actions/get_favourites_action.dart';
 import '../../features/favourites/actions/toggel_favourite_action.dart';
 import '../../features/home/actions/get_home_action.dart';
@@ -63,6 +64,31 @@ class AppCubit extends Cubit<AppStates> {
     action.onError = (res) {
       NotificationUtils.showErrorMessage(res.message!);
       emit(state.copyWith(loading: false));
+    };
+  }
+
+  addNewPost({
+    required String title,
+    required String description,
+    required String phone,
+    required String price,
+    required int categoryId,
+    required int areaId,
+  }) {
+    AddNewPostAction action = AddNewPostAction(
+      title: title,
+      phone: phone,
+      category_id: categoryId,
+      price: price,
+      description: description,
+      area_id: areaId,
+    );
+    action.execute();
+    action.onSuccess = (res) {
+      NotificationUtils.showSuccessMessage(res?.message ?? '');
+    };
+    action.onError = (res) {
+      NotificationUtils.showErrorMessage(res.message ?? '');
     };
   }
 
@@ -129,6 +155,8 @@ class AppCubit extends Cubit<AppStates> {
     };
   }
 
+  getAreas() {}
+
   getAdDetails({required adId}) {
     emit(state.copyWith(loading: true));
     GetAdDetailsAction action = GetAdDetailsAction(adId);
@@ -185,25 +213,24 @@ class AppCubit extends Cubit<AppStates> {
   //     NotificationUtils.showErrorMessage(res.message ?? '');
   //   };
   // }
-  Future<void> editProfile({required name, required email, required phone}) async{
-   // emit(EditInfoLoadingState());
+  Future<void> editProfile(
+      {required name, required email, required phone}) async {
+    // emit(EditInfoLoadingState());
     // if(formKey.currentState!.validate())return;
     // formKey.currentState!.save();
 
-    final body={
+    final body = {
       'name': name,
       'email': email,
       'phone': phone,
-
     };
-
     FormData formData = FormData.fromMap(body);
-    if(pickedImage !=null)
-      formData.files.add(MapEntry('profile', await MultipartFile.fromFile(pickedImage!.path??'')));
-    DioHelper.postData(url: 'edit/profile' , formData: formData).then((value){
+    if (pickedImage != null)
+      formData.files.add(MapEntry(
+          'image', await MultipartFile.fromFile(pickedImage!.path ?? '')));
+    DioHelper.postData(url: 'edit/profile', formData: formData).then((value) {
       print(value.data);
-
-    }).catchError((error){
+    }).catchError((error) {
       print(error);
     });
   }

@@ -36,9 +36,12 @@ class _AddAdsPageState extends State<AddAdsPage> {
                 shrinkWrap: true,
                 primary: false,
                 itemCount: 2,
-                itemBuilder: (c, i) => ExpandedItem(
-                      categories: bloc.state.categories?[i],
-                    )),
+                itemBuilder: (c, i) => Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ExpandedItem(
+                        categories: bloc.state.categories?[i],
+                      ),
+                )),
           ],
         ),
       ),
@@ -62,6 +65,8 @@ class _ExpandedItemState extends State<ExpandedItem> {
 
   @override
   Widget build(BuildContext context) {
+    double h = MediaQuery.of(context).size.height;
+    double w = MediaQuery.of(context).size.width;
     return Column(
       children: [
         ExpansionPanelList(
@@ -70,18 +75,26 @@ class _ExpandedItemState extends State<ExpandedItem> {
           children: [
             ExpansionPanel(
               headerBuilder: (context, isExpanded) {
-                return ListTile(
-                    leading: Container(
-                      width: Si.ds! * 5,
-                      child: customCachedNetworkImage(
-                          url: widget.categories?.image ?? '',
-                          context: context,
-                          fit: BoxFit.cover),
-                    ),
-                    title: Text(
-                      widget.categories?.title ?? '',
-                      style: title,
-                    ));
+                return Container(
+                  padding: EdgeInsets.only(left: w * 0.02, right: w * 0.02),
+                  decoration: BoxDecoration(
+                    color: AppColors.primary.withOpacity(0.1),
+                    // color ?? context.textTheme.title.color,
+                    borderRadius: BorderRadius.circular(w * 0.02),
+                  ),
+                  child: ListTile(
+                      leading: Container(
+                        width: Si.ds! * 5,
+                        child: customCachedNetworkImage(
+                            url: widget.categories?.image ?? '',
+                            context: context,
+                            fit: BoxFit.cover),
+                      ),
+                      title: Text(
+                        widget.categories?.title ?? '',
+                        style: title.copyWith(color: AppColors.primary),
+                      )),
+                );
               },
               body: Column(
                 children: List.generate(
