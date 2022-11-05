@@ -37,7 +37,7 @@ class MenuPage extends StatelessWidget {
                   const VerticalSpace(value: 2),
                   InkWell(
                     onTap: () {
-                   //   MagicRouter.navigateTo(PaymentPage());
+                      //   MagicRouter.navigateTo(PaymentPage());
                     },
                     child: const ProfileCardItem(
                       icon: 'assets/images/online-payment.png',
@@ -78,7 +78,7 @@ class MenuPage extends StatelessWidget {
                   const VerticalSpace(value: 1.5),
                   InkWell(
                     onTap: () {
-                      MagicRouter.navigateTo(const TermsAndConditions());
+                      MagicRouter.navigateTo(TermsAndConditions());
                     },
                     child: const ProfileCardItem(
                       icon: 'assets/images/!.png',

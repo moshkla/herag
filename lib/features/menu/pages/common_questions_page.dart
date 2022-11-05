@@ -12,9 +12,16 @@ class CommonQuestions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          child: Column(
+      body: RefreshIndicator(
+        onRefresh: ()async {
+          await  bloc.getFaqs();
+        },
+        child: ListView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            padding: EdgeInsets.zero,
+          shrinkWrap: true,
+          primary: false,
+          children:[ Column(
             children: [
               const pageAppBar(
                 pageTitle: 'أسألة متكررة',
@@ -37,7 +44,7 @@ class CommonQuestions extends StatelessWidget {
                             ),
                           ))),
             ],
-          ),
+          ),]
         ),
       ),
     );

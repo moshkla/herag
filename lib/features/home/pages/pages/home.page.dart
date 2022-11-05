@@ -36,18 +36,22 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder(
-      bloc: authBloc,
-      builder: (c, s) {
-        return authBloc.state.loading == true
-            ? Center(child: CircularProgressIndicator())
-            : authBloc.state.profileModel == null
-                ? EmptyData()
-                : BlocBuilder(
-                    bloc: bloc,
-                    builder: (c, s) {
-                      return SingleChildScrollView(
-                        child: Container(
+    return RefreshIndicator(
+      onRefresh: () async{
+       await bloc.getHome();
+        bloc.getPosts(categoryId: 0);
+      },
+      child: BlocBuilder(
+        bloc: authBloc,
+        builder: (c, s) {
+          return authBloc.state.loading == true
+              ? Center(child: CircularProgressIndicator())
+              : authBloc.state.profileModel == null
+                  ? EmptyData()
+                  : BlocBuilder(
+                      bloc: bloc,
+                      builder: (c, s) {
+                        return SingleChildScrollView(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -86,7 +90,8 @@ class _HomePageState extends State<HomePage> {
                                                   style: subTitle.copyWith(
                                                       color: clicked == -1
                                                           ? Colors.black
-                                                          : AppColors.primary)),
+                                                          : AppColors
+                                                              .primary)),
                                             ),
                                           ),
                                         ),
@@ -96,9 +101,9 @@ class _HomePageState extends State<HomePage> {
                                                 NeverScrollableScrollPhysics(),
                                             shrinkWrap: true,
                                             primary: false,
-                                            itemCount:
-                                                bloc.state.categories?.length ??
-                                                    0,
+                                            itemCount: bloc.state.categories
+                                                    ?.length ??
+                                                0,
                                             itemBuilder: (c, i) => Padding(
                                                   padding: const EdgeInsets
                                                           .symmetric(
@@ -165,8 +170,8 @@ class _HomePageState extends State<HomePage> {
                                       end: 0,
                                       child: Container(
                                         alignment: Alignment.center,
-                                        padding:
-                                            EdgeInsets.symmetric(horizontal: 8),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 8),
                                         height: Si.ds! * 20,
                                         width: Si.ds! * 20,
                                         color: Colors.black.withOpacity(0.2),
@@ -203,8 +208,19 @@ class _HomePageState extends State<HomePage> {
                                 bloc: bloc,
                                 builder: (c, s) {
                                   return bloc.state.loading == true
-                                      ? const Center(
-                                          child: CircularProgressIndicator())
+                                      ? Expanded(
+                                          child: Container(
+                                            height: 50,
+                                            child: Column(
+                                              children: [
+                                                VerticalSpace(value: 2),
+                                                const Center(
+                                                    child:
+                                                        LinearProgressIndicator()),
+                                              ],
+                                            ),
+                                          ),
+                                        )
                                       : bloc.state.posts == null
                                           ? const EmptyData(
                                               text: 'لا يوجد اعلان بعد',
@@ -220,7 +236,9 @@ class _HomePageState extends State<HomePage> {
                                                       0,
                                                   itemBuilder: (c, i) =>
                                                       HomeItem(
-                                                        id: bloc.state.posts?[i]
+                                                        id: bloc
+                                                                .state
+                                                                .posts?[i]
                                                                 .id ??
                                                             0,
                                                         image: bloc
@@ -265,10 +283,10 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ],
                           ),
-                        ),
-                      );
-                    });
-      },
+                        );
+                      });
+        },
+      ),
     );
   }
 }
