@@ -11,6 +11,7 @@ import '../../core/models/ad_details_model.dart';
 import '../../core/models/constants_model.dart';
 import '../../core/models/home_model.dart';
 import '../../core/router/router.dart';
+import '../../core/utiles/dio_helper.dart';
 import '../../core/utiles/local_storage.utils.dart';
 import '../../features/account/actions/get_constants_action.dart';
 import '../../features/account/actions/get_faqs_action.dart';
@@ -155,39 +156,55 @@ class AppCubit extends Cubit<AppStates> {
 
   PlatformFile? pickedImage;
 
-  editProfile({required name, required email, required phone}) async {
-    // var headers = {
-    //   'Accept': 'application/json',
-    //   'Authorization': 'Bearer ${LocalStorageUtils.token}'
-    // };
-    // var request = http.MultipartRequest('POST', Uri.parse('https://kamen.kamen-haraj.com/api/edit/profile'));
-    // request.fields.addAll({
-    //   'email': email,
-    //   'name': name,
-    //   'phone': phone
-    // });
-    // request.files.add(await http.MultipartFile.fromPath('image', pickedImage?.path??''));
-    // request.headers.addAll(headers);
-    //
-    // http.StreamedResponse response = await request.send();
-    //
-    // if (response.statusCode == 200) {
-    //   print(await response.stream.bytesToString());
-    // }
-    // else {
-    //   print(response.reasonPhrase);
-    // }
-    EditProfileAction action = EditProfileAction(
-        name: name,
-        email: email,
-        phone: phone,
-        image: pickedImage?.path ?? '');
-    action.execute();
-    action.onSuccess = (res) {
-      NotificationUtils.showSuccessMessage(res?.message ?? '');
+  // editProfile({required name, required email, required phone}) async {
+  //   //  emit(EditInfoLoadingState());
+  //   // if(formKey.currentState!.validate())return;
+  //   // formKey.currentState!.save();
+  //   var image =  await http.MultipartFile.fromPath('image', pickedImage!.path ?? '',filename: pickedImage?.name);
+  //   // final body={
+  //   //   'name': name,
+  //   //   'email': email,
+  //   //   'phone': phone,
+  //   //   'image':image
+  //   // };
+  //   // FormData formData = FormData.fromMap(body);
+  //   // if(pickedImage !=null)
+  //   //   formData.files.add(MapEntry('image', await MultipartFile.fromFile(pickedImage!.path??'')));
+  //   // Dio? dio;
+  //   // dio?.options.headers["Authorization"] =
+  //   // "Bearer ${LocalStorageUtils.token}";
+  //   // dio?.post('https://kamen.kamen-haraj.com/api/',data: formData);
+  //
+  //   EditProfileAction action =
+  //       EditProfileAction(name: name, email: email, phone: phone, image: image);
+  //   action.execute();
+  //   action.onSuccess = (res) {
+  //     NotificationUtils.showSuccessMessage(res?.message ?? '');
+  //   };
+  //   action.onError = (res) {
+  //     NotificationUtils.showErrorMessage(res.message ?? '');
+  //   };
+  // }
+  Future<void> editProfile({required name, required email, required phone}) async{
+   // emit(EditInfoLoadingState());
+    // if(formKey.currentState!.validate())return;
+    // formKey.currentState!.save();
+
+    final body={
+      'name': name,
+      'email': email,
+      'phone': phone,
+
     };
-    action.onError = (res) {
-      NotificationUtils.showErrorMessage(res.message ?? '');
-    };
+
+    FormData formData = FormData.fromMap(body);
+    if(pickedImage !=null)
+      formData.files.add(MapEntry('profile', await MultipartFile.fromFile(pickedImage!.path??'')));
+    DioHelper.postData(url: 'edit/profile' , formData: formData).then((value){
+      print(value.data);
+
+    }).catchError((error){
+      print(error);
+    });
   }
 }

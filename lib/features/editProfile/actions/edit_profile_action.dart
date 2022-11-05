@@ -9,10 +9,10 @@ import 'get_profile_action.dart';
 import 'package:dio/dio.dart';
 
 class EditProfileAction extends ApiRequestAction<AuthResponse> {
-  late String name;
-  late String email;
-  late String phone;
-  late String image;
+final String name;
+final String email;
+final String phone;
+final MapEntry image;
 
   EditProfileAction({
     required this.name,
@@ -32,13 +32,13 @@ class EditProfileAction extends ApiRequestAction<AuthResponse> {
 
   @override
   ContentDataType get contentDataType => ContentDataType.formData;
-  // Map<String, dynamic>? pickedImage = {
-  //   'image':MultipartFile.fromFile( GetIt.I<AppCubit>().pickedImage?.path ?? '')
-  // };
+  Map<String, dynamic>? pickedImage = {
+    'image':MultipartFile.fromFile( GetIt.I<AppCubit>().pickedImage?.path ?? '')
+  };
   @override
   Map<String, dynamic> get toMap =>
       {'name': name, 'email': email, 'phone': phone,
-       // 'image[]': pickedImage
+       'image': pickedImage
       };
 
   @override
