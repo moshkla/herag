@@ -24,7 +24,7 @@ class AdDetailsPage extends StatelessWidget {
           return SingleChildScrollView(
             child: Column(
               children: [
-                const AdDetailsAppBar(),
+                AdDetailsAppBar(),
                 const VerticalSpace(value: 2),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
