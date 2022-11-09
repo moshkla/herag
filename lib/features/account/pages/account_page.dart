@@ -61,15 +61,15 @@ class AccountPage extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            Container(
-                                height: Si.ds! * 4,
-                                width: Si.ds! * 4,
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: const Icon(Icons.share,
-                                    color: Colors.green)),
+                            // Container(
+                            //     height: Si.ds! * 4,
+                            //     width: Si.ds! * 4,
+                            //     decoration: BoxDecoration(
+                            //       color: Colors.white,
+                            //       borderRadius: BorderRadius.circular(8),
+                            //     ),
+                            //     child: const Icon(Icons.share,
+                            //         color: Colors.green)),
                             const HorizontalSpace(value: 1),
                             // Container(
                             //     height: Si.ds! * 4,
@@ -226,28 +226,31 @@ class AccountPage extends StatelessWidget {
                 child: EmptyData(
                 text: 'لم تقم باضافة اعلان بعد',
               ))
-            : Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: ListView.builder(
-                    shrinkWrap: true,
-                    primary: false,
-                    itemCount:
-                        authBloc.state.profileModel?.body?.userPosts?.length,
-                    itemBuilder: (c, i) {
-                      var singleItem =
-                          authBloc.state.profileModel?.body?.userPosts?[i];
-                      return HomeItem(
-                        id: singleItem?.id ?? 0,
-                        image: singleItem?.image?.first ?? '',
-                        time: singleItem?.time ?? '',
-                        title: singleItem?.title ?? '',
-                        area: singleItem?.area ?? '',
-                        user: singleItem?.user ?? '',
-                        price: singleItem?.price ?? '',
-                        inFav: singleItem?.inFavourites ?? true,
-                      );
-                    }),
-              ),
+            : Expanded(
+          child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: ListView.builder(
+                    
+                      shrinkWrap: true,
+                      primary: false,
+                      itemCount:
+                          authBloc.state.profileModel?.body?.userPosts?.length,
+                      itemBuilder: (c, i) {
+                        var singleItem =
+                            authBloc.state.profileModel?.body?.userPosts?[i];
+                        return HomeItem(
+                          id: singleItem?.id ?? 0,
+                          image: (singleItem?.image?.isNotEmpty ==true)?(singleItem?.image?.first) : '',
+                          time: singleItem?.time ?? '',
+                          title: singleItem?.title ?? '',
+                          area: singleItem?.area ?? '',
+                          user: singleItem?.user ?? '',
+                          price: singleItem?.price ?? '',
+                          inFav: singleItem?.inFavourites ?? true,
+                        );
+                      }),
+                ),
+            ),
       ],
     );
   }

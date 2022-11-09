@@ -21,7 +21,7 @@ class NotificationPage extends StatelessWidget {
           children: [
             pageAppBar(
               pageTitle: "notifications".tr(),
-              withoutBackBtn: true,
+              withoutBackBtn: false,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -80,7 +80,7 @@ class NotificationPage extends StatelessWidget {
                                                     )),
                                           const HorizontalSpace(value: 1),
                                           SizedBox(
-                                            width: Si.ds!*24,
+                                            width: Si.ds! * 24,
                                             child: Text(
                                               'هذا النص هو مثال لنص يمكن ان يستبدل في نفس المساحة '
                                               ', لقد تم توليد هذا النص من مولد النص العربى حيث يمكنك ان تولد نفس هذا النص او العديد من النصوص ',

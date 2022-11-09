@@ -241,12 +241,14 @@ class _HomePageState extends State<HomePage> {
                                                                 .posts?[i]
                                                                 .id ??
                                                             0,
-                                                        image: bloc
-                                                                .state
-                                                                .posts?[i]
-                                                                .image
-                                                                ?.first ??
-                                                            '',
+                                                        image:  (bloc
+                                                            .state
+                                                            .posts?[i]
+                                                            .image!.isNotEmpty==true) ?
+                                                        (bloc.state
+                                                            .posts?[i]
+                                                            .image?.first):
+                                                            "",
                                                         time: bloc
                                                                 .state
                                                                 .posts?[i]

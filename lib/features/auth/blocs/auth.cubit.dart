@@ -8,7 +8,6 @@ import '../../../core/models/user_model.dart';
 import '../../../core/router/router.dart';
 import '../../../core/utiles/notification_utils.dart';
 import '../../../layout/layout.page.dart';
-import '../../account/actions/get_constants_action.dart';
 import '../actions/forget_password.action.dart';
 import '../actions/login_action.dart';
 import '../actions/logout_action.dart';

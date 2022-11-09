@@ -124,10 +124,6 @@ class HomeItem extends StatelessWidget {
                                         style:
                                             hint.copyWith(color: Colors.green),
                                       ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
                                       IconButton(
                                         onPressed: () {
                                           bloc.toggelFavourites(id??0);
@@ -140,16 +136,32 @@ class HomeItem extends StatelessWidget {
                                           color: Colors.red,
                                         ),
                                       ),
-                                      const HorizontalSpace(value: 2),
-                                      IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(
-                                          Icons.share,
-                                          color: Colors.green,
-                                        ),
-                                      )
                                     ],
                                   ),
+                                  // Row(
+                                  //   children: [
+                                  //     IconButton(
+                                  //       onPressed: () {
+                                  //         bloc.toggelFavourites(id??0);
+                                  //         bloc.getFavourites();
+                                  //       },
+                                  //       icon: Icon(
+                                  //         inFav == true
+                                  //             ? Icons.favorite
+                                  //             : Icons.favorite_border,
+                                  //         color: Colors.red,
+                                  //       ),
+                                  //     ),
+                                  //     const HorizontalSpace(value: 2),
+                                  //     IconButton(
+                                  //       onPressed: () {},
+                                  //       icon: const Icon(
+                                  //         Icons.share,
+                                  //         color: Colors.green,
+                                  //       ),
+                                  //     )
+                                  //   ],
+                                  // ),
                                 ],
                               )
                             ],

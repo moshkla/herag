@@ -47,11 +47,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
             VerticalSpace(value: 3),
             InkWell(
               onTap: () async {
-                await FileUtils.pickImage().then((value) async {
-                  image = File(value!.path.toString());
-                  bloc.pickedImage = value;
-                  return null;
-                });
+                // await FileUtils.pickImage().then((value) async {
+                //   image = File(value!.path.toString());
+                //   bloc.pickedImage = value;
+                //   return null;
+                // });
                 setState(() {});
               },
               child: Container(
