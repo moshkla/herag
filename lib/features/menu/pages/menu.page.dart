@@ -37,7 +37,7 @@ class MenuPage extends StatelessWidget {
                   const VerticalSpace(value: 2),
                   InkWell(
                     onTap: () {
-                      //   MagicRouter.navigateTo(PaymentPage());
+                      MagicRouter.navigateTo(PaymentPage());
                     },
                     child: const ProfileCardItem(
                       icon: 'assets/images/online-payment.png',

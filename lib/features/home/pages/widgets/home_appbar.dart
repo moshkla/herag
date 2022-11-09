@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get_it/get_it.dart';
 import 'package:herag/business%20logic/appCubit/appcubit_cubit.dart';
+import 'package:herag/core/router/router.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/utiles/size_config.dart';
@@ -11,6 +12,8 @@ import '../../../../theme/app_colors.dart';
 import '../../../../theme/styles.dart';
 import '../../../../theme/text_styles.dart';
 import '../../../auth/blocs/auth.cubit.dart';
+import '../../../chat/pages/chats.page.dart';
+import '../../../notifications/pages/notifications.page.dart';
 import '../../actions/search_action.dart';
 import 'filter.dart';
 
@@ -99,9 +102,14 @@ class HomeAppBar extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Image.asset(
-                      'assets/images/bell.png',
-                      height: Si.ds! * 3,
+                    InkWell(
+                      onTap: () {
+                        MagicRouter.navigateTo(const NotificationPage());
+                      },
+                      child: Image.asset(
+                        'assets/images/bell.png',
+                        height: Si.ds! * 3,
+                      ),
                     ),
                     const HorizontalSpace(value: 1),
                     Container(

@@ -4,24 +4,26 @@ import 'package:get_it/get_it.dart';
 import 'package:herag/features/auth/blocs/auth.cubit.dart';
 import 'package:herag/features/chat/bloc/chat_cubit.dart';
 import 'package:herag/features/chat/bloc/chat_state.dart';
+import 'package:herag/theme/text_styles.dart';
 
 import '../../../core/models/message_model.dart';
 
 class ChatDetailsScreen extends StatelessWidget {
   ChatDetailsScreen({
     Key? key,
-    this.reciverId,
+    // this.reciverId,
   }) : super(key: key);
 
   var messageController = TextEditingController();
   var bloc = GetIt.I<ChatCubit>();
-  var user = GetIt
-      .I<AuthCubit>()
-      .state
-      .profileModel
-      ?.body
-      ?.user;
-  final reciverId;
+
+  // var user = GetIt
+  //     .I<AuthCubit>()
+  //     .state
+  //     .profileModel
+  //     ?.body
+  //     ?.user;
+  // final reciverId;
 
   @override
   Widget build(BuildContext context) {
@@ -38,41 +40,46 @@ class ChatDetailsScreen extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 20.0,
-                      backgroundImage: NetworkImage('${user?.image}'),
+                      backgroundImage: NetworkImage(
+                          'https://i.pinimg.com/564x/b9/21/d8/b921d844ef47206e654367595580fc5c.jpg'),
                     ),
                     SizedBox(
                       width: 15.0,
                     ),
-                    Text('${user?.name}'),
+                    Text(
+                      'user',
+                      style: title.copyWith(color: Colors.white),
+                    ),
                   ],
                 ),
               ),
-              body:
-              Padding(
+              body: Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
                   children: [
-                    ListView.separated(
-                        physics: BouncingScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          {
-                            var message = bloc.messages[index];
+                    Expanded(
+                      child: ListView.separated(
+                          primary: false,
+                          shrinkWrap: true,
+                          physics: BouncingScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            {
+                              // var message = bloc.messages[index];
 
-                            if (bloc.userId == message.senderId)
-                              return buildMyMessage(message);
+                              if (index % 2 == 0) return buildMyMessage();
 
-                            return buildMessage(message);
-                          }
-                        },
-                        separatorBuilder: (context, index) =>
-                            SizedBox(
-                              height: 15.0,
-                            ),
-                        itemCount: bloc.messages.length),
+                              return buildMessage();
+                            }
+                          },
+                          separatorBuilder: (context, index) => SizedBox(
+                                height: 15.0,
+                              ),
+                          itemCount: 10),
+                    ),
                     Container(
                       decoration: BoxDecoration(
                         border:
-                        Border.all(color: Colors.grey[300]!, width: 1.0),
+                            Border.all(color: Colors.grey[300]!, width: 1.0),
                         borderRadius: BorderRadius.circular(15.0),
                       ),
                       clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -91,10 +98,10 @@ class ChatDetailsScreen extends StatelessWidget {
                             color: Colors.blue,
                             child: MaterialButton(
                               onPressed: () {
-                                bloc.sendMessage(
-                                    reciverId: reciverId,
-                                    dateTime: DateTime.now().toString(),
-                                    text: messageController.text);
+                                // bloc.sendMessage(
+                                //     reciverId: reciverId,
+                                //     dateTime: DateTime.now().toString(),
+                                //     text: messageController.text);
                               },
                               minWidth: 1.0,
                               child: Icon(
@@ -110,7 +117,6 @@ class ChatDetailsScreen extends StatelessWidget {
                   ],
                 ),
               ),
-
             );
           },
         );
@@ -119,24 +125,26 @@ class ChatDetailsScreen extends StatelessWidget {
   }
 }
 
-Widget buildMessage(MessageModel model) =>
-    Align(
+Widget buildMessage() => Align(
       alignment: AlignmentDirectional.centerStart,
       child: Container(
-          padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
-          decoration: BoxDecoration(
-            color: Colors.grey[300],
-            borderRadius: BorderRadiusDirectional.only(
-              bottomEnd: Radius.circular(10.0),
-              topStart: Radius.circular(10.0),
-              topEnd: Radius.circular(10.0),
-            ),
+        padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
+        decoration: BoxDecoration(
+          color: Colors.grey[300],
+          borderRadius: BorderRadiusDirectional.only(
+            bottomEnd: Radius.circular(10.0),
+            topStart: Radius.circular(10.0),
+            topEnd: Radius.circular(10.0),
           ),
-          child: Text('${model.text}')),
+        ),
+        child: Text(
+          'text',
+          style: subTitle.copyWith(color: Colors.black),
+        ),
+      ),
     );
 
-Widget buildMyMessage(MessageModel model) =>
-    Align(
+Widget buildMyMessage() => Align(
       alignment: AlignmentDirectional.centerEnd,
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 15.0),
@@ -148,6 +156,9 @@ Widget buildMyMessage(MessageModel model) =>
             topEnd: Radius.circular(10.0),
           ),
         ),
-        child: Text(model.text.toString()),
+        child: Text(
+          'text',
+          style: subTitle.copyWith(color: Colors.black),
+        ),
       ),
     );

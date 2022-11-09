@@ -42,7 +42,7 @@ class CustomGeneralButton extends StatelessWidget {
               Center(
                 child: Text(
                   text,
-                  style: titleSmall.copyWith(color: Colors.white)
+                  style: titleSmall.copyWith(color:textColor?? Colors.white)
                 ),
               ),
               (iconImage != null)

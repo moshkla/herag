@@ -4,7 +4,7 @@
 // import '../features/favourites/pages/ad.details.page.dart';
 // import '../features/home/pages/ad.details.page.dart';
 // import '../features/menu/pages/add.ads.page.dart';
-// import '../features/notifications/pages/notification.page.dart';
+// import '../features/notifications/pages/chats.page.dart';
 //
 // class MainNavigationController extends st{
 //   int currentIndex = 0;

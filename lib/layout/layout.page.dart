@@ -11,7 +11,7 @@ import '../features/add_ads/pages/add.ads.page.dart';
 import '../features/favourites/pages/favourites.page.dart';
 import '../features/home/pages/pages/home.page.dart';
 import '../features/menu/pages/menu.page.dart';
-import '../features/notifications/pages/notification.page.dart';
+import '../features/chat/pages/chats.page.dart';
 import '../theme/app_colors.dart';
 
 class LayoutPage extends StatefulWidget {
@@ -27,7 +27,7 @@ class _LayoutPageState extends State<LayoutPage> {
   List<Widget> screens = [
     HomePage(),
     FavouritesPage(),
-    const NotificationPage(),
+    const ChatsPage(),
     AccountPage(),
     const MenuPage(),
   ];
